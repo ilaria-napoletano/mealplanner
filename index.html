@@ -1,852 +1,1645 @@
-<title>Menu Fuori Sede</title>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&amp;family=Work+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "primary-fixed": "#c2ecda", "tertiary-container": "#805200", "primary-fixed-dim": "#a6cfbe", "on-error-container": "#93000a", "surface-container-low": "#f9f3e5", "outline-variant": "#c1c8c3", "on-secondary": "#ffffff", "on-surface": "#1d1c13", "dark-surface-tint": "#2E2A1F", "muted": "#736C58", "dark-dinner": "#D19BC0", "secondary-container": "#febbe0", "on-primary": "#ffffff", "on-tertiary": "#ffffff", "background": "#fff9eb", "on-secondary-container": "#7b4766", "line": "#E5DCC6", "surface-container-high": "#ede8da", "secondary-fixed-dim": "#f5b3d7", "inverse-surface": "#333027", "on-secondary-fixed-variant": "#683654", "primary": "#254b3e", "error": "#ba1a1a", "tertiary-fixed-dim": "#ffb959", "dark-weekend": "#E3AC55", "surface-container": "#f3eddf", "on-secondary-fixed": "#350a27", "surface-variant": "#e8e2d4", "lunch-soft": "#E4EDE6", "dark-muted": "#A99E82", "on-tertiary-fixed-variant": "#643f00", "weekend-soft": "#F5E9D4", "surface": "#FFFFFF", "dark-weekend-soft": "#332A18", "surface-dim": "dfdacc", "dinner-soft": "#F1E4EC", "dark-dinner-soft": "#332430", "dark-bg-canvas": "#1C1A15", "on-primary-fixed-variant": "#284e41", "inverse-on-surface": "#f6f0e2", "on-tertiary-container": "#ffcc8a", "secondary-fixed": "#ffd8eb", "on-error": "#ffffff", "dark-lunch": "#7FAD98", "on-surface-variant": "#414845", "dark-lunch-soft": "#26332C", "on-tertiary-fixed": "#2a1800", "surface-bright": "#fff9eb", "inverse-primary": "#a6cfbe", "on-primary-container": "#b4ddcc", "secondary": "#834d6d", "surface-container-lowest": "#ffffff", "surface-tint": "#406658", "dark-ink": "#EFE8D6", "outline": "#717974", "bg-canvas": "#FAF7F1", "dark-surface": "#252219", "on-primary-fixed": "#002117", "primary-container": "#3d6355", "on-background": "#1d1c13", "surface-container-highest": "#e8e2d4", "tertiary-fixed": "#ffddb5", "error-container": "#ffdad6", "dark-line": "#3C3627", "tertiary": "#603d00" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "margin": "1.25rem", "space-md": "0.75rem", "space-xs": "0.25rem", "gutter-mobile": "0.75rem", "space-sm": "0.5rem", "space-lg": "1rem", "space-xl": "1.5rem", "gutter": "0.875rem", "margin-mobile": "1rem" }, fontFamily: { "headline-lg": ["Fraunces"], "body-sm": ["Work Sans"], "headline-md": ["Fraunces"], "label-sm": ["Work Sans"], "caption": ["Work Sans"], "headline-sm": ["Fraunces"], "body-md": ["Work Sans"], "display": ["Fraunces"], "label-md": ["Work Sans"], "body-lg": ["Work Sans"], "title-md": ["Work Sans"], "headline-lg-mobile": ["Fraunces"] }, fontSize: { "headline-lg": ["24px", { "lineHeight": "30px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-md": ["19px", { "lineHeight": "25px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "600" }], "caption": ["10px", { "lineHeight": "13px", "letterSpacing": "0.06em", "fontWeight": "500" }], "headline-sm": ["17px", { "lineHeight": "22px", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "21px", "fontWeight": "400" }], "display": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "600" }], "body-lg": ["15px", { "lineHeight": "23px", "fontWeight": "400" }], "title-md": ["15px", { "lineHeight": "20px", "fontWeight": "600" }], "headline-lg-mobile": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,16px);}.pt-safe{padding-top:env(safe-area-inset-top,20px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style>
 <style>
-  :root{
-    --bg:#FAF7F1;
-    --surface:#FFFFFF;
-    --surface-2:#F1EAD9;
-    --ink:#2A281F;
-    --muted:#736C58;
-    --line:#E5DCC6;
-    --pranzo:#3D6355;
-    --pranzo-soft:#E4EDE6;
-    --cena:#7A4665;
-    --cena-soft:#F1E4EC;
-    --occ:#B4791C;
-    --occ-soft:#F5E9D4;
-    --shadow: 0 1px 2px rgba(40,35,20,.06), 0 6px 16px rgba(40,35,20,.05);
-  }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --bg:#1C1A15;
-      --surface:#252219;
-      --surface-2:#2E2A1F;
-      --ink:#EFE8D6;
-      --muted:#A99E82;
-      --line:#3C3627;
-      --pranzo:#7FAD98;
-      --pranzo-soft:#26332C;
-      --cena:#D19BC0;
-      --cena-soft:#332430;
-      --occ:#E3AC55;
-      --occ-soft:#332A18;
-      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 20px rgba(0,0,0,.35);
-    }
-  }
-  :root[data-theme="dark"]{
-    --bg:#1C1A15;
-    --surface:#252219;
-    --surface-2:#2E2A1F;
-    --ink:#EFE8D6;
-    --muted:#A99E82;
-    --line:#3C3627;
-    --pranzo:#7FAD98;
-    --pranzo-soft:#26332C;
-    --cena:#D19BC0;
-    --cena-soft:#332430;
-    --occ:#E3AC55;
-    --occ-soft:#332A18;
-    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 20px rgba(0,0,0,.35);
-  }
-
-  *{box-sizing:border-box;}
-  html,body{background:var(--bg);}
-  body{
-    color:var(--ink);
-    font-family:'Work Sans', ui-sans-serif, system-ui, sans-serif;
-    display:flex;
-    justify-content:center;
-    min-height:100dvh;
-  }
-  .app{width:100%;max-width:920px;display:flex;flex-direction:column;min-height:100dvh;}
-
-  h1,h2,h3{font-family:'Fraunces', Georgia, serif; text-wrap:balance; margin:0;}
-
-  /* ---------- App chrome ---------- */
-  .topbar{
-    position:sticky;
-    top:env(safe-area-inset-top, 0px);
-    z-index:10;
-    background:var(--bg);
-    border-bottom:1px solid var(--line);
-    padding:16px 20px;
-  }
-  .topbar h1{font-size:1.1rem;font-weight:600;}
-
-  .tabbar{
-    position:fixed;
-    left:0;right:0;bottom:0;
-    z-index:20;
-    display:flex;
-    gap:4px;
-    background:var(--surface);
-    border-top:1px solid var(--line);
-    padding:8px 12px calc(8px + env(safe-area-inset-bottom, 0px));
-  }
-  .tabbar button{
-    flex:1;
-    background:none;
-    border:none;
-    font-family:'IBM Plex Mono', ui-monospace, monospace;
-    font-size:.72rem;
-    letter-spacing:.06em;
-    text-transform:uppercase;
-    color:var(--muted);
-    padding:10px 4px;
-    border-radius:10px;
-    cursor:pointer;
-  }
-  .tabbar button.active{color:var(--ink);background:var(--surface-2);}
-  .tabbar button:focus-visible{outline:2px solid var(--pranzo);outline-offset:2px;}
-
-  .tabpanel{
-    display:flex;
-    flex-direction:column;
-    gap:40px;
-    padding:24px 20px calc(96px + env(safe-area-inset-bottom, 0px));
-    width:100%;
-  }
-
-  /* ---------- Section headers ---------- */
-  .section-head{display:flex;flex-direction:column;gap:6px;}
-  .section-head h2{font-size:1.5rem;font-weight:600;}
-  .section-head.pranzo h2{color:var(--pranzo);}
-  .section-head.cena h2{color:var(--cena);}
-  .section-head p{margin:0;color:var(--muted);font-size:.92rem;max-width:60ch;}
-
-  /* ---------- Weekly grid ---------- */
-  .week-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
-    gap:14px;
-  }
-  .day-card{
-    background:var(--surface);
-    border:1px solid var(--line);
-    border-radius:12px;
-    padding:16px;
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-    box-shadow:var(--shadow);
-  }
-  .day-card .day-name{
-    font-family:'Fraunces', serif;
-    font-weight:600;
-    font-size:1.05rem;
-  }
-  .meal-row{display:flex;flex-direction:column;gap:4px;}
-  .meal-row .kind{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:.65rem;
-    letter-spacing:.1em;
-    text-transform:uppercase;
-  }
-  .meal-row.pranzo .kind{color:var(--pranzo);}
-  .meal-row.cena .kind{color:var(--cena);}
-  .meal-row a,
-  .meal-row > span:not(.kind){
-    color:var(--ink);
-    text-decoration:none;
-    font-size:.92rem;
-    line-height:1.4;
-  }
-  .meal-row a{border-bottom:1px dotted var(--line); cursor:pointer;}
-  .meal-row a:hover{border-bottom-color:var(--ink);}
-  .day-card.weekend{background:var(--occ-soft);border-color:var(--occ);}
-
-  /* ---------- Recipe cards ---------- */
-  .recipes{display:flex;flex-direction:column;gap:16px;}
-  .recipe{
-    scroll-margin-top:76px;
-    background:var(--surface);
-    border:1px solid var(--line);
-    border-radius:14px;
-    padding:22px;
-    display:flex;
-    flex-direction:column;
-    gap:16px;
-    box-shadow:var(--shadow);
-  }
-  .recipe-head{
-    display:flex;
-    flex-wrap:wrap;
-    align-items:baseline;
-    justify-content:space-between;
-    gap:10px 16px;
-  }
-  .recipe-head h3{font-size:1.2rem;font-weight:600;}
-  .recipe-meta{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    flex-wrap:wrap;
-  }
-  .time-badge{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:.75rem;
-    font-variant-numeric:tabular-nums;
-    color:var(--ink);
-    background:var(--surface-2);
-    border-radius:5px;
-    padding:3px 8px;
-  }
-  .equip{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:.63rem;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    color:var(--muted);
-    border:1px solid var(--line);
-    border-radius:5px;
-    padding:3px 7px;
-  }
-  .recipe-body{
-    display:grid;
-    grid-template-columns:1fr 1.6fr;
-    gap:20px;
-  }
-  @media (max-width:640px){
-    .recipe-body{grid-template-columns:1fr;}
-  }
-  .recipe-body h4{
-    margin:0 0 8px 0;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:.68rem;
-    letter-spacing:.1em;
-    text-transform:uppercase;
-    color:var(--muted);
-  }
-  .ingredients{margin:0;padding-left:1.1em;font-size:.9rem;line-height:1.55;}
-  .ingredients li{margin-bottom:2px;}
-  .steps{margin:0;padding-left:1.2em;font-size:.92rem;line-height:1.6;}
-  .steps li{margin-bottom:6px;}
-  .source{
-    font-size:.82rem;
-    color:var(--muted);
-  }
-  .source a{color:inherit;}
-
-  .occasional-badge{
-    display:inline-block;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:.63rem;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    color:var(--occ);
-    background:var(--occ-soft);
-    border-radius:5px;
-    padding:3px 8px;
-  }
-
-  /* ---------- Rotation note ---------- */
-  .rotation{
-    background:var(--surface-2);
-    border-radius:14px;
-    padding:22px 24px;
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-  }
-  .rotation h3{font-size:1.1rem;font-weight:600;}
-  .rotation ul{margin:0;padding-left:1.2em;font-size:.92rem;line-height:1.6;}
-  .rotation p{margin:0;font-size:.9rem;color:var(--muted);}
-
-  /* ---------- Shopping list ---------- */
-  .shop-actions{display:flex;gap:10px;flex-wrap:wrap;}
-  .shop-btn{
-    background:none;
-    border:1px solid var(--line);
-    color:var(--muted);
-    border-radius:8px;
-    padding:8px 14px;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:.68rem;
-    text-transform:uppercase;
-    letter-spacing:.06em;
-    cursor:pointer;
-  }
-  .shop-btn:hover{color:var(--ink);border-color:var(--ink);}
-  .shop-add{display:flex;gap:8px;}
-  .shop-add input{
-    flex:1;
-    padding:11px 12px;
-    border-radius:8px;
-    border:1px solid var(--line);
-    background:var(--surface);
-    color:var(--ink);
-    font-family:inherit;
-    font-size:.92rem;
-  }
-  .shop-add input:focus-visible{outline:2px solid var(--pranzo);outline-offset:1px;}
-  .shop-add button{
-    padding:0 18px;
-    border-radius:8px;
-    border:none;
-    background:var(--pranzo);
-    color:var(--bg);
-    font-family:'IBM Plex Mono', monospace;
-    font-size:.72rem;
-    text-transform:uppercase;
-    letter-spacing:.06em;
-    cursor:pointer;
-  }
-  .shop-category h4{
-    margin:0 0 8px 0;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:.68rem;
-    letter-spacing:.1em;
-    text-transform:uppercase;
-    color:var(--muted);
-  }
-  .shop-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;}
-  .shop-item{display:flex;align-items:center;gap:10px;padding:10px 2px;border-bottom:1px solid var(--line);}
-  .shop-item label{flex:1;font-size:.92rem;line-height:1.4;cursor:pointer;}
-  .shop-item input[type=checkbox]{width:19px;height:19px;accent-color:var(--pranzo);flex-shrink:0;}
-  .shop-item.checked label{color:var(--muted);text-decoration:line-through;}
-  .shop-item .del{background:none;border:none;color:var(--muted);font-size:1.1rem;line-height:1;cursor:pointer;padding:4px 6px;}
-  .shop-item .del:hover{color:var(--cena);}
-  #shop-list{display:flex;flex-direction:column;gap:22px;}
-
-  footer{
-    text-align:center;
-    font-size:.8rem;
-    color:var(--muted);
-    padding-top:8px;
-    border-top:1px solid var(--line);
-  }
+.tab-content.hidden { display: none !important; }
+.cat-pill.active-pill { background-color: #254b3e !important; color: #ffffff !important; }
 </style>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
-
-<div class="app">
-
-  <div class="topbar"><h1>Menu fuori sede</h1></div>
-
-  <!-- ================= TAB: MENU ================= -->
-  <section id="tab-menu" class="tabpanel">
-    <div class="section-head">
-      <h2>La settimana a colpo d'occhio</h2>
-      <p>Tocca un piatto per aprire la ricetta.</p>
-    </div>
-    <div class="week-grid">
-
-      <div class="day-card">
-        <div class="day-name">Lunedì</div>
-        <div class="meal-row pranzo"><span class="kind">Pranzo</span><span>Spaghetti al preparato di mare</span></div>
-        <div class="meal-row cena"><span class="kind">Cena</span><span>Fettine di carne con falafel</span></div>
+  <title>Menu Fuori Sede - Stitch App</title>
+</head>
+<body class="bg-bg-canvas text-on-surface font-body-md text-body-md flex flex-col min-h-screen">
+  <!-- Top Header Unificato -->
+  <header class="fixed top-0 w-full z-50 pt-safe bg-bg-canvas/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(40,35,20,0.04)]">
+    <div class="h-16 px-margin-mobile flex items-center justify-between">
+      <div class="flex items-center gap-space-sm">
+        <img alt="Menu Fuori Sede Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UpvE29fOZaG_c2OJyflvuYph3f-MG6q3om1PsEvK6J3-Kxik0_7j1HSvSlCDgF_4DPXCTU7KT6dot6b3X_eCWvCxLLZqoxWU_2WAsDmvi3Vbmh883pli39q1fxORw_6Mpd1krOciCWAgcrX_waDedkwwpRdnhjera6z1lW2RkdsN9DJE6lZ0gebV3HVvreia1ReEV_kKA66aT0okml6CUsT_kOapZCEfLffR1hEb9xYzHvrOvxNBYv9iU">
+        <div class="flex flex-col">
+          <span class="font-label-sm text-label-sm uppercase text-muted tracking-widest">Fuori Sede</span>
+          <h1 id="app-header-title" class="font-headline-sm text-headline-sm text-primary tracking-tight leading-none">Menu Settimanale</h1>
+        </div>
       </div>
-
-      <div class="day-card">
-        <div class="day-name">Martedì</div>
-        <div class="meal-row pranzo"><span class="kind">Pranzo</span><a href="#paccheri-zucchine">Mezzi paccheri, crema di zucchine, burrata e salmone</a></div>
-        <div class="meal-row cena"><span class="kind">Cena</span><span>Piadina farcita</span></div>
-      </div>
-
-      <div class="day-card">
-        <div class="day-name">Mercoledì</div>
-        <div class="meal-row pranzo"><span class="kind">Pranzo</span><a href="#burro-tonno">Spaghetti burro e tonno</a></div>
-        <div class="meal-row cena"><span class="kind">Cena</span><span>Filetti di merluzzo / Filetto di salmone al forno <span class="occasional-badge">a settimane alterne</span></span></div>
-      </div>
-
-      <div class="day-card">
-        <div class="day-name">Giovedì</div>
-        <div class="meal-row pranzo"><span class="kind">Pranzo</span><a href="#zucchine-gamberetti">Zucchine e gamberetti</a></div>
-        <div class="meal-row cena"><span class="kind">Cena</span><span>Hamburger vegetali Kioene</span></div>
-      </div>
-
-      <div class="day-card">
-        <div class="day-name">Venerdì</div>
-        <div class="meal-row pranzo"><span class="kind">Pranzo</span><a href="#pomodorini-melanzane-burrata">Pomodorini arrosto, melanzane e burrata</a></div>
-        <div class="meal-row cena"><span class="kind">Cena</span><span>Petto di pollo in padella / Cotoletta e patatine <span class="occasional-badge">a settimane alterne</span></span></div>
-      </div>
-
-      <div class="day-card">
-        <div class="day-name">Sabato</div>
-        <div class="meal-row pranzo"><span class="kind">Pranzo</span><a href="#pistacchio-mortadella">Pesto di pistacchio e mortadella</a></div>
-        <div class="meal-row cena"><span class="kind">Cena</span><a href="#pizza-patate">Gateau di patate</a></div>
-      </div>
-
-      <div class="day-card weekend">
-        <div class="day-name">Domenica</div>
-        <div class="meal-row pranzo"><span class="kind">Pranzo</span><a href="#lenticchie">Vellutata di lenticchie frullate</a></div>
-        <div class="meal-row cena"><span class="kind">Cena</span><span>Di nuovo carne / Toast / Frittata di verdure <span class="occasional-badge">a rotazione</span></span></div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ================= TAB: RICETTE ================= -->
-  <section id="tab-ricette" class="tabpanel" hidden>
-
-    <div>
-      <div class="section-head pranzo">
-        <h2>Ricette — Pranzo</h2>
-        <p>Tutti primi piatti veloci, pensati per essere pronti in 10–20 minuti tra una lezione e l'altra.</p>
-      </div>
-      <div class="recipes" style="margin-top:16px;">
-
-        <article class="recipe" id="paccheri-zucchine">
-          <div class="recipe-head">
-            <h3>Mezzi paccheri, crema di zucchine, burrata e salmone — martedì</h3>
-            <div class="recipe-meta"><span class="time-badge">20'</span><span class="equip">Fornelli</span><span class="equip">Minipimer</span></div>
-          </div>
-          <div class="recipe-body">
-            <div>
-              <h4>Ingredienti (1 persona)</h4>
-              <ul class="ingredients">
-                <li>90 g mezzi paccheri</li>
-                <li>1 zucchina media</li>
-                <li>50 g salmone affumicato</li>
-                <li>50 g burrata</li>
-                <li>Olio evo, sale, pepe</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Procedimento</h4>
-              <ol class="steps">
-                <li>Taglia la zucchina a rondelle sottili e falla saltare in padella con un filo d'olio per 8-10 minuti finché morbida.</li>
-                <li>Tieni da parte qualche rondella intera; frulla il resto con il minipimer (con un mestolo di acqua di cottura pasta) fino a ottenere una crema.</li>
-                <li>Cuoci la pasta, scolala e mantecala in padella con la crema e le rondelle tenute da parte.</li>
-                <li>Impiatta, aggiungi il salmone a listarelle e la burrata spezzettata a crudo.</li>
-              </ol>
-            </div>
-          </div>
-          <div class="source">Ricetta di riferimento: <a href="https://blog.giallozafferano.it/studentiaifornelli/pasta-zucchine-e-salmone/" target="_blank" rel="noopener">Pasta zucchine e salmone, GialloZafferano</a> (qui aggiungiamo la burrata)</div>
-        </article>
-
-        <article class="recipe" id="burro-tonno">
-          <div class="recipe-head">
-            <h3>Spaghetti burro e tonno — mercoledì</h3>
-            <div class="recipe-meta"><span class="time-badge">10'</span><span class="equip">Fornelli</span></div>
-          </div>
-          <div class="recipe-body">
-            <div>
-              <h4>Ingredienti (1 persona)</h4>
-              <ul class="ingredients">
-                <li>90 g spaghetti</li>
-                <li>1 scatoletta di tonno sott'olio (80 g sgocciolato)</li>
-                <li>20 g burro</li>
-                <li>Prezzemolo, pepe nero</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Procedimento</h4>
-              <ol class="steps">
-                <li>Cuoci gli spaghetti in acqua salata.</li>
-                <li>Sgocciola il tonno e sbriciolalo in una ciotola capiente insieme al burro a tocchetti.</li>
-                <li>Scola la pasta tenendo da parte un po' di acqua di cottura, versala nella ciotola e manteca velocemente, aggiungendo acqua se serve.</li>
-                <li>Completa con pepe macinato e prezzemolo tritato.</li>
-              </ol>
-            </div>
-          </div>
-          <div class="source">Ricetta di riferimento: <a href="https://blog.giallozafferano.it/loti64/spaghetti-al-burro-e-tonno/" target="_blank" rel="noopener">Spaghetti al burro e tonno, GialloZafferano</a></div>
-        </article>
-
-        <article class="recipe" id="zucchine-gamberetti">
-          <div class="recipe-head">
-            <h3>Zucchine e gamberetti — giovedì</h3>
-            <div class="recipe-meta"><span class="time-badge">15'</span><span class="equip">Fornelli</span></div>
-          </div>
-          <div class="recipe-body">
-            <div>
-              <h4>Ingredienti (1 persona)</h4>
-              <ul class="ingredients">
-                <li>90 g pasta corta</li>
-                <li>1 zucchina</li>
-                <li>120 g gamberetti (anche surgelati)</li>
-                <li>1/2 spicchio d'aglio</li>
-                <li>Olio evo, sale, pepe, prezzemolo</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Procedimento</h4>
-              <ol class="steps">
-                <li>Taglia la zucchina a rondelle sottili o a julienne e falla saltare in padella con olio e aglio per 5-6 minuti.</li>
-                <li>Aggiungi i gamberetti e cuoci altri 3-4 minuti finché sono rosati.</li>
-                <li>Cuoci la pasta, scolala al dente e saltala in padella col condimento, allungando con acqua di cottura.</li>
-                <li>Servi con prezzemolo fresco tritato.</li>
-              </ol>
-            </div>
-          </div>
-          <div class="source">Ricetta di riferimento: <a href="https://blog.giallozafferano.it/ricettepanedolci/pasta-zucchine-e-gamberetti-cremosa/" target="_blank" rel="noopener">Pasta zucchine e gamberetti, GialloZafferano</a></div>
-        </article>
-
-        <article class="recipe" id="pomodorini-melanzane-burrata">
-          <div class="recipe-head">
-            <h3>Pomodorini arrosto, melanzane e burrata — venerdì</h3>
-            <div class="recipe-meta"><span class="time-badge">20-25'</span><span class="equip">Air fryer</span><span class="equip">Minipimer</span></div>
-          </div>
-          <div class="recipe-body">
-            <div>
-              <h4>Ingredienti (1-2 persone)</h4>
-              <ul class="ingredients">
-                <li>200 g pasta</li>
-                <li>90 g pomodorini</li>
-                <li>1 melanzana</li>
-                <li>1 burrata</li>
-                <li>Stracciatella q.b.</li>
-                <li>Olio, sale, pepe, origano q.b.</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Procedimento</h4>
-              <ol class="steps">
-                <li>Taglia la melanzana a dadini e i pomodorini a metà.</li>
-                <li>Trasferiscili su un vassoio di carta forno (o in teglia), condisci con sale, pepe, origano e un filo d'olio.</li>
-                <li>Cuoci in friggitrice ad aria a 190° per 15 minuti, mescolando a metà, oppure in forno a 200° per 25 minuti.</li>
-                <li>Frulla le verdure (tenendone da parte un po') insieme alla burrata e un filo d'olio.</li>
-                <li>Scola la pasta e condiscila con la crema ottenuta, allungando con acqua di cottura fino a una cremosità perfetta.</li>
-                <li>Decora con le verdure tenute da parte, la stracciatella, un filo d'olio e pepe.</li>
-              </ol>
-            </div>
-          </div>
-        </article>
-
-        <article class="recipe" id="pistacchio-mortadella">
-          <div class="recipe-head">
-            <h3>Pesto di pistacchio e mortadella — sabato</h3>
-            <div class="recipe-meta"><span class="time-badge">15'</span><span class="equip">Fornelli</span><span class="equip">Minipimer</span></div>
-          </div>
-          <div class="recipe-body">
-            <div>
-              <h4>Ingredienti (1 persona)</h4>
-              <ul class="ingredients">
-                <li>90 g pasta corta</li>
-                <li>40 g mortadella a cubetti</li>
-                <li>30 g pistacchi sgusciati</li>
-                <li>Pecorino grattugiato, olio evo</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Procedimento</h4>
-              <ol class="steps">
-                <li>Frulla metà dei pistacchi con un filo d'olio e un po' di pecorino (anche col minipimer) per un pesto grezzo.</li>
-                <li>Rosola la mortadella a cubetti in padella un paio di minuti.</li>
-                <li>Cuoci la pasta, scolala e mantecala col pesto di pistacchio e la mortadella, allungando con acqua di cottura.</li>
-                <li>Completa con i pistacchi rimasti, tritati grossolanamente.</li>
-              </ol>
-            </div>
-          </div>
-          <div class="source">Ricetta di riferimento: <a href="https://blog.giallozafferano.it/unamammachecucina1/ricetta-pasta-al-pesto-di-pistacchi-e-mortadella/" target="_blank" rel="noopener">Pasta al pesto di pistacchi e mortadella, GialloZafferano</a> (versione senza stracchino)</div>
-        </article>
-
-        <article class="recipe" id="lenticchie">
-          <div class="recipe-head">
-            <h3>Vellutata di lenticchie frullate — domenica</h3>
-            <div class="recipe-meta"><span class="time-badge">25'</span><span class="equip">Fornelli</span><span class="equip">Minipimer</span></div>
-          </div>
-          <div class="recipe-body">
-            <div>
-              <h4>Ingredienti (1 persona)</h4>
-              <ul class="ingredients">
-                <li>100 g lenticchie rosse decorticate (non serve ammollo)</li>
-                <li>1/2 cipolla, 1/2 carota, 1/2 costa di sedano (facoltativi)</li>
-                <li>Brodo vegetale o acqua</li>
-                <li>Olio evo, sale, pepe</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Procedimento</h4>
-              <ol class="steps">
-                <li>Soffriggi cipolla, carota e sedano tritati in un filo d'olio per qualche minuto (puoi anche saltare questo passaggio per fare prima).</li>
-                <li>Aggiungi le lenticchie rosse e copri con brodo o acqua; cuoci 15-18 minuti finché sono morbide e si sfaldano facilmente.</li>
-                <li>Frulla tutto con il minipimer fino a una crema liscia, aggiustando la densità con altro brodo se serve.</li>
-                <li>Servi con un filo d'olio a crudo, pepe e volendo crostini o pane tostato.</li>
-              </ol>
-            </div>
-          </div>
-          <div class="source">Ricetta di riferimento: <a href="https://blog.giallozafferano.it/chezbibia/vellutata-di-lenticchie-rosse/" target="_blank" rel="noopener">Vellutata di lenticchie rosse decorticate, GialloZafferano</a></div>
-        </article>
-
+      <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
+        <span class="material-symbols-outlined text-on-primary text-[18px]">person</span>
       </div>
     </div>
+  </header>
 
-    <div>
-      <div class="section-head cena">
-        <h2>Ricette — Cena</h2>
-        <p>La maggior parte delle cene sono piatti semplici (pesce o carne ai ferri, hamburger, cotolette) che non hanno bisogno di una vera ricetta: trovi tutto nella tabella del Menu. Qui sotto solo il piatto che richiede qualche passaggio in più.</p>
-      </div>
-      <div class="recipes" style="margin-top:16px;">
+  <!-- Main Multi-Tab Wrapper -->
+  <main class="flex-1 flex flex-col relative w-full pt-16 pb-28 bg-bg-canvas">
+    <!-- TAB 1: MENU SETTIMANALE -->
+    <div id="tab-menu" class="tab-content">
+      <div class="flex flex-col w-full px-margin-mobile pb-6 space-y-space-lg">
+<!-- Header Accogliente & Selettore Vista -->
+<section class="flex flex-col pt-space-md space-y-space-md">
+<div class="flex items-start justify-between">
+<div class="flex flex-col space-y-space-xs">
 
-        <article class="recipe" id="pizza-patate">
-          <div class="recipe-head">
-            <h3>Gateau di patate — sabato</h3>
-            <div class="recipe-meta"><span class="time-badge">15' prep + 40' forno</span><span class="equip">Forno</span></div>
-          </div>
-          <div class="recipe-body">
-            <div>
-              <h4>Ingredienti (per una teglia piccola, 2-3 porzioni)</h4>
-              <ul class="ingredients">
-                <li>500 g patate vecchie</li>
-                <li>85 g prosciutto cotto (una fetta spessa)</li>
-                <li>85 g mozzarella di bufala affumicata o provola</li>
-                <li>25 g Parmigiano Reggiano grattugiato</li>
-                <li>1 uovo</li>
-                <li>Sale, pepe</li>
-                <li>Pangrattato e burro per la teglia</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Procedimento</h4>
-              <ol class="steps">
-                <li>Lessa le patate intere con la buccia per 40-50 minuti, finché si infilzano facilmente con una forchetta.</li>
-                <li>Scolale, schiacciale ancora calde con uno schiacciapatate, eliminando la buccia.</li>
-                <li>Taglia a cubetti il prosciutto cotto e la mozzarella/provola affumicata.</li>
-                <li>Quando le patate sono intiepidite, unisci l'uovo, il parmigiano, i cubetti di prosciutto e formaggio, sale e pepe; impasta a mano fino ad amalgamare bene.</li>
-                <li>Imburra una teglia piccola, cospargila di pangrattato, versa il composto e livella la superficie.</li>
-                <li>Cospargi con altro pangrattato e fiocchetti di burro, poi inforna a 200° (statico) per 30-35 minuti, quindi 5 minuti di grill per dorare la superficie.</li>
-                <li>Lascia riposare 10 minuti prima di servire.</li>
-              </ol>
-            </div>
-          </div>
-          <div class="source">Si conserva 2-3 giorni in frigo: puoi farlo in blocco unico e scaldarne una fetta a sera. Ricetta di riferimento: <a href="https://ricette.giallozafferano.it/Gateau-di-patate.html" target="_blank" rel="noopener">Gateau di patate, ricetta originale, GialloZafferano</a></div>
-        </article>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Menu della Settimana</h2>
+<p class="font-body-sm text-body-sm text-muted">
+          Pasti bilanciati tra studio e fornelli. Tocca le ricette per ingredienti e passaggi rapidi.
+        </p>
+</div>
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-surface shadow-sm text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[22px]">skillet</span>
+</div>
+</div>
+<!-- Toggle Segmentato: Vista a Scorrimento / Vista Completa -->
 
-      </div>
-    </div>
-
-    <div class="rotation" id="jolly">
-      <h3>Piatti extra per variare ancora</h3>
-      <p>Da usare al posto di un piatto fisso quando hai voglia di cambiare:</p>
-      <ul>
-        <li><strong>Frittata di verdure</strong> — 2 uova sbattute con la frusta, verdure saltate in padella, cotta 5-6 minuti per lato coperta. Ricetta di riferimento: <a href="https://blog.giallozafferano.it/studentiaifornelli/frittata-di-verdure/" target="_blank" rel="noopener">GialloZafferano</a>.</li>
-        <li><strong>Amatriciana</strong> — guanciale rosolato senza olio, passata di pomodoro, pecorino. Niente aglio né cipolla nella ricetta originale. <a href="https://blog.giallozafferano.it/allacciateilgrembiule/pasta-amatriciana/" target="_blank" rel="noopener">Ricetta</a>.</li>
-        <li><strong>Carbonara</strong> — guanciale, tuorli, pecorino, pepe; niente panna né aglio. <a href="https://blog.giallozafferano.it/valeriaciccotti/pasta-alla-carbonara/" target="_blank" rel="noopener">Ricetta</a>.</li>
-        <li><strong>Toast</strong> — resta il jolly per le sere senza tempo o senza spesa fatta.</li>
-        <li><strong>Focaccia senza impasto (niente planetaria)</strong> — <a href="https://blog.giallozafferano.it/rossellainpadella/focaccia-senza-impasto-ricetta-facile/" target="_blank" rel="noopener">ricetta su GialloZafferano</a>.</li>
-      </ul>
-      <p>Suggerimento: il gateau di patate regge bene in frigo 2-3 giorni, comodo da preparare in blocco unico la domenica.</p>
-    </div>
-
-    <footer>Meal planner personale — pensato per fornelli, forno, friggitrice ad aria, minipimer e frusta.</footer>
-
-  </section>
-
-  <!-- ================= TAB: SPESA ================= -->
-  <section id="tab-spesa" class="tabpanel" hidden>
-    <div class="section-head">
-      <h2>Lista della spesa</h2>
-      <p>Spunta quello che hai già preso: resta salvato su questo telefono anche se chiudi la pagina.</p>
-    </div>
-    <div class="shop-actions">
-      <button type="button" class="shop-btn" id="shop-reset">Reset spunte</button>
-      <button type="button" class="shop-btn" id="shop-restore">Ripristina lista</button>
-    </div>
-    <form id="shop-add-form" class="shop-add">
-      <input id="shop-add-input" type="text" placeholder="Aggiungi un ingrediente..." autocomplete="off">
-      <button type="submit">Aggiungi</button>
-    </form>
-    <div id="shop-list"></div>
-  </section>
-
-  <nav class="tabbar">
-    <button type="button" data-tab="menu">Menu</button>
-    <button type="button" data-tab="ricette">Ricette</button>
-    <button type="button" data-tab="spesa">Spesa</button>
-  </nav>
-
+<!-- Pill Bar Giorni Rapidi -->
+<div class="flex gap-2 overflow-x-auto pb-1 -mx-margin-mobile px-margin-mobile scroll-smooth no-scrollbar hidden" id="dayPillBar">
+<button class="day-chip flex flex-col items-center justify-center min-w-[52px] py-2 px-2 rounded-xl bg-surface text-on-surface shadow-sm transition-all focus:outline-none ring-2 ring-primary/20" data-target="card-lun" type="button">
+<span class="font-caption text-caption text-muted uppercase">Lun</span>
+<span class="font-title-md text-title-md">1</span>
+</button>
+<button class="day-chip flex flex-col items-center justify-center min-w-[52px] py-2 px-2 rounded-xl bg-surface-container-low text-muted transition-all" data-target="card-mar" type="button">
+<span class="font-caption text-caption uppercase">Mar</span>
+<span class="font-title-md text-title-md text-on-surface">2</span>
+</button>
+<button class="day-chip flex flex-col items-center justify-center min-w-[52px] py-2 px-2 rounded-xl bg-surface-container-low text-muted transition-all" data-target="card-mer" type="button">
+<span class="font-caption text-caption uppercase">Mer</span>
+<span class="font-title-md text-title-md text-on-surface">3</span>
+</button>
+<button class="day-chip flex flex-col items-center justify-center min-w-[52px] py-2 px-2 rounded-xl bg-surface-container-low text-muted transition-all" data-target="card-gio" type="button">
+<span class="font-caption text-caption uppercase">Gio</span>
+<span class="font-title-md text-title-md text-on-surface">4</span>
+</button>
+<button class="day-chip flex flex-col items-center justify-center min-w-[52px] py-2 px-2 rounded-xl bg-surface-container-low text-muted transition-all" data-target="card-ven" type="button">
+<span class="font-caption text-caption uppercase">Ven</span>
+<span class="font-title-md text-title-md text-on-surface">5</span>
+</button>
+<button class="day-chip flex flex-col items-center justify-center min-w-[52px] py-2 px-2 rounded-xl bg-weekend-soft/60 text-tertiary transition-all" data-target="card-sab" type="button">
+<span class="font-caption text-caption uppercase">Sab</span>
+<span class="font-title-md text-title-md text-tertiary">6</span>
+</button>
+<button class="day-chip flex flex-col items-center justify-center min-w-[52px] py-2 px-2 rounded-xl bg-weekend-soft/60 text-tertiary transition-all" data-target="card-dom" type="button">
+<span class="font-caption text-caption uppercase">Dom</span>
+<span class="font-title-md text-title-md text-tertiary">7</span>
+</button>
+</div>
+</section>
+<!-- Griglia / Flusso dei Giorni -->
+<section class="flex flex-col space-y-space-md" id="cardsContainer">
+<!-- LUNEDÌ -->
+<article class="day-item flex flex-col bg-surface rounded-2xl shadow-sm p-space-md space-y-space-md" id="card-lun">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-lunch-soft flex items-center justify-center text-primary">
+<span class="font-headline-sm text-headline-sm">L</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight">Lunedì</h3>
+<span class="font-caption text-caption text-muted">Inizio settimana sprint</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm px-space-sm py-0.5 rounded-full bg-surface-container text-muted">Giorno 1</span>
+</div>
+<div class="flex flex-col space-y-space-sm">
+<!-- Pranzo Lunedì -->
+<div class="flex flex-col bg-surface-container-low rounded-xl p-space-sm space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">sunny</span> Pranzo
+            </span>
+<span class="font-caption text-caption text-muted">15 min</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium">Spaghetti al preparato di mare</p>
+</div>
+<!-- Cena Lunedì -->
+<div class="flex flex-col bg-surface-container-low rounded-xl p-space-sm space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">bedtime</span> Cena
+            </span>
+<span class="font-caption text-caption text-muted">Proteine veloci</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">Fettine di carne con falafel</p>
+</div>
+</div>
+</article>
+<!-- MARTEDÌ (con ricetta pranzo) -->
+<article class="day-item flex flex-col bg-surface rounded-2xl shadow-sm p-space-md space-y-space-md" id="card-mar">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-lunch-soft flex items-center justify-center text-primary">
+<span class="font-headline-sm text-headline-sm">M</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight">Martedì</h3>
+<span class="font-caption text-caption text-muted">Gourmet tra le lezioni</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm px-space-sm py-0.5 rounded-full bg-surface-container text-muted">Giorno 2</span>
+</div>
+<div class="flex flex-col space-y-space-sm">
+<!-- Pranzo Martedì -->
+<div class="flex flex-col bg-lunch-soft/60 rounded-xl p-space-sm space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">sunny</span> Pranzo
+            </span>
+<span class="font-caption text-caption text-primary">20' • Minipimer</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium">Mezzi paccheri, crema di zucchine, burrata e salmone</p>
+<div class="flex justify-end pt-1">
+<a class="inline-flex items-center gap-1 px-space-sm py-1 rounded-lg bg-surface text-primary shadow-sm font-label-sm text-label-sm hover:bg-primary hover:text-on-primary transition-colors" href="#paccheri-zucchine">
+<span class="">Vedi ricetta</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Cena Martedì -->
+<div class="flex flex-col bg-surface-container-low rounded-xl p-space-sm space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">bedtime</span> Cena
+            </span>
+<span class="font-caption text-caption text-muted">Rapida</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">Piadina farcita</p>
+</div>
+</div>
+</article>
+<!-- MERCOLEDÌ (con ricetta pranzo + badge alternanza cena) -->
+<article class="day-item flex flex-col bg-surface rounded-2xl shadow-sm p-space-md space-y-space-md" id="card-mer">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-lunch-soft flex items-center justify-center text-primary">
+<span class="font-headline-sm text-headline-sm">M</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight">Mercoledì</h3>
+<span class="font-caption text-caption text-muted">Giro di boa settimanale</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm px-space-sm py-0.5 rounded-full bg-surface-container text-muted">Giorno 3</span>
+</div>
+<div class="flex flex-col space-y-space-sm">
+<!-- Pranzo Mercoledì -->
+<div class="flex flex-col bg-lunch-soft/60 rounded-xl p-space-sm space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">sunny</span> Pranzo
+            </span>
+<span class="font-caption text-caption text-primary">10' • Fornelli</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium">Spaghetti burro e tonno</p>
+<div class="flex justify-end pt-1">
+<a class="inline-flex items-center gap-1 px-space-sm py-1 rounded-lg bg-surface text-primary shadow-sm font-label-sm text-label-sm hover:bg-primary hover:text-on-primary transition-colors" href="#burro-tonno">
+<span class="">Vedi ricetta</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Cena Mercoledì -->
+<div class="flex flex-col bg-surface-container-low rounded-xl p-space-sm space-y-1.5">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">bedtime</span> Cena
+            </span>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed-variant">
+              a settimane alterne
+            </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">Filetti di merluzzo / Filetto di salmone al forno</p>
+</div>
+</div>
+</article>
+<!-- GIOVEDÌ (con ricetta pranzo) -->
+<article class="day-item flex flex-col bg-surface rounded-2xl shadow-sm p-space-md space-y-space-md" id="card-gio">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-lunch-soft flex items-center justify-center text-primary">
+<span class="font-headline-sm text-headline-sm">G</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight">Giovedì</h3>
+<span class="font-caption text-caption text-muted">Leggero &amp; profumato</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm px-space-sm py-0.5 rounded-full bg-surface-container text-muted">Giorno 4</span>
+</div>
+<div class="flex flex-col space-y-space-sm">
+<!-- Pranzo Giovedì -->
+<div class="flex flex-col bg-lunch-soft/60 rounded-xl p-space-sm space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">sunny</span> Pranzo
+            </span>
+<span class="font-caption text-caption text-primary">15' • Padella</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium">Zucchine e gamberetti</p>
+<div class="flex justify-end pt-1">
+<a class="inline-flex items-center gap-1 px-space-sm py-1 rounded-lg bg-surface text-primary shadow-sm font-label-sm text-label-sm hover:bg-primary hover:text-on-primary transition-colors" href="#zucchine-gamberetti">
+<span class="">Vedi ricetta</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Cena Giovedì -->
+<div class="flex flex-col bg-surface-container-low rounded-xl p-space-sm space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">bedtime</span> Cena
+            </span>
+<span class="font-caption text-caption text-muted">Vegetale</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">Hamburger vegetali Kioene</p>
+</div>
+</div>
+</article>
+<!-- VENERDÌ (con ricetta pranzo + badge alternanza cena) -->
+<article class="day-item flex flex-col bg-surface rounded-2xl shadow-sm p-space-md space-y-space-md" id="card-ven">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-lunch-soft flex items-center justify-center text-primary">
+<span class="font-headline-sm text-headline-sm">V</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight">Venerdì</h3>
+<span class="font-caption text-caption text-muted">Aria di weekend</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm px-space-sm py-0.5 rounded-full bg-surface-container text-muted">Giorno 5</span>
+</div>
+<div class="flex flex-col space-y-space-sm">
+<!-- Pranzo Venerdì -->
+<div class="flex flex-col bg-lunch-soft/60 rounded-xl p-space-sm space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">sunny</span> Pranzo
+            </span>
+<span class="font-caption text-caption text-primary">25' • Air fryer</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium">Pomodorini arrosto, melanzane e burrata</p>
+<div class="flex justify-end pt-1">
+<a class="inline-flex items-center gap-1 px-space-sm py-1 rounded-lg bg-surface text-primary shadow-sm font-label-sm text-label-sm hover:bg-primary hover:text-on-primary transition-colors" href="#pomodorini-melanzane-burrata">
+<span class="">Vedi ricetta</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Cena Venerdì -->
+<div class="flex flex-col bg-surface-container-low rounded-xl p-space-sm space-y-1.5">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">bedtime</span> Cena
+            </span>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed-variant">
+              a settimane alterne
+            </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">Petto di pollo in padella / Cotoletta e patatine</p>
+</div>
+</div>
+</article>
+<!-- SABATO (Weekend - Ocra Caldo, Doppia ricetta) -->
+<article class="day-item flex flex-col bg-surface rounded-2xl shadow-md p-space-md space-y-space-md relative overflow-hidden" id="card-sab">
+<!-- Accento Ocra del Weekend -->
+<div class="absolute top-0 left-0 right-0 h-1.5 bg-tertiary-container"></div>
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-weekend-soft flex items-center justify-center text-tertiary">
+<span class="font-headline-sm text-headline-sm">S</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight">Sabato</h3>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-weekend-soft text-tertiary font-semibold">Weekend</span>
+</div>
+<span class="font-caption text-caption text-muted">Cucina con calma</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm px-space-sm py-0.5 rounded-full bg-surface-container text-muted">Giorno 6</span>
+</div>
+<div class="flex flex-col space-y-space-sm">
+<!-- Pranzo Sabato -->
+<div class="flex flex-col bg-lunch-soft/60 rounded-xl p-space-sm space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">sunny</span> Pranzo
+            </span>
+<span class="font-caption text-caption text-primary">15' • Pistacchio &amp; mortadella</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium">Pesto di pistacchio e mortadella</p>
+<div class="flex justify-end pt-1">
+<a class="inline-flex items-center gap-1 px-space-sm py-1 rounded-lg bg-surface text-primary shadow-sm font-label-sm text-label-sm hover:bg-primary hover:text-on-primary transition-colors" href="#pistacchio-mortadella">
+<span class="">Vedi ricetta</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Cena Sabato (con ricetta Gateau) -->
+<div class="flex flex-col bg-dinner-soft/60 rounded-xl p-space-sm space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">local_pizza</span> Cena Speciale
+            </span>
+<span class="font-caption text-caption text-secondary">Al forno</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium">Gateau di patate</p>
+<div class="flex justify-end pt-1">
+<a class="inline-flex items-center gap-1 px-space-sm py-1 rounded-lg bg-surface text-secondary shadow-sm font-label-sm text-label-sm hover:bg-secondary hover:text-on-secondary transition-colors" href="#pizza-patate">
+<span class="">Vedi ricetta</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</article>
+<!-- DOMENICA (Weekend - Ocra Caldo, Ricetta pranzo + rotazione cena) -->
+<article class="day-item flex flex-col bg-surface rounded-2xl shadow-md p-space-md space-y-space-md relative overflow-hidden" id="card-dom">
+<!-- Accento Ocra del Weekend -->
+<div class="absolute top-0 left-0 right-0 h-1.5 bg-tertiary-container"></div>
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-weekend-soft flex items-center justify-center text-tertiary">
+<span class="font-headline-sm text-headline-sm">D</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight">Domenica</h3>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-weekend-soft text-tertiary font-semibold">Weekend</span>
+</div>
+<span class="font-caption text-caption text-muted">Comfort food e ricarica</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm px-space-sm py-0.5 rounded-full bg-surface-container text-muted">Giorno 7</span>
+</div>
+<div class="flex flex-col space-y-space-sm">
+<!-- Pranzo Domenica -->
+<div class="flex flex-col bg-lunch-soft/60 rounded-xl p-space-sm space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">soup_kitchen</span> Pranzo
+            </span>
+<span class="font-caption text-caption text-primary">25' • Senza ammollo</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium">Vellutata di lenticchie frullate</p>
+<div class="flex justify-end pt-1">
+<a class="inline-flex items-center gap-1 px-space-sm py-1 rounded-lg bg-surface text-primary shadow-sm font-label-sm text-label-sm hover:bg-primary hover:text-on-primary transition-colors" href="#lenticchie">
+<span class="">Vedi ricetta</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Cena Domenica -->
+<div class="flex flex-col bg-surface-container-low rounded-xl p-space-sm space-y-1.5">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">bedtime</span> Cena
+            </span>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed-variant">
+              a rotazione
+            </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">Di nuovo carne / Toast / Frittata di verdure</p>
+</div>
+</div>
+</article>
+</section>
+<!-- Card Riassuntiva: Piatti Jolly & Rotazione Veloce -->
+<section class="flex flex-col bg-surface-container rounded-2xl p-space-md space-y-space-md shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[18px]">shuffle</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Piatti Jolly &amp; Rotazione</h3>
+<span class="font-caption text-caption text-muted">Per quando i piani saltano</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface text-muted">Salvavita</span>
+</div>
+<p class="font-body-sm text-body-sm text-muted">
+      Soluzioni rapide da scambiare a piacere se manca un ingrediente o sei di fretta tra lezioni ed esami:
+    </p>
+<div class="grid grid-cols-2 gap-2">
+<!-- Jolly 1 -->
+<div class="flex items-center gap-2 p-2 rounded-xl bg-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">egg</span>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md truncate text-on-surface">Frittata</span>
+<span class="font-caption text-caption text-muted">Con verdure</span>
+</div>
+</div>
+<!-- Jolly 2 -->
+<div class="flex items-center gap-2 p-2 rounded-xl bg-surface">
+<span class="material-symbols-outlined text-secondary text-[18px]">ramen_dining</span>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md truncate text-on-surface">Amatriciana</span>
+<span class="font-caption text-caption text-muted">Guanciale &amp; pomodoro</span>
+</div>
+</div>
+<!-- Jolly 3 -->
+<div class="flex items-center gap-2 p-2 rounded-xl bg-surface">
+<span class="material-symbols-outlined text-tertiary text-[18px]">dinner_dining</span>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md truncate text-on-surface">Carbonara</span>
+<span class="font-caption text-caption text-muted">Classica senza panna</span>
+</div>
+</div>
+<!-- Jolly 4 -->
+<div class="flex items-center gap-2 p-2 rounded-xl bg-surface">
+<span class="material-symbols-outlined text-muted text-[18px]">lunch_dining</span>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md truncate text-on-surface">Toast Salva-Sera</span>
+<span class="font-caption text-caption text-muted">Prosciutto &amp; formaggio</span>
+</div>
+</div>
+</div>
+<!-- Suggerimento Delizioso -->
+<div class="flex items-start gap-2.5 p-space-sm rounded-xl bg-lunch-soft/50 text-primary">
+<span class="material-symbols-outlined text-[18px] flex-shrink-0 mt-0.5">tips_and_updates</span>
+<p class="font-body-sm text-body-sm text-primary">
+<strong>Tip Fuori Sede:</strong> Il gateau di patate del sabato regge benissimo in frigo per 2–3 giorni; preparalo in teglia per riscaldarne una fetta anche la domenica!
+      </p>
+</div>
+</section>
 </div>
 
-<script>
-(function(){
-  var TABS = ['menu','ricette','spesa'];
+    </div>
 
-  function safeGet(key, fallback){
-    try{
-      var v = localStorage.getItem(key);
-      return v===null ? fallback : JSON.parse(v);
-    }catch(e){ return fallback; }
-  }
-  function safeSet(key, val){
-    try{ localStorage.setItem(key, JSON.stringify(val)); }catch(e){}
-  }
+    <!-- TAB 2: RICETTARIO -->
+    <div id="tab-ricette" class="tab-content hidden">
+      <div class="flex flex-col w-full px-margin-mobile pb-12">
+<!-- Top Visual & Header Context -->
+<div class="w-full pt-4 pb-2 flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-muted">Quaderno di Cucina</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Ricettario Fuori Sede</h2>
+</div>
+<div class="w-10 h-10 rounded-full bg-lunch-soft flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">skillet</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-muted">
+      Soluzioni collaudate per sopravvivere alla sessione senza sacrificare il palato. Pochi attrezzi, zero sprechi.
+    </p>
+</div>
+<!-- Search & Quick Filters -->
+<div class="flex flex-col gap-space-sm my-3 sticky top-16 z-30 bg-bg-canvas/95 backdrop-blur-md py-2 -mx-margin-mobile px-margin-mobile">
+<!-- Live Search Input -->
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-muted text-[20px]">search</span>
+<input class="w-full pl-10 pr-10 py-2.5 rounded-xl bg-surface text-on-surface font-body-sm text-body-sm placeholder:text-muted/70 shadow-[0_1px_3px_rgba(40,35,20,0.06)] focus:outline-none focus:ring-2 focus:ring-primary/40" id="recipe-search" placeholder="Cerca per piatto, ingrediente..." type="text">
+<button class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-muted hover:text-on-surface" id="search-clear" type="button">
+<span class="material-symbols-outlined text-[18px]">cancel</span>
+</button>
+</div>
+<!-- Scrollable Filter Pills -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none text-nowrap" id="filter-pills"><button class="filter-pill active px-3.5 py-1.5 rounded-full font-label-sm text-label-sm bg-primary text-on-primary transition-all" data-filter="all">Tutte</button><button class="filter-pill px-3.5 py-1.5 rounded-full font-label-sm text-label-sm bg-surface text-muted shadow-sm transition-all hover:text-on-surface" data-filter="pranzo"><span class="material-symbols-outlined text-[14px] align-middle mr-1">lunch_dining</span>Pranzo</button><button class="filter-pill px-3.5 py-1.5 rounded-full font-label-sm text-label-sm bg-surface text-muted shadow-sm transition-all hover:text-on-surface" data-filter="cena"><span class="material-symbols-outlined text-[14px] align-middle mr-1">dinner_dining</span>Cena</button><button class="filter-pill px-3.5 py-1.5 rounded-full font-label-sm text-label-sm bg-surface text-muted shadow-sm transition-all hover:text-on-surface" data-filter="dolci"><span class="material-symbols-outlined text-[14px] align-middle mr-1">cake</span>Dolci</button></div>
+</div>
+<!-- Content Stream -->
+<div class="flex flex-col gap-6 mt-2" id="recipe-container">
+<!-- SEZIONE PRANZO -->
+<section class="flex flex-col gap-3" data-category-group="pranzo">
+<div class="flex items-center gap-2 pt-2">
+<span class="px-2.5 py-1 rounded-md bg-lunch-soft text-primary font-label-sm text-label-sm tracking-wider uppercase">Pranzo</span>
+<h3 class="font-headline-md text-headline-md text-primary">Primi Piatti Rapidi (10–20 min)</h3>
+</div>
+<p class="font-body-sm text-body-sm text-muted">
+        Ideali nello stacco tra una lezione e lo studio pomeridiano. Minimo pentolame, massima resa.
+      </p>
+<!-- 1. MEZZI PACCHERI ZUCCHINE E SALMONE -->
+<article class="recipe-card bg-surface rounded-xl p-4 shadow-[0_1px_3px_rgba(40,35,20,0.06),0_6px_16px_rgba(40,35,20,0.04)] flex flex-col gap-3.5 transition-all" data-equip="fornelli minipimer" data-tags="martedi primo pasta" data-time="20" data-title="Mezzi paccheri, crema di zucchine, burrata e salmone" id="paccheri-zucchine" data-meal="pranzo">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between gap-2">
+<span class="font-label-sm text-label-sm uppercase tracking-wide text-primary font-semibold">Martedì</span>
+<div class="flex items-center gap-1.5"><span class="px-2 py-0.5 rounded-md bg-surface-container-high font-label-sm text-label-sm text-on-surface">20'</span><span class="px-2 py-0.5 rounded-md bg-lunch-soft font-caption text-caption uppercase text-primary font-semibold">Pranzo</span></div>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface leading-tight">
+            Mezzi paccheri, crema di zucchine, burrata e salmone
+          </h4>
+</div>
+<div class="relative w-full h-36 rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Overhead warm editorial photo of an Italian pasta plate with mezzi paccheri tossed in a smooth green zucchini cream, garnished with smoked salmon ribbons, creamy dollops of burrata, and cracked black pepper in natural daylight on a rustic parchment table." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPNdRX1hNnilaAHvHj6xMUkqEjnTRP2EiyY8xXuTF-0TDcMldE206XWBef5WV82p6XDFZIvN0-RFozlEyNCPuV9tYu3XOI0F9xmEcgDeRVJ7bjSpup6Akylz28JRGoNewKhkLo6q9hH2_dNCIiAX-vqs9qaB_v55IZ5EFYz96ytgKgYBewBdbAcUrsu_V-XDJaooQk00c5cydu8qwYDb5E4xZTeiZrHQeaOrk8_zgdxrEt8XmJw99O">
+<div class="absolute bottom-2 left-2 bg-inverse-surface/80 backdrop-blur-sm text-inverse-on-surface px-2 py-0.5 rounded text-[11px] font-label-sm">
+            Top Cremoso
+          </div>
+</div>
+<!-- Ingredients with Checkboxes -->
+<div class="bg-surface-container-low/70 rounded-lg p-3 flex flex-col gap-1.5">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-muted">Ingredienti (1 persona)</span>
+<div class="grid grid-cols-1 gap-1 pt-1 font-body-sm text-body-sm text-on-surface">
+<label class="flex items-center gap-2.5 cursor-pointer select-none">
+<input class="w-4 h-4 rounded accent-primary text-primary" type="checkbox">
+<span class="">90 g mezzi paccheri</span>
+</label>
+<label class="flex items-center gap-2.5 cursor-pointer select-none">
+<input class="w-4 h-4 rounded accent-primary text-primary" type="checkbox">
+<span class="">1 zucchina media</span>
+</label>
+<label class="flex items-center gap-2.5 cursor-pointer select-none">
+<input class="w-4 h-4 rounded accent-primary text-primary" type="checkbox">
+<span class="">50 g salmone affumicato</span>
+</label>
+<label class="flex items-center gap-2.5 cursor-pointer select-none">
+<input class="w-4 h-4 rounded accent-primary text-primary" type="checkbox">
+<span class="">50 g burrata fresca</span>
+</label>
+<label class="flex items-center gap-2.5 cursor-pointer select-none text-muted">
+<input class="w-4 h-4 rounded accent-primary text-primary" type="checkbox">
+<span class="">Olio EVO, sale, pepe nero macinato</span>
+</label>
+</div>
+</div>
+<!-- Numbered Steps -->
+<div class="flex flex-col gap-2">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-muted">Procedimento in 4 step</span>
+<ol class="flex flex-col gap-2 font-body-sm text-body-sm text-on-surface">
+<li class="flex items-start gap-2.5">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-lunch-soft text-primary font-label-sm text-label-sm flex items-center justify-center font-semibold">1</span>
+<span class="">Taglia la zucchina a rondelle sottili e falla saltare in padella con un filo d'olio per 8-10 minuti finché diventa morbida e dorata.</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-lunch-soft text-primary font-label-sm text-label-sm flex items-center justify-center font-semibold">2</span>
+<span class="">Conserva qualche rondella per guarnire; trasferisci il resto nel bicchiere del minipimer con un mestolino d'acqua di cottura e frulla fino a una crema setosa.</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-lunch-soft text-primary font-label-sm text-label-sm flex items-center justify-center font-semibold">3</span>
+<span class="">Lessa la pasta al dente in abbondante acqua salata, scolala e spadellala velocemente con la vellutata verde e le fettine conservate.</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-lunch-soft text-primary font-label-sm text-label-sm flex items-center justify-center font-semibold">4</span>
+<span class="">Impiatta subito, adagiando a crudo il salmone sfilacciato e la burrata fresca spezzettata con una macinata generosa di pepe.</span>
+</li>
+</ol>
+</div>
+<div class="pt-1 flex items-center justify-between text-muted font-body-sm text-body-sm">
+<a href="https://blog.giallozafferano.it/studentiaifornelli/pasta-zucchine-e-salmone/" target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-[12px] text-primary font-medium hover:underline"><span class="material-symbols-outlined text-[14px]">open_in_new</span><span class="">Fonte: GialloZafferano (Studenti ai Fornelli)</span></a>
+<button class="text-primary hover:text-primary-container text-xs font-label-sm flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[16px]">bookmark_border</span> Salva
+          </button>
+</div>
+</article>
+<!-- 2. SPAGHETTI BURRO E TONNO -->
+<article class="recipe-card bg-surface rounded-xl p-4 shadow-[0_1px_3px_rgba(40,35,20,0.06),0_6px_16px_rgba(40,35,20,0.04)] flex flex-col gap-3.5 transition-all" data-equip="fornelli" data-tags="mercoledi salva-dispensa primo veloce" data-time="10" data-title="Spaghetti burro e tonno" id="burro-tonno" data-meal="pranzo">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between gap-2">
+<span class="font-label-sm text-label-sm uppercase tracking-wide text-primary font-semibold">Mercoledì</span>
+<div class="flex items-center gap-1.5"><span class="px-2 py-0.5 rounded-md bg-surface-container-high font-label-sm text-label-sm text-on-surface">10' express</span><span class="px-2 py-0.5 rounded-md bg-lunch-soft font-caption text-caption uppercase text-primary font-semibold">Pranzo</span></div>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface leading-tight">
+            Spaghetti burro e tonno
+          </h4>
+</div>
+<div class="bg-surface-container-low/70 rounded-lg p-3 flex flex-col gap-1.5">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-muted">Ingredienti (1 persona)</span>
+<div class="grid grid-cols-1 gap-1 pt-1 font-body-sm text-body-sm text-on-surface">
+<label class="flex items-center gap-2.5 cursor-pointer select-none">
+<input class="w-4 h-4 rounded accent-primary text-primary" type="checkbox">
+<span class="">90 g spaghetti</span>
+</label>
+<label class="flex items-center gap-2.5 cursor-pointer select-none">
+<input class="w-4 h-4 rounded accent-primary text-primary" type="checkbox">
+<span class="">1 lattina di tonno sott'olio (80 g sgocciolato)</span>
+</label>
+<label class="flex items-center gap-2.5 cursor-pointer select-none">
+<input class="w-4 h-4 rounded accent-primary text-primary" type="checkbox">
+<span class="">20 g burro di buona qualità</span>
+</label>
+<label class="flex items-center gap-2.5 cursor-pointer select-none text-muted">
+<input class="w-4 h-4 rounded accent-primary text-primary" type="checkbox">
+<span class="">Prezzemolo fresco tritato, pepe nero in grani</span>
+</label>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-muted">Passaggi</span>
+<ol class="flex flex-col gap-2 font-body-sm text-body-sm text-on-surface">
+<li class="flex items-start gap-2.5">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-lunch-soft text-primary font-label-sm text-label-sm flex items-center justify-center font-semibold">1</span>
+<span class="">Metti a bollire l'acqua salata e cala gli spaghetti.</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-lunch-soft text-primary font-label-sm text-label-sm flex items-center justify-center font-semibold">2</span>
+<span class="">In una ciotola capiente sbriciola il tonno scolato insieme al burro a tocchetti ammorbidito a temperatura ambiente.</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-lunch-soft text-primary font-label-sm text-label-sm flex items-center justify-center font-semibold">3</span>
+<span class="">Scola la pasta al dente conservando 2-3 cucchiai di acqua amidacea; versa la pasta calda direttamente nella ciotola con burro e tonno.</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-lunch-soft text-primary font-label-sm text-label-sm flex items-center justify-center font-semibold">4</span>
+<span class="">Mantecare energicamente finché il burro emulsiona l'acqua. Cospargi con prezzemolo tritato finissimo e pepe nero.</span>
+</li>
+</ol>
+</div>
+<div class="pt-1 flex items-center justify-between text-muted text-[12px] italic">
+<a href="https://blog.giallozafferano.it/loti64/spaghetti-al-burro-e-tonno/" target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-[12px] not-italic text-primary font-medium hover:underline"><span class="material-symbols-outlined text-[14px]">open_in_new</span><span class="">Fonte: GialloZafferano (Loti64)</span></a>
+<span class="font-label-sm text-label-sm not-italic text-primary font-semibold">Salva-cena / Salva-pranzo</span>
+</div>
+</article>
+<!-- 3. ZUCCHINE E GAMBERETTI -->
+<article class="recipe-card bg-surface rounded-xl p-4 shadow-[0_1px_3px_rgba(40,35,20,0.06),0_6px_16px_rgba(40,35,20,0.04)] flex flex-col gap-3.5 transition-all" data-equip="fornelli" data-tags="giovedi pesce primo pasta corta" data-time="15" data-title="Zucchine e gamberetti" id="zucchine-gamberetti" data-meal="pranzo">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between gap-2">
+<span class="font-label-sm text-label-sm uppercase tracking-wide text-primary font-semibold">Giovedì</span>
+<div class="flex items-center gap-1.5"><span class="px-2 py-0.5 rounded-md bg-surface-container-high font-label-sm text-label-sm text-on-surface">15'</span><span class="px-2 py-0.5 rounded-md bg-lunch-soft font-caption text-caption uppercase text-primary font-semibold">Pranzo</span></div>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface leading-tight">
+            Zucchine e gamberetti
+          </h4>
+</div>
+<div class="bg-surface-container-low/70 rounded-lg p-3 flex flex-col gap-1.5">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-muted">Ingredienti (1 persona)</span>
+<div class="grid grid-cols-1 gap-1 pt-1 font-body-sm text-body-sm text-on-surface">
+<label class="flex items-center gap-2.5 cursor-pointer select-none">
+<input class="w-4 h-4 rounded accent-primary text-primary" type="checkbox">
+<span class="">90 g pasta corta (penne o fusilli)</span>
+</label>
+<label class="flex items-center gap-2.5 cursor-pointer select-none">
+<input class="w-4 h-4 rounded accent-primary text-primary" type="checkbox">
+<span class="">1 zucchina tagliata fine o a julienne</span>
+</label>
+<label class="flex items-center gap-2.5 cursor-pointer select-none">
+<input class="w-4 h-4 rounded accent-primary text-primary" type="checkbox">
+<span class="">120 g gamberetti (anche surgelati)</span>
+</label>
+<label class="flex items-center gap-2.5 cursor-pointer select-none">
+<input class="w-4 h-4 rounded accent-primary text-primary" type="checkbox">
+<span class="">1/2 spicchio d'aglio</span>
+</label>
+<label class="flex items-center gap-2.5 cursor-pointer select-none text-muted">
+<input class="w-4 h-4 rounded accent-primary text-primary" type="checkbox">
+<span class="">Olio EVO, sale, pepe, prezzemolo</span>
+</label>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-muted">Passaggi</span>
+<ol class="flex flex-col gap-2 font-body-sm text-body-sm text-on-surface">
+<li class="flex items-start gap-2.5">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-lunch-soft text-primary font-label-sm text-label-sm flex items-center justify-center font-semibold">1</span>
+<span class="">In padella soffriggi mezzo spicchio d'aglio in un filo d'olio, poi unisci le zucchine a rondelle sottilissime o fiammifero per 5-6 minuti a fiamma viva.</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-lunch-soft text-primary font-label-sm text-label-sm flex items-center justify-center font-semibold">2</span>
+<span class="">Aggiungi i gamberetti (sgelati o freschi); lasciali cuocere 3-4 minuti finché non virano al rosa senza asciugarsi troppo.</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-lunch-soft text-primary font-label-sm text-label-sm flex items-center justify-center font-semibold">3</span>
+<span class="">Scola la pasta al dente tenendo acqua calda; uniscila alla padella e spadella facendo legare l'amido col sughetto.</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-lunch-soft text-primary font-label-sm text-label-sm flex items-center justify-center font-semibold">4</span>
+<span class="">Spolvera con abbondante prezzemolo tritato fresco e servi immediatamente.</span>
+</li>
+</ol>
+</div>
+<div class="pt-1"><a href="https://blog.giallozafferano.it/ricettepanedolci/pasta-zucchine-e-gamberetti-cremosa/" target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-[12px] text-primary font-medium hover:underline"><span class="material-symbols-outlined text-[14px]">open_in_new</span><span class="">Fonte: Ricette Pane &amp; Dolci (GialloZafferano)</span></a></div>
+</article>
+<!-- 4. POMODORINI ARROSTO, MELANZANE E BURRATA -->
+<article class="recipe-card bg-surface rounded-xl p-4 shadow-[0_1px_3px_rgba(40,35,20,0.06),0_6px_16px_rgba(40,35,20,0.04)] flex flex-col gap-3.5 transition-all" data-equip="air-fryer minipimer forno" data-tags="venerdi vegetariano comfort gourmet" data-time="20" data-title="Pomodorini arrosto, melanzane e burrata" id="pomodorini-melanzane-burrata" data-meal="pranzo">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between gap-2">
+<span class="font-label-sm text-label-sm uppercase tracking-wide text-primary font-semibold">Venerdì</span>
+<div class="flex items-center gap-1.5"><span class="px-2 py-0.5 rounded-md bg-surface-container-high font-label-sm text-label-sm text-on-surface">20–25'</span><span class="px-2 py-0.5 rounded-md bg-lunch-soft font-caption text-caption uppercase text-primary font-semibold">Pranzo</span></div>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface leading-tight">
+            Pomodorini arrosto, melanzane e burrata
+          </h4>
+</div>
+<div class="relative w-full h-36 rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="An artisanal ceramic bowl filled with pasta dressed in a velvety roasted eggplant and tomato sauce, crowned with white creamy stracciatella and blistered cherry tomatoes, warm evening kitchen atmosphere with soft linen cloth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaTi9hDxYvncSt00QTPq5Dfu80D3BeG17HALX3EL0x71f-OT1EoddM3yu5PzBuEeZ9Tuzfqy8ZJrynLsJXshlFEG7CrF9QjFqD--2i6fKGw2WO3Zg_ipgzQZaNxEd3rJE_1xi5ykg-xg4FKImM0q__n_v0VZ9W-n5aPfPh1GaPDEdJwP6S02GGKZcqyVpJdOWkv7vsiRiFJagbhup-LuUyRtpPGUYH8H8B4gJS8x6iF6vjJdTCJxjU">
+</div>
+<div class="bg-surface-container-low/70 rounded-lg p-3 flex flex-col gap-1.5">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-muted">Ingredienti (1–2 persone)</span>
+<div class="grid grid-cols-1 gap-1 pt-1 font-body-sm text-body-sm text-on-surface">
+<label class="flex items-center gap-2.5 cursor-pointer select-none">
+<input class="w-4 h-4 rounded accent-primary text-primary" type="checkbox">
+<span class="">200 g pasta corta o calamarata</span>
+</label>
+<label class="flex items-center gap-2.5 cursor-pointer select-none">
+<input class="w-4 h-4 rounded accent-primary text-primary" type="checkbox">
+<span class="">90 g pomodorini maturi</span>
+</label>
+<label class="flex items-center gap-2.5 cursor-pointer select-none">
+<input class="w-4 h-4 rounded accent-primary text-primary" type="checkbox">
+<span class="">1 melanzana media</span>
+</label>
+<label class="flex items-center gap-2.5 cursor-pointer select-none">
+<input class="w-4 h-4 rounded accent-primary text-primary" type="checkbox">
+<span class="">1 burrata intera + stracciatella q.b.</span>
+</label>
+<label class="flex items-center gap-2.5 cursor-pointer select-none text-muted">
+<input class="w-4 h-4 rounded accent-primary text-primary" type="checkbox">
+<span class="">Olio extravergine d'oliva, sale, pepe nero, origano secco</span>
+</label>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-muted">Procedimento</span>
+<ol class="flex flex-col gap-2 font-body-sm text-body-sm text-on-surface">
+<li class="flex items-start gap-2.5">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-lunch-soft text-primary font-label-sm text-label-sm flex items-center justify-center font-semibold">1</span>
+<span class="">Taglia la melanzana a dadini uniformi e dividi a metà i pomodorini.</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-lunch-soft text-primary font-label-sm text-label-sm flex items-center justify-center font-semibold">2</span>
+<span class="">Disponi le verdure sul cestello dell'air fryer con carta forno (o teglia), ungi con un giro d'olio generoso, sale, pepe e abbondante origano.</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-lunch-soft text-primary font-label-sm text-label-sm flex items-center justify-center font-semibold">3</span>
+<span class="">Cuoci a 190° per 15 minuti scuotendo a metà cottura (in forno tradizionale: 200° per 25 min ventilato).</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-lunch-soft text-primary font-label-sm text-label-sm flex items-center justify-center font-semibold">4</span>
+<span class="">Frulla 3/4 delle verdure arrostite con la burrata e un cucchiaio d'olio. Manteca la pasta scolata con la crema e guarnisci coi pomodorini tenuti da parte e fiocchi di stracciatella.</span>
+</li>
+</ol>
+</div>
+</article>
+<!-- 5. PESTO DI PISTACCHIO E MORTADELLA -->
+<article class="recipe-card bg-surface rounded-xl p-4 shadow-[0_1px_3px_rgba(40,35,20,0.06),0_6px_16px_rgba(40,35,20,0.04)] flex flex-col gap-3.5 transition-all" data-equip="fornelli minipimer" data-tags="sabato sfizioso festa pasta" data-time="15" data-title="Pesto di pistacchio e mortadella" id="pistacchio-mortadella" data-meal="pranzo">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between gap-2">
+<span class="font-label-sm text-label-sm uppercase tracking-wide text-primary font-semibold">Sabato Pranzo</span>
+<div class="flex items-center gap-1.5"><span class="px-2 py-0.5 rounded-md bg-surface-container-high font-label-sm text-label-sm text-on-surface">15'</span><span class="px-2 py-0.5 rounded-md bg-lunch-soft font-caption text-caption uppercase text-primary font-semibold">Pranzo</span></div>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface leading-tight">
+            Pesto di pistacchio e mortadella
+          </h4>
+</div>
+<div class="bg-surface-container-low/70 rounded-lg p-3 flex flex-col gap-1.5">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-muted">Ingredienti (1 persona)</span>
+<div class="grid grid-cols-1 gap-1 pt-1 font-body-sm text-body-sm text-on-surface">
+<label class="flex items-center gap-2.5 cursor-pointer select-none">
+<input class="w-4 h-4 rounded accent-primary text-primary" type="checkbox">
+<span class="">90 g pasta corta (es. trofie o casarecce)</span>
+</label>
+<label class="flex items-center gap-2.5 cursor-pointer select-none">
+<input class="w-4 h-4 rounded accent-primary text-primary" type="checkbox">
+<span class="">40 g mortadella tagliata a cubetti spessi</span>
+</label>
+<label class="flex items-center gap-2.5 cursor-pointer select-none">
+<input class="w-4 h-4 rounded accent-primary text-primary" type="checkbox">
+<span class="">30 g pistacchi non salati sgusciati</span>
+</label>
+<label class="flex items-center gap-2.5 cursor-pointer select-none text-muted">
+<input class="w-4 h-4 rounded accent-primary text-primary" type="checkbox">
+<span class="">Pecorino grattugiato (1 cucchiaio), olio EVO</span>
+</label>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-muted">Passaggi rapidi</span>
+<ol class="flex flex-col gap-2 font-body-sm text-body-sm text-on-surface">
+<li class="flex items-start gap-2.5">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-lunch-soft text-primary font-label-sm text-label-sm flex items-center justify-center font-semibold">1</span>
+<span class="">Frulla metà dei pistacchi con pecorino, 2 cucchiai d'olio EVO e 1 goccio d'acqua con il minipimer fino a creare una crema granulosa e profumata.</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-lunch-soft text-primary font-label-sm text-label-sm flex items-center justify-center font-semibold">2</span>
+<span class="">Rosola i cubetti di mortadella in padella per 2 minuti a secco finché il grasso diventa trasparente e croccante.</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-lunch-soft text-primary font-label-sm text-label-sm flex items-center justify-center font-semibold">3</span>
+<span class="">Scola la pasta e saltala in padella col pesto di pistacchio e la mortadella, unendo un goccio d'acqua di cottura per rendere tutto cremoso.</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-lunch-soft text-primary font-label-sm text-label-sm flex items-center justify-center font-semibold">4</span>
+<span class="">Completa nel piatto con la granella grossolana dei pistacchi rimasti per un contrasto croccante.</span>
+</li>
+</ol>
+</div>
+<div class="pt-1"><a href="https://blog.giallozafferano.it/unamammachecucina1/ricetta-pasta-al-pesto-di-pistacchi-e-mortadella/" target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-[12px] text-primary font-medium hover:underline"><span class="material-symbols-outlined text-[14px]">open_in_new</span><span class="">Fonte: GialloZafferano (Una mamma che cucina) — Versione light</span></a></div>
+</article>
+<!-- 6. VELLUTATA DI LENTICCHIE FRULLATE -->
+<article class="recipe-card bg-surface rounded-xl p-4 shadow-[0_1px_3px_rgba(40,35,20,0.06),0_6px_16px_rgba(40,35,20,0.04)] flex flex-col gap-3.5 transition-all" data-equip="fornelli minipimer" data-tags="domenica zuppa legumi detox minipimer" data-time="25" data-title="Vellutata di lenticchie frullate" id="lenticchie" data-meal="pranzo">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between gap-2">
+<span class="font-label-sm text-label-sm uppercase tracking-wide text-primary font-semibold">Domenica Pranzo</span>
+<div class="flex items-center gap-1.5"><span class="px-2 py-0.5 rounded-md bg-surface-container-high font-label-sm text-label-sm text-on-surface">25'</span><span class="px-2 py-0.5 rounded-md bg-lunch-soft font-caption text-caption uppercase text-primary font-semibold">Pranzo</span></div>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface leading-tight">
+            Vellutata di lenticchie frullate
+          </h4>
+</div>
+<div class="bg-surface-container-low/70 rounded-lg p-3 flex flex-col gap-1.5">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-muted">Ingredienti (1 persona)</span>
+<div class="grid grid-cols-1 gap-1 pt-1 font-body-sm text-body-sm text-on-surface">
+<label class="flex items-center gap-2.5 cursor-pointer select-none">
+<input class="w-4 h-4 rounded accent-primary text-primary" type="checkbox">
+<span class="">100 g lenticchie rosse decorticate (senza ammollo)</span>
+</label>
+<label class="flex items-center gap-2.5 cursor-pointer select-none">
+<input class="w-4 h-4 rounded accent-primary text-primary" type="checkbox">
+<span class="">1/2 cipolla, 1/2 carota, 1/2 costa di sedano</span>
+</label>
+<label class="flex items-center gap-2.5 cursor-pointer select-none">
+<input class="w-4 h-4 rounded accent-primary text-primary" type="checkbox">
+<span class="">Brodo vegetale caldo o acqua semplice</span>
+</label>
+<label class="flex items-center gap-2.5 cursor-pointer select-none text-muted">
+<input class="w-4 h-4 rounded accent-primary text-primary" type="checkbox">
+<span class="">Olio EVO a crudo, sale fino, pepe, crostini</span>
+</label>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-muted">Preparazione</span>
+<ol class="flex flex-col gap-2 font-body-sm text-body-sm text-on-surface">
+<li class="flex items-start gap-2.5">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-lunch-soft text-primary font-label-sm text-label-sm flex items-center justify-center font-semibold">1</span>
+<span class="">Soffriggi velocemente il trito di cipolla, carota e sedano con un filo d'olio (oppure salta il soffritto e cuoci tutto insieme per risparmiare tempo).</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-lunch-soft text-primary font-label-sm text-label-sm flex items-center justify-center font-semibold">2</span>
+<span class="">Sciacqua le lenticchie, versale nel pentolino e copri a filo con brodo o acqua; lascia cuocere per 15-18 minuti fino a sfaldamento.</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-lunch-soft text-primary font-label-sm text-label-sm flex items-center justify-center font-semibold">3</span>
+<span class="">Immergi il minipimer direttamente nel pentolino caldo e frulla a fondo per ottenere una vellutata vellutata e corposa.</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-lunch-soft text-primary font-label-sm text-label-sm flex items-center justify-center font-semibold">4</span>
+<span class="">Servi nella ciotola con olio evo a crudo, pepe e fette di pane tostato sulla piastra.</span>
+</li>
+</ol>
+</div>
+<div class="pt-1"><a href="https://blog.giallozafferano.it/chezbibia/vellutata-di-lenticchie-rosse/" target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-[12px] text-primary font-medium hover:underline"><span class="material-symbols-outlined text-[14px]">open_in_new</span><span class="">Fonte: Chez Bibia (GialloZafferano) — Zero ammollo</span></a></div>
+</article>
+</section>
+<!-- SEZIONE CENA -->
+<section class="flex flex-col gap-3 pt-2" data-category-group="cena">
+<div class="flex items-center gap-2 pt-2">
+<span class="px-2.5 py-1 rounded-md bg-dinner-soft text-secondary font-label-sm text-label-sm tracking-wider uppercase">Cena</span>
+<h3 class="font-headline-md text-headline-md text-secondary">La Ricetta Speciale della Sera</h3>
+</div>
+<p class="font-body-sm text-body-sm text-muted">
+        Le cene feriali sono carni o filetti di pesce ai ferri. Il sabato sera invece si prepara un piatto iconico da condividere o porzionare.
+      </p>
+<!-- 7. GATEAU DI PATATE -->
+<article class="recipe-card bg-surface rounded-xl p-4 shadow-[0_1px_3px_rgba(40,35,20,0.06),0_6px_16px_rgba(40,35,20,0.04)] flex flex-col gap-3.5 transition-all" data-equip="forno" data-tags="sabato cena batch-cooking forno teglia patate" data-time="40" data-title="Gateau di patate" id="pizza-patate" data-meal="cena">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between gap-2">
+<span class="font-label-sm text-label-sm uppercase tracking-wide text-secondary font-semibold">Sabato Sera</span>
+<div class="flex items-center gap-1.5"><span class="px-2 py-0.5 rounded-md bg-surface-container-high font-label-sm text-label-sm text-on-surface">15' prep + 40'</span><span class="px-2 py-0.5 rounded-md bg-dinner-soft text-secondary font-caption text-caption uppercase font-semibold">Cena</span></div>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface leading-tight">
+            Gateau di patate (Teglia salva-giorni)
+          </h4>
+</div>
+<div class="relative w-full h-36 rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Rustic baked Italian potato gateau with a golden browned breadcrumb crust bubbling from the oven, showing a soft interior with melted smoked provola cheese and diced cooked ham, cozy student apartment kitchen." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjv2LEM4KlNdjyUR16sh7R8a68T2mQazhiT9ZhZfC4HnIKQfjYb_gJQ11PORiQMqKM7_lNR1P_IW8Piql-2vScRtnDHVH7FCY1_6jG8iExjEqDgujKLGk6CvV4qXMgibpxB60aqRPi-Gc9rLk0cYBjyw913IYUefuLImidK8Y5ZNcjtddvB-xKRatL-21l8lHuvGaHw9Se7XpCYvY4Zw6QgHTlhVw1zbuYgRO5nFbNA_EWAJw1CBng">
+<div class="absolute top-2 right-2 bg-secondary text-on-secondary px-2.5 py-1 rounded-md text-[11px] font-label-sm font-semibold shadow-sm">
+            2–3 Porzioni
+          </div>
+</div>
+<!-- Meal-prep Highlight Pill -->
+<div class="p-3 rounded-lg bg-surface-container-high flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[20px] flex-shrink-0 mt-0.5">kitchen</span>
+<div class="flex flex-col text-on-surface font-body-sm text-body-sm">
+<strong class="font-semibold text-secondary">Ideale da preparare in blocco!</strong>
+<span class="">Si conserva perfettamente per 2-3 giorni in frigorifero: scaldane un trancio a sera in padella o microonde.</span>
+</div>
+</div>
+<div class="bg-surface-container-low/70 rounded-lg p-3 flex flex-col gap-1.5">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-muted">Ingredienti (teglia piccola 2-3 porzioni)</span>
+<div class="grid grid-cols-1 gap-1 pt-1 font-body-sm text-body-sm text-on-surface">
+<label class="flex items-center gap-2.5 cursor-pointer select-none">
+<input class="w-4 h-4 rounded accent-secondary text-secondary" type="checkbox">
+<span class="">500 g patate vecchie a pasta gialla</span>
+</label>
+<label class="flex items-center gap-2.5 cursor-pointer select-none">
+<input class="w-4 h-4 rounded accent-secondary text-secondary" type="checkbox">
+<span class="">85 g prosciutto cotto (fetta spessa a cubetti)</span>
+</label>
+<label class="flex items-center gap-2.5 cursor-pointer select-none">
+<input class="w-4 h-4 rounded accent-secondary text-secondary" type="checkbox">
+<span class="">85 g mozzarella di bufala affumicata o provola</span>
+</label>
+<label class="flex items-center gap-2.5 cursor-pointer select-none">
+<input class="w-4 h-4 rounded accent-secondary text-secondary" type="checkbox">
+<span class="">25 g Parmigiano Reggiano grattugiato</span>
+</label>
+<label class="flex items-center gap-2.5 cursor-pointer select-none">
+<input class="w-4 h-4 rounded accent-secondary text-secondary" type="checkbox">
+<span class="">1 uovo medio</span>
+</label>
+<label class="flex items-center gap-2.5 cursor-pointer select-none text-muted">
+<input class="w-4 h-4 rounded accent-secondary text-secondary" type="checkbox">
+<span class="">Pangrattato, fiocchetti di burro, noce moscata, sale e pepe</span>
+</label>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-muted">Procedimento originale</span>
+<ol class="flex flex-col gap-2 font-body-sm text-body-sm text-on-surface">
+<li class="flex items-start gap-2.5">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-dinner-soft text-secondary font-label-sm text-label-sm flex items-center justify-center font-semibold">1</span>
+<span class="">Lessa le patate intere con la buccia per 40-50 minuti (saranno cotte quando la forchetta entra morbidamente al centro).</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-dinner-soft text-secondary font-label-sm text-label-sm flex items-center justify-center font-semibold">2</span>
+<span class="">Pelale da calde e schiacciale in una terrina. Riduci a dadini il prosciutto cotto e la provola affumicata.</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-dinner-soft text-secondary font-label-sm text-label-sm flex items-center justify-center font-semibold">3</span>
+<span class="">Lascia intiepidire, poi incorpora l'uovo, il formaggio grattugiato, i dadini di ripieno, sale e pepe. Amalgama bene con le mani.</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-dinner-soft text-secondary font-label-sm text-label-sm flex items-center justify-center font-semibold">4</span>
+<span class="">Imburra una pirofila rettangolare, spolvera con pangrattato e stendi il composto compattando bene la superficie con il dorso di un cucchiaio.</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-dinner-soft text-secondary font-label-sm text-label-sm flex items-center justify-center font-semibold">5</span>
+<span class="">Cospargi con altro pangrattato e qualche fiocchetto di burro. Cuoci a 200° statico per 30-35 minuti + 5 minuti di grill per una crosticina dorata.</span>
+</li>
+</ol>
+</div>
+<div class="pt-1 flex items-center justify-between text-muted text-[12px] italic">
+<a href="https://ricette.giallozafferano.it/Gateau-di-patate.html" target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-[12px] not-italic text-secondary font-medium hover:underline"><span class="material-symbols-outlined text-[14px]">open_in_new</span><span class="">Fonte: Ricetta originale GialloZafferano</span></a>
+<span class="text-secondary font-medium">Riposo consigliato: 10' prima di tagliare</span>
+</div>
+</article>
+</section>
+<!-- SEZIONE JOLLY PER VARIARE -->
+<section class="flex flex-col gap-3 pt-2" data-category-group="jolly" id="jolly">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-1 rounded-md bg-weekend-soft text-tertiary font-label-sm text-label-sm tracking-wider uppercase font-semibold">Jolly</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Piatti per Variare</h3>
+</div>
+<span class="font-caption text-caption text-muted">5 alternative veloci</span>
+</div>
+<p class="font-body-sm text-body-sm text-muted">
+        Quando il frigo piange o hai voglia di stravolgere la pianificazione settimanale:
+      </p>
+<!-- Compact Cards Mosaic -->
+<div class="grid grid-cols-1 gap-2.5"><div class="recipe-card bg-surface rounded-xl p-3.5 shadow-sm flex items-start justify-between gap-3" data-meal="cena" data-tags="jolly uova verdure cena" data-title="Frittata di verdure"><div class="flex flex-col gap-1 min-w-0"><div class="flex items-center gap-1.5 flex-wrap"><span class="font-title-md text-title-md text-on-surface font-semibold">Frittata di verdure</span><span class="px-1.5 py-0.2 rounded bg-weekend-soft text-tertiary font-caption text-caption font-semibold">10'</span><span class="px-1.5 py-0.2 rounded bg-dinner-soft text-secondary font-caption text-caption uppercase font-semibold">Cena</span></div><p class="font-body-sm text-body-sm text-muted line-clamp-2">2 uova sbattute energicamente, verdure avanzate saltate in padella e 5-6 minuti per lato a fuoco medio con coperchio.</p><a href="https://blog.giallozafferano.it/studentiaifornelli/frittata-di-verdure/" target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-[11px] text-primary font-medium hover:underline"><span class="material-symbols-outlined text-[12px]">open_in_new</span><span class="">Fonte GialloZafferano (Studenti ai Fornelli)</span></a></div><div class="w-10 h-10 rounded-lg bg-weekend-soft/70 flex items-center justify-center text-tertiary flex-shrink-0"><span class="material-symbols-outlined text-[20px]">egg</span></div></div><div class="recipe-card bg-surface rounded-xl p-3.5 shadow-sm flex items-start justify-between gap-3" data-meal="pranzo" data-tags="jolly pasta classica pranzo" data-title="Amatriciana"><div class="flex flex-col gap-1 min-w-0"><div class="flex items-center gap-1.5 flex-wrap"><span class="font-title-md text-title-md text-on-surface font-semibold">Pasta all'Amatriciana</span><span class="px-1.5 py-0.2 rounded bg-weekend-soft text-tertiary font-caption text-caption font-semibold">15'</span><span class="px-1.5 py-0.2 rounded bg-lunch-soft text-primary font-caption text-caption uppercase font-semibold">Pranzo</span></div><p class="font-body-sm text-body-sm text-muted line-clamp-2">Solo guanciale rosolato lentamente nel suo grasso, sfumato, passata di pomodoro dolce e pecorino romano. Niente aglio né cipolla!</p><div class="flex items-center justify-between gap-1"><span class="text-[11px] text-muted italic">Regola aurea: niente panna</span><a href="https://blog.giallozafferano.it/allacciateilgrembiule/pasta-amatriciana/" target="_blank" rel="noopener" class="inline-flex items-center gap-0.5 text-[11px] text-primary font-medium hover:underline"><span class="material-symbols-outlined text-[12px]">open_in_new</span><span class="">GialloZafferano</span></a></div></div><div class="w-10 h-10 rounded-lg bg-weekend-soft/70 flex items-center justify-center text-tertiary flex-shrink-0"><span class="material-symbols-outlined text-[20px]">restaurant</span></div></div><div class="recipe-card bg-surface rounded-xl p-3.5 shadow-sm flex items-start justify-between gap-3" data-meal="pranzo" data-tags="jolly pasta uova pranzo" data-title="Carbonara"><div class="flex flex-col gap-1.5 min-w-0"><div class="flex items-center gap-1.5 flex-wrap"><span class="font-title-md text-title-md text-on-surface font-semibold">Carbonara Perfetta</span><span class="px-1.5 py-0.2 rounded bg-weekend-soft text-tertiary font-caption text-caption font-semibold">12'</span><span class="px-1.5 py-0.2 rounded bg-lunch-soft text-primary font-caption text-caption uppercase font-semibold">Pranzo</span></div><p class="font-body-sm text-body-sm text-muted line-clamp-2">Guanciale croccante, pastella densa di tuorli d'uovo, tanto pecorino e pepe macinato fresco al momento a fuoco spento.</p><div class="flex items-center justify-between gap-1"><span class="text-[11px] text-muted italic">Mantecatura fuori dal fuoco</span><a href="https://blog.giallozafferano.it/valeriaciccotti/pasta-alla-carbonara/" target="_blank" rel="noopener" class="inline-flex items-center gap-0.5 text-[11px] text-primary font-medium hover:underline"><span class="material-symbols-outlined text-[12px]">open_in_new</span><span class="">GialloZafferano</span></a></div></div><div class="w-10 h-10 rounded-lg bg-weekend-soft/70 flex items-center justify-center text-tertiary flex-shrink-0"><span class="material-symbols-outlined text-[20px]">local_fire_department</span></div></div><div class="recipe-card bg-surface rounded-xl p-3.5 shadow-sm flex items-start justify-between gap-3" data-meal="cena" data-tags="jolly emergenza veloce cena" data-title="Toast"><div class="flex flex-col gap-1 min-w-0"><div class="flex items-center gap-1.5 flex-wrap"><span class="font-title-md text-title-md text-on-surface font-semibold">Toast &amp; Toastona di Frigo</span><span class="px-1.5 py-0.2 rounded bg-weekend-soft text-tertiary font-caption text-caption font-semibold">5'</span><span class="px-1.5 py-0.2 rounded bg-dinner-soft text-secondary font-caption text-caption uppercase font-semibold">Cena</span></div><p class="font-body-sm text-body-sm text-muted line-clamp-2">Il vero salvavita per le notti prima degli esami o quando il frigo è deserto: fette tostate con burro, cotto e formaggio fuso filante.</p><span class="text-[11px] text-muted italic">Sempre disponibile in dispensa</span></div><div class="w-10 h-10 rounded-lg bg-weekend-soft/70 flex items-center justify-center text-tertiary flex-shrink-0"><span class="material-symbols-outlined text-[20px]">bakery_dining</span></div></div><div class="recipe-card bg-surface rounded-xl p-3.5 shadow-sm flex items-start justify-between gap-3" data-meal="cena" data-tags="jolly lievitati forno weekend cena" data-title="Focaccia senza impasto"><div class="flex flex-col gap-1 min-w-0"><div class="flex items-center gap-1.5 flex-wrap"><span class="font-title-md text-title-md text-on-surface font-semibold">Focaccia senza impasto</span><span class="px-1.5 py-0.2 rounded bg-weekend-soft text-tertiary font-caption text-caption font-semibold">Zero fatica</span><span class="px-1.5 py-0.2 rounded bg-dinner-soft text-secondary font-caption text-caption uppercase font-semibold">Cena</span></div><p class="font-body-sm text-body-sm text-muted line-clamp-2">Non serve la planetaria né le braccia d'acciaio: si mescola tutto con una forchetta in ciotola, riposo e subito in teglia oliata con salamoia.</p><a href="https://blog.giallozafferano.it/rossellainpadella/focaccia-senza-impasto-ricetta-facile/" target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-[11px] text-primary font-medium hover:underline"><span class="material-symbols-outlined text-[12px]">open_in_new</span><span class="">Fonte: Rossella in Padella (GialloZafferano)</span></a></div><div class="w-10 h-10 rounded-lg bg-weekend-soft/70 flex items-center justify-center text-tertiary flex-shrink-0"><span class="material-symbols-outlined text-[20px]">cookie</span></div></div></div>
+</section><section class="flex flex-col gap-3 pt-2" data-category-group="dolci" id="sezione-dolci"><div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="px-2.5 py-1 rounded-md bg-weekend-soft text-tertiary font-label-sm text-label-sm tracking-wider uppercase font-semibold">Dolci</span><h3 class="font-headline-md text-headline-md text-on-surface">Dolci &amp; Merende Veloci</h3></div><span class="font-caption text-caption text-muted">In arrivo</span></div><p class="font-body-sm text-body-sm text-muted">Coccola post-sessione o merenda per la pausa caffè. Pochi zuccheri complessi, massima soddisfazione.</p><div class="bg-surface rounded-xl p-6 border-2 border-dashed border-outline-variant/60 flex flex-col items-center justify-center text-center gap-2.5"><div class="w-10 h-10 rounded-full bg-weekend-soft/60 flex items-center justify-center text-tertiary"><span class="material-symbols-outlined text-[22px]">cake</span></div><h5 class="font-headline-sm text-headline-sm text-on-surface">Spazio riservato ai tuoi Dolci</h5><p class="font-body-sm text-body-sm text-muted max-w-xs">Invia le ricette dei dolci: appariranno automaticamente qui e saranno consultabili con il filtro rapido.</p></div></section>
+<!-- Empty State (Hidden by default, shown via JS filter) -->
+<div class="hidden bg-surface rounded-2xl p-8 flex-col items-center text-center gap-3 shadow-sm my-4" id="recipe-empty">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-muted">
+<span class="material-symbols-outlined text-[26px]">cookie_off</span>
+</div>
+<div class="flex flex-col">
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Nessuna ricetta trovata</h4>
+<p class="font-body-sm text-body-sm text-muted mt-1">
+          Nessun piatto corrisponde a questo filtro o termine di ricerca.
+        </p>
+</div>
+<button class="mt-2 px-4 py-2 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm uppercase tracking-wider" id="btn-reset-filters">
+        Mostra tutto il ricettario
+      </button>
+</div>
+<!-- Editorial Footer Note -->
+<div class="p-4 rounded-xl bg-surface-container-low text-center flex flex-col items-center gap-1.5 mt-2">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-muted">Quaderno di Cucina Fuori Sede</span>
+<p class="font-body-sm text-body-sm text-muted max-w-xs">
+        Tutte le grammature sono calibrate sul fabbisogno singolo. Ricordati sempre di conservare mezzo bicchiere di acqua di cottura della pasta!
+      </p>
+</div>
+</div>
+</div>
 
-  function showTab(name, scrollTarget){
-    TABS.forEach(function(t){
-      var panel = document.getElementById('tab-'+t);
-      if(panel) panel.hidden = (t!==name);
-      var btn = document.querySelector('.tabbar button[data-tab="'+t+'"]');
-      if(btn) btn.classList.toggle('active', t===name);
-    });
-    safeSet('mp_active_tab', name);
-    window.scrollTo({top:0});
-    if(scrollTarget){
-      requestAnimationFrame(function(){
-        requestAnimationFrame(function(){
-          var el = document.getElementById(scrollTarget);
-          if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    </div>
+
+    <!-- TAB 3: LISTA DELLA SPESA -->
+    <div id="tab-spesa" class="tab-content hidden">
+      <div class="flex flex-col w-full px-margin-mobile pb-6 space-y-space-md">
+<!-- Header Card: Visual Progress & Supermarket Mode -->
+<section class="bg-surface rounded-xl p-space-md shadow-sm space-y-space-md">
+<div class="flex items-center justify-between gap-space-sm">
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-muted">Spesa Settimanale</span>
+<div class="flex items-baseline gap-space-xs mt-0.5">
+<span class="font-headline-md text-headline-md text-primary font-semibold" id="counter-summary">0 / 32</span>
+<span class="font-body-sm text-body-sm text-muted">nel carrello</span>
+</div>
+</div>
+<div class="w-11 h-11 rounded-full bg-lunch-soft text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[24px]">shopping_bag</span>
+</div>
+</div>
+<!-- Thin iOS native style progress bar -->
+<div class="w-full bg-surface-container rounded-full h-2 overflow-hidden">
+<div class="bg-primary h-full transition-all duration-300 ease-out rounded-full" id="progress-bar-fill" style="width: 0%;"></div>
+</div>
+<!-- Secondary Quick Actions -->
+<div class="flex items-center gap-space-sm pt-space-xs">
+<button class="flex-1 py-2 px-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high active:scale-95 transition-all text-on-surface font-label-md text-label-md flex items-center justify-center gap-1.5 text-center" id="shop-reset" type="button">
+<span class="material-symbols-outlined text-[16px] text-muted">restart_alt</span>
+<span>Reset spunte</span>
+</button>
+<button class="flex-1 py-2 px-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high active:scale-95 transition-all text-on-surface font-label-md text-label-md flex items-center justify-center gap-1.5 text-center" id="shop-restore" type="button">
+<span class="material-symbols-outlined text-[16px] text-muted">settings_backup_restore</span>
+<span>Ripristina lista</span>
+</button>
+</div>
+</section>
+<!-- Quick Add Ingredient Bar (Thumb friendly for one-handed entry) -->
+<section class="bg-surface rounded-xl p-space-sm shadow-sm">
+<form class="flex items-center gap-space-xs" id="shop-add-form">
+<div class="flex items-center flex-1 bg-surface-container rounded-lg px-space-sm h-11">
+<span class="material-symbols-outlined text-muted text-[20px] mr-1.5 shrink-0">add_shopping_cart</span>
+<input autocomplete="off" class="w-full bg-transparent text-on-surface placeholder:text-muted font-body-md text-body-md focus:outline-none" id="shop-add-input" placeholder="Aggiungi ingrediente extra..." type="text"/>
+</div>
+<button class="h-11 px-space-md bg-primary hover:bg-primary-container active:scale-95 text-on-primary rounded-lg font-label-sm text-label-sm uppercase tracking-wider flex items-center justify-center shrink-0 transition-transform" type="submit">
+<span>Aggiungi</span>
+</button>
+</form>
+</section>
+<!-- Category Filter Pills (Horizontal Scrollable) -->
+<div class="overflow-x-auto no-scrollbar -mx-margin-mobile px-margin-mobile flex items-center gap-space-xs py-1">
+<button class="cat-pill active-pill shrink-0 px-3.5 py-1.5 rounded-full font-label-md text-label-md transition-colors bg-primary text-on-primary" data-filter="all" type="button">
+      Tutte (<span id="count-all">32</span>)
+    </button>
+<button class="cat-pill shrink-0 px-3.5 py-1.5 rounded-full font-label-md text-label-md transition-colors bg-surface text-muted hover:text-on-surface" data-filter="Frutta e verdura" type="button">
+      Frutta &amp; Verdura
+    </button>
+<button class="cat-pill shrink-0 px-3.5 py-1.5 rounded-full font-label-md text-label-md transition-colors bg-surface text-muted hover:text-on-surface" data-filter="Pesce e carne" type="button">
+      Pesce &amp; Carne
+    </button>
+<button class="cat-pill shrink-0 px-3.5 py-1.5 rounded-full font-label-md text-label-md transition-colors bg-surface text-muted hover:text-on-surface" data-filter="Pronti e surgelati" type="button">
+      Pronti &amp; Surgelati
+    </button>
+<button class="cat-pill shrink-0 px-3.5 py-1.5 rounded-full font-label-md text-label-md transition-colors bg-surface text-muted hover:text-on-surface" data-filter="Latticini e uova" type="button">
+      Latticini &amp; Uova
+    </button>
+<button class="cat-pill shrink-0 px-3.5 py-1.5 rounded-full font-label-md text-label-md transition-colors bg-surface text-muted hover:text-on-surface" data-filter="Dispensa" type="button">
+      Dispensa
+    </button>
+</div>
+<!-- Main Checklist Container -->
+<div class="space-y-space-md" id="shop-categories-container">
+<!-- Populated via script with categories and items -->
+</div>
+<!-- Warm Editorial Supermarket Note -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex items-start gap-space-sm text-muted">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">tips_and_updates</span>
+<p class="font-body-sm text-body-sm leading-relaxed text-on-surface-variant">
+<strong>Consiglio fuori sede:</strong> Le spunte rimangono salvate in automatico sul telefono. Se un ingrediente manca al banco, eliminalo con la croce o aggiungi subito un'alternativa.
+    </p>
+</div>
+</div>
+
+    </div>
+  </main>
+
+  <!-- Bottom Navigation Bar Unificata -->
+  <nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-1px_10px_rgba(40,35,20,0.05)]">
+    <div class="flex items-center justify-around h-16 px-margin-mobile">
+      <button type="button" id="nav-btn-menu" class="tab-trigger flex flex-col items-center justify-center w-20 h-12 text-primary font-semibold transition-colors" data-tab="tab-menu" data-title="Menu Settimanale">
+        <span class="material-symbols-outlined text-[24px]">restaurant_menu</span>
+        <span class="font-label-md text-label-md mt-0.5">Menu</span>
+      </button>
+      <button type="button" id="nav-btn-ricette" class="tab-trigger flex flex-col items-center justify-center w-20 h-12 text-muted hover:text-on-surface transition-colors" data-tab="tab-ricette" data-title="Ricettario Fuori Sede">
+        <span class="material-symbols-outlined text-[24px]">menu_book</span>
+        <span class="font-label-md text-label-md mt-0.5">Ricette</span>
+      </button>
+      <button type="button" id="nav-btn-spesa" class="tab-trigger flex flex-col items-center justify-center w-20 h-12 text-muted hover:text-on-surface transition-colors" data-tab="tab-spesa" data-title="Lista Della Spesa">
+        <span class="material-symbols-outlined text-[24px]">checklist</span>
+        <span class="font-label-md text-label-md mt-0.5">Spesa</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Tab Switching Engine -->
+  <script>
+    (function() {
+      const triggers = document.querySelectorAll('.tab-trigger');
+      const tabs = document.querySelectorAll('.tab-content');
+      const headerTitle = document.getElementById('app-header-title');
+
+      window.switchTab = function(targetId) {
+        tabs.forEach(tab => {
+          if (tab.id === targetId) {
+            tab.classList.remove('hidden');
+          } else {
+            tab.classList.add('hidden');
+          }
+        });
+
+        triggers.forEach(btn => {
+          if (btn.dataset.tab === targetId) {
+            btn.classList.add('text-primary', 'font-semibold');
+            btn.classList.remove('text-muted');
+            if (headerTitle) headerTitle.textContent = btn.dataset.title || 'Menu Fuori Sede';
+          } else {
+            btn.classList.remove('text-primary', 'font-semibold');
+            btn.classList.add('text-muted');
+          }
+        });
+
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      };
+
+      triggers.forEach(btn => {
+        btn.addEventListener('click', () => {
+          switchTab(btn.dataset.tab);
         });
       });
-    }
-  }
 
-  document.querySelectorAll('.tabbar button').forEach(function(btn){
-    btn.addEventListener('click', function(){ showTab(btn.dataset.tab); });
-  });
+      // Se clicchi su una ricetta dal menu, apri la tab ricette e fai scroll
+      document.addEventListener('click', function(e) {
+        const recipeLink = e.target.closest('[data-recipe-target]');
+        if (recipeLink) {
+          e.preventDefault();
+          const targetCard = recipeLink.getAttribute('data-recipe-target');
+          switchTab('tab-ricette');
+          setTimeout(() => {
+            const card = document.getElementById(targetCard);
+            if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }, 100);
+        }
+      });
+    })();
+  </script>
 
-  document.querySelectorAll('#tab-menu a[href^="#"]').forEach(function(a){
-    a.addEventListener('click', function(e){
-      e.preventDefault();
-      showTab('ricette', a.getAttribute('href').slice(1));
+  <!-- Scripts originali delle schermate Stitch -->
+  <script>
+    /* === SCRIPT MENU SETTIMANALE === */
+    
+  // Micro-interazioni per lo scorrimento veloce ai giorni
+  document.querySelectorAll('.day-chip').forEach(function(chip) {
+    chip.addEventListener('click', function() {
+      // Aggiorna aspetto chip attivo
+      document.querySelectorAll('.day-chip').forEach(function(c) {
+        c.classList.remove('ring-2', 'ring-primary/20', 'bg-surface');
+        if (!c.dataset.target.includes('sab') && !c.dataset.target.includes('dom')) {
+          c.classList.add('bg-surface-container-low');
+        }
+      });
+      chip.classList.add('ring-2', 'ring-primary/20', 'bg-surface');
+      chip.classList.remove('bg-surface-container-low');
+
+      // Scroll fluido verso la card selezionata
+      var targetId = chip.getAttribute('data-target');
+      var targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // Piccolo feedback visivo
+        targetEl.classList.add('ring-2', 'ring-primary/40');
+        setTimeout(function() {
+          targetEl.classList.remove('ring-2', 'ring-primary/40');
+        }, 900);
+      }
     });
   });
 
-  var startTab = safeGet('mp_active_tab', 'menu');
-  if(TABS.indexOf(startTab) === -1) startTab = 'menu';
-  showTab(startTab);
+  // Switch tra vista a colpo d'occhio o compatta
+  var btnDays = document.getElementById('btnViewDays');
+  var btnAll = document.getElementById('btnViewAll');
+  var pillBar = document.getElementById('dayPillBar');
 
-  /* ---------- Shopping list ---------- */
+  if (btnDays && btnAll) {
+    btnDays.addEventListener('click', function() {
+      btnDays.classList.add('bg-surface', 'text-on-surface', 'shadow-sm');
+      btnDays.classList.remove('text-muted');
+      btnAll.classList.remove('bg-surface', 'text-on-surface', 'shadow-sm');
+      btnAll.classList.add('text-muted');
+      if (pillBar) pillBar.classList.remove('hidden');
+    });
+
+    btnAll.addEventListener('click', function() {
+      btnAll.classList.add('bg-surface', 'text-on-surface', 'shadow-sm');
+      btnAll.classList.remove('text-muted');
+      btnDays.classList.remove('bg-surface', 'text-on-surface', 'shadow-sm');
+      btnDays.classList.add('text-muted');
+      if (pillBar) pillBar.classList.add('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  </script>
+
+  <script>
+    /* === SCRIPT RICETTE FUORI SEDE === */
+    
+  (function() {
+    const searchInput = document.getElementById('recipe-search');
+    const searchClear = document.getElementById('search-clear');
+    const pills = document.querySelectorAll('.filter-pill');
+    const cards = document.querySelectorAll('.recipe-card');
+    const emptyState = document.getElementById('recipe-empty');
+    const resetBtn = document.getElementById('btn-reset-filters');
+    let currentFilter = 'all';
+
+    function filterRecipes() {
+      const query = (searchInput.value || '').toLowerCase().trim();
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const title = (card.getAttribute('data-title') || '').toLowerCase();
+        const equip = (card.getAttribute('data-equip') || '').toLowerCase();
+        const tags = (card.getAttribute('data-tags') || '').toLowerCase();
+        const time = parseInt(card.getAttribute('data-time') || '99', 10);
+        const textContent = card.innerText.toLowerCase();
+
+        let matchesSearch = !query || title.includes(query) || tags.includes(query) || textContent.includes(query);
+        let matchesPill = true;
+
+        if (currentFilter === 'fornelli') matchesPill = equip.includes('fornelli');
+        else if (currentFilter === 'air-fryer') matchesPill = equip.includes('air-fryer');
+        else if (currentFilter === 'minipimer') matchesPill = equip.includes('minipimer');
+        else if (currentFilter === 'forno') matchesPill = equip.includes('forno');
+        else if (currentFilter === 'fast') matchesPill = time <= 15;
+        else if (currentFilter === 'medium') matchesPill = time >= 18 && time <= 25;
+
+        if (matchesSearch && matchesPill) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      // Manage group visibility
+      document.querySelectorAll('[data-category-group]').forEach(group => {
+        const hasVisible = Array.from(group.querySelectorAll('.recipe-card')).some(c => !c.classList.contains('hidden'));
+        if (hasVisible) {
+          group.classList.remove('hidden');
+        } else {
+          group.classList.add('hidden');
+        }
+      });
+
+      if (visibleCount === 0) {
+        emptyState.classList.remove('hidden');
+        emptyState.classList.add('flex');
+      } else {
+        emptyState.classList.add('hidden');
+        emptyState.classList.remove('flex');
+      }
+
+      // Show or hide clear button
+      if (query.length > 0) {
+        searchClear.classList.remove('hidden');
+      } else {
+        searchClear.classList.add('hidden');
+      }
+    }
+
+    // Pill click handler
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        pills.forEach(p => {
+          p.classList.remove('bg-primary', 'text-on-primary', 'active');
+          p.classList.add('bg-surface', 'text-muted');
+        });
+        pill.classList.add('bg-primary', 'text-on-primary', 'active');
+        pill.classList.remove('bg-surface', 'text-muted');
+        currentFilter = pill.getAttribute('data-filter');
+        filterRecipes();
+      });
+    });
+
+    searchInput.addEventListener('input', filterRecipes);
+
+    searchClear.addEventListener('click', () => {
+      searchInput.value = '';
+      filterRecipes();
+      searchInput.focus();
+    });
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        currentFilter = 'all';
+        pills.forEach(p => {
+          if (p.getAttribute('data-filter') === 'all') {
+            p.classList.add('bg-primary', 'text-on-primary', 'active');
+            p.classList.remove('bg-surface', 'text-muted');
+          } else {
+            p.classList.remove('bg-primary', 'text-on-primary', 'active');
+            p.classList.add('bg-surface', 'text-muted');
+          }
+        });
+        filterRecipes();
+      });
+    }
+
+    // Smooth scroll to anchor if URL hash present
+    if (window.location.hash) {
+      setTimeout(() => {
+        const el = document.querySelector(window.location.hash);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 200);
+    }
+  })();
+
+  </script>
+
+  <script>
+    /* === SCRIPT LISTA DELLA SPESA === */
+    
+(function() {
   var DEFAULT_ITEMS = [
-    {id:'v1',cat:'Frutta e verdura',label:'Zucchine (2)'},
-    {id:'v2',cat:'Frutta e verdura',label:'Pomodorini (2 vaschette)'},
-    {id:'v3',cat:'Frutta e verdura',label:'Melanzana (1)'},
-    {id:'v4',cat:'Frutta e verdura',label:'Cipolla, carota, sedano (per il soffritto)'},
-    {id:'v5',cat:'Frutta e verdura',label:'Prezzemolo'},
-    {id:'v6',cat:'Frutta e verdura',label:'Insalata mista'},
-    {id:'v7',cat:'Frutta e verdura',label:'Limone'},
-    {id:'v8',cat:'Frutta e verdura',label:'Patate (1 kg)'},
-    {id:'pc1',cat:'Pesce e carne',label:'Salmone affumicato (100 g)'},
-    {id:'pc2',cat:'Pesce e carne',label:'Gamberetti (120 g, anche surgelati)'},
-    {id:'pc3',cat:'Pesce e carne',label:'Filetti di merluzzo o salmone fresco'},
-    {id:'pc4',cat:'Pesce e carne',label:'Fettine di carne (100-150 g)'},
-    {id:'pc5',cat:'Pesce e carne',label:'Petto di pollo o fesa di pollo/tacchino'},
-    {id:'pc6',cat:'Pesce e carne',label:'Prosciutto cotto (una fetta spessa)'},
-    {id:'pc7',cat:'Pesce e carne',label:'Mortadella (40 g)'},
-    {id:'pr1',cat:'Pronti e surgelati',label:'Preparato di mare surgelato'},
-    {id:'pr2',cat:'Pronti e surgelati',label:'Falafel pronti (freschi o surgelati)'},
-    {id:'pr3',cat:'Pronti e surgelati',label:'Hamburger vegetali Kioene'},
-    {id:'pr4',cat:'Pronti e surgelati',label:'Tonno in scatola'},
-    {id:'pr5',cat:'Pronti e surgelati',label:'Piadine pronte (o farina per farle)'},
-    {id:'l1',cat:'Latticini e uova',label:'Burrata (2)'},
-    {id:'l2',cat:'Latticini e uova',label:'Stracciatella'},
-    {id:'l3',cat:'Latticini e uova',label:'Mozzarella di bufala affumicata o provola'},
-    {id:'l4',cat:'Latticini e uova',label:'Parmigiano Reggiano'},
-    {id:'l5',cat:'Latticini e uova',label:'Pecorino'},
-    {id:'l6',cat:'Latticini e uova',label:'Burro'},
-    {id:'l7',cat:'Latticini e uova',label:'Uova (6)'},
-    {id:'d1',cat:'Dispensa',label:'Pasta corta e lunga assortita (~700 g)'},
-    {id:'d2',cat:'Dispensa',label:'Lenticchie rosse decorticate (100 g)'},
-    {id:'d3',cat:'Dispensa',label:'Pistacchi sgusciati (30 g)'},
-    {id:'d4',cat:'Dispensa',label:'Pangrattato'},
-    {id:'d5',cat:'Dispensa',label:'Pane per toast'},
-    {id:'d6',cat:'Dispensa',label:'Olio evo, sale, pepe, origano (controlla le scorte)'}
+    {id:'v1', cat:'Frutta e verdura', label:'Zucchine (2)', icon:'eco'},
+    {id:'v2', cat:'Frutta e verdura', label:'Pomodorini (2 vaschette)', icon:'nutrition'},
+    {id:'v3', cat:'Frutta e verdura', label:'Melanzana (1)', icon:'eco'},
+    {id:'v4', cat:'Frutta e verdura', label:'Cipolla, carota, sedano (per soffritto)', icon:'soup_kitchen'},
+    {id:'v5', cat:'Frutta e verdura', label:'Prezzemolo', icon:'spa'},
+    {id:'v6', cat:'Frutta e verdura', label:'Insalata mista', icon:'local_florist'},
+    {id:'v7', cat:'Frutta e verdura', label:'Limone', icon:'wb_sunny'},
+    {id:'v8', cat:'Frutta e verdura', label:'Patate (1 kg)', icon:'grain'},
+
+    {id:'pc1', cat:'Pesce e carne', label:'Salmone affumicato (100 g)', icon:'set_meal'},
+    {id:'pc2', cat:'Pesce e carne', label:'Gamberetti (120 g)', icon:'phishing'},
+    {id:'pc3', cat:'Pesce e carne', label:'Filetti di merluzzo o salmone fresco', icon:'dinner_dining'},
+    {id:'pc4', cat:'Pesce e carne', label:'Fettine di carne (100-150 g)', icon:'kebab_dining'},
+    {id:'pc5', cat:'Pesce e carne', label:'Petto di pollo', icon:'restaurant'},
+    {id:'pc6', cat:'Pesce e carne', label:'Prosciutto cotto', icon:'bakery_dining'},
+    {id:'pc7', cat:'Pesce e carne', label:'Mortadella (40 g)', icon:'lunch_dining'},
+
+    {id:'pr1', cat:'Pronti e surgelati', label:'Preparato di mare surgelato', icon:'ac_unit'},
+    {id:'pr2', cat:'Pronti e surgelati', label:'Falafel pronti', icon:'egg_alt'},
+    {id:'pr3', cat:'Pronti e surgelati', label:'Hamburger vegetali Kioene', icon:'potted_plant'},
+    {id:'pr4', cat:'Pronti e surgelati', label:'Tonno in scatola', icon:'inventory_2'},
+    {id:'pr5', cat:'Pronti e surgelati', label:'Piadine pronte', icon:'layers'},
+
+    {id:'l1', cat:'Latticini e uova', label:'Burrata (2)', icon:'water_drop'},
+    {id:'l2', cat:'Latticini e uova', label:'Stracciatella', icon:'cookie'},
+    {id:'l3', cat:'Latticini e uova', label:'Mozzarella di bufala affumicata o provola', icon:'local_pizza'},
+    {id:'l4', cat:'Latticini e uova', label:'Parmigiano Reggiano', icon:'room_service'},
+    {id:'l5', cat:'Latticini e uova', label:'Pecorino', icon:'circle'},
+    {id:'l6', cat:'Latticini e uova', label:'Burro', icon:'square'},
+    {id:'l7', cat:'Latticini e uova', label:'Uova (6)', icon:'egg'},
+
+    {id:'d1', cat:'Dispensa', label:'Pasta corta e lunga (~700 g)', icon:'grain'},
+    {id:'d2', cat:'Dispensa', label:'Lenticchie rosse decorticate', icon:'scatter_plot'},
+    {id:'d3', cat:'Dispensa', label:'Pistacchi sgusciati', icon:'spa'},
+    {id:'d4', cat:'Dispensa', label:'Pangrattato', icon:'grain'},
+    {id:'d5', cat:'Dispensa', label:'Pane per toast', icon:'breakfast_dining'},
+    {id:'d6', cat:'Dispensa', label:'Olio evo/sale/pepe/origano', icon:'sanitizer'}
   ];
+
+  var CATEGORY_ICONS = {
+    'Frutta e verdura': 'nature',
+    'Pesce e carne': 'set_meal',
+    'Pronti e surgelati': 'kitchen',
+    'Latticini e uova': 'egg',
+    'Dispensa': 'shelves',
+    'Aggiunti da te': 'playlist_add_check'
+  };
+
+  function safeGet(key, fallback){
+    try {
+      var v = localStorage.getItem(key);
+      return v === null ? fallback : JSON.parse(v);
+    } catch(e) { return fallback; }
+  }
+
+  function safeSet(key, val){
+    try { localStorage.setItem(key, JSON.stringify(val)); } catch(e){}
+  }
 
   var checked = safeGet('mp_shop_checked', {});
   var removed = safeGet('mp_shop_removed', []);
   var custom = safeGet('mp_shop_custom', []);
-  var listEl = document.getElementById('shop-list');
+  var activeCategory = 'all';
 
   function persistAll(){
     safeSet('mp_shop_checked', checked);
     safeSet('mp_shop_removed', removed);
     safeSet('mp_shop_custom', custom);
+    updateProgress();
   }
 
-  function makeItemRow(id, label, isChecked, onDelete, onToggle){
-    var li = document.createElement('li');
-    li.className = 'shop-item' + (isChecked ? ' checked' : '');
-    var checkboxId = 'chk-'+id;
-    var cb = document.createElement('input');
-    cb.type = 'checkbox';
-    cb.id = checkboxId;
-    cb.checked = isChecked;
-    var lab = document.createElement('label');
-    lab.setAttribute('for', checkboxId);
-    lab.textContent = label;
-    var del = document.createElement('button');
-    del.type = 'button';
-    del.className = 'del';
-    del.setAttribute('aria-label','Rimuovi');
-    del.textContent = '×';
-    li.appendChild(cb);
-    li.appendChild(lab);
-    li.appendChild(del);
-    cb.addEventListener('change', function(){
-      li.classList.toggle('checked', cb.checked);
-      onToggle(cb.checked);
-    });
-    del.addEventListener('click', onDelete);
-    return li;
+  function getAllCurrentItems() {
+    var defActive = DEFAULT_ITEMS.filter(function(i){ return removed.indexOf(i.id) === -1; });
+    return defActive.concat(custom);
   }
 
-  function render(){
-    listEl.innerHTML = '';
-    var categories = [];
-    DEFAULT_ITEMS.forEach(function(it){
-      if(removed.indexOf(it.id) !== -1) return;
-      if(categories.indexOf(it.cat) === -1) categories.push(it.cat);
+  function updateProgress() {
+    var all = getAllCurrentItems();
+    var total = all.length;
+    var done = 0;
+    all.forEach(function(item){
+      if(item.cat === 'Aggiunti da te') {
+        if(item.checked) done++;
+      } else {
+        if(checked[item.id]) done++;
+      }
     });
-    categories.forEach(function(cat){
-      var block = document.createElement('div');
-      block.className = 'shop-category';
-      var h4 = document.createElement('h4');
-      h4.textContent = cat;
-      block.appendChild(h4);
-      var ul = document.createElement('ul');
-      ul.className = 'shop-list';
-      DEFAULT_ITEMS.filter(function(it){ return it.cat===cat && removed.indexOf(it.id)===-1; }).forEach(function(it){
-        ul.appendChild(makeItemRow(it.id, it.label, !!checked[it.id], function(){
-          if(removed.indexOf(it.id)===-1) removed.push(it.id);
-          persistAll();
-          render();
-        }, function(isChecked){
-          checked[it.id] = isChecked;
-          persistAll();
-        }));
-      });
-      block.appendChild(ul);
-      listEl.appendChild(block);
-    });
-    if(custom.length){
-      var block2 = document.createElement('div');
-      block2.className = 'shop-category';
-      var h42 = document.createElement('h4');
-      h42.textContent = 'Aggiunti da te';
-      block2.appendChild(h42);
-      var ul2 = document.createElement('ul');
-      ul2.className = 'shop-list';
-      custom.forEach(function(it){
-        ul2.appendChild(makeItemRow(it.id, it.text, !!it.checked, function(){
-          custom = custom.filter(function(c){ return c.id!==it.id; });
-          persistAll();
-          render();
-        }, function(isChecked){
-          it.checked = isChecked;
-          persistAll();
-        }));
-      });
-      block2.appendChild(ul2);
-      listEl.appendChild(block2);
+
+    var summaryEl = document.getElementById('counter-summary');
+    var progressEl = document.getElementById('progress-bar-fill');
+    var countAllEl = document.getElementById('count-all');
+
+    if(summaryEl) summaryEl.textContent = done + ' / ' + total;
+    if(countAllEl) countAllEl.textContent = total;
+    if(progressEl) {
+      var pct = total === 0 ? 0 : Math.round((done / total) * 100);
+      progressEl.style.width = pct + '%';
     }
   }
 
-  render();
+  function makeItemRow(id, label, iconName, isChecked, onDelete, onToggle) {
+    var row = document.createElement('div');
+    row.className = 'group flex items-center justify-between py-2.5 px-space-sm rounded-lg transition-colors cursor-pointer select-none active:bg-surface-container-high ' + (isChecked ? 'bg-surface-container-low/70' : 'hover:bg-surface-container-low');
 
+    var left = document.createElement('div');
+    left.className = 'flex items-center gap-space-sm min-w-0 flex-1 pr-space-xs';
+
+    // iOS rounded soft custom checkbox button
+    var cbCircle = document.createElement('div');
+    cbCircle.className = 'w-6 h-6 rounded-full flex items-center justify-center shrink-0 transition-all duration-200 ' + 
+      (isChecked ? 'bg-primary text-on-primary' : 'bg-surface-container text-transparent');
+    cbCircle.innerHTML = '<span class="material-symbols-outlined text-[16px] font-bold">check</span>';
+
+    var textSpan = document.createElement('span');
+    textSpan.className = 'font-body-md text-body-md transition-all ' + 
+      (isChecked ? 'line-through text-muted' : 'text-on-surface');
+    textSpan.textContent = label;
+
+    left.appendChild(cbCircle);
+    left.appendChild(textSpan);
+
+    // One-handed delete icon with good hit area
+    var delBtn = document.createElement('button');
+    delBtn.type = 'button';
+    delBtn.className = 'w-8 h-8 rounded-full flex items-center justify-center text-muted hover:text-error active:bg-surface-container transition-colors shrink-0';
+    delBtn.setAttribute('aria-label', 'Rimuovi ' + label);
+    delBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">close</span>';
+
+    delBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      onDelete();
+    });
+
+    row.appendChild(left);
+    row.appendChild(delBtn);
+
+    row.addEventListener('click', function() {
+      var nextState = !isChecked;
+      isChecked = nextState;
+      if(nextState) {
+        row.classList.add('bg-surface-container-low/70');
+        row.classList.remove('hover:bg-surface-container-low');
+        cbCircle.className = 'w-6 h-6 rounded-full flex items-center justify-center shrink-0 transition-all duration-200 bg-primary text-on-primary';
+        textSpan.className = 'font-body-md text-body-md line-through text-muted transition-all';
+      } else {
+        row.classList.remove('bg-surface-container-low/70');
+        row.classList.add('hover:bg-surface-container-low');
+        cbCircle.className = 'w-6 h-6 rounded-full flex items-center justify-center shrink-0 transition-all duration-200 bg-surface-container text-transparent';
+        textSpan.className = 'font-body-md text-body-md text-on-surface transition-all';
+      }
+      onToggle(nextState);
+    });
+
+    return row;
+  }
+
+  function render() {
+    var container = document.getElementById('shop-categories-container');
+    if(!container) return;
+    container.innerHTML = '';
+
+    var categories = ['Frutta e verdura', 'Pesce e carne', 'Pronti e surgelati', 'Latticini e uova', 'Dispensa'];
+    if(custom.length) {
+      categories.push('Aggiunti da te');
+    }
+
+    var renderedAny = false;
+
+    categories.forEach(function(cat) {
+      if(activeCategory !== 'all' && activeCategory !== cat) return;
+
+      var itemsInCat = [];
+      if(cat === 'Aggiunti da te') {
+        itemsInCat = custom;
+      } else {
+        itemsInCat = DEFAULT_ITEMS.filter(function(i){
+          return i.cat === cat && removed.indexOf(i.id) === -1;
+        });
+      }
+
+      if(itemsInCat.length === 0) return;
+      renderedAny = true;
+
+      var sectionCard = document.createElement('section');
+      sectionCard.className = 'bg-surface rounded-xl p-space-md shadow-sm space-y-space-xs';
+
+      // Section Header
+      var headerDiv = document.createElement('div');
+      headerDiv.className = 'flex items-center justify-between pb-space-xs mb-1';
+
+      var leftHead = document.createElement('div');
+      leftHead.className = 'flex items-center gap-space-xs';
+      
+      var iconSpan = document.createElement('span');
+      iconSpan.className = 'material-symbols-outlined text-[18px] text-primary';
+      iconSpan.textContent = CATEGORY_ICONS[cat] || 'label';
+
+      var catTitle = document.createElement('h2');
+      catTitle.className = 'font-headline-sm text-headline-sm text-primary font-semibold';
+      catTitle.textContent = cat;
+
+      leftHead.appendChild(iconSpan);
+      leftHead.appendChild(catTitle);
+
+      var badge = document.createElement('span');
+      badge.className = 'font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container text-muted font-medium';
+      badge.textContent = itemsInCat.length;
+
+      headerDiv.appendChild(leftHead);
+      headerDiv.appendChild(badge);
+      sectionCard.appendChild(headerDiv);
+
+      // Item list
+      var listDiv = document.createElement('div');
+      listDiv.className = 'flex flex-col space-y-0.5';
+
+      itemsInCat.forEach(function(item) {
+        var isItemChecked = cat === 'Aggiunti da te' ? !!item.checked : !!checked[item.id];
+        var row = makeItemRow(
+          item.id,
+          item.label || item.text,
+          item.icon || 'shopping_bag',
+          isItemChecked,
+          function() {
+            if(cat === 'Aggiunti da te') {
+              custom = custom.filter(function(c){ return c.id !== item.id; });
+            } else {
+              if(removed.indexOf(item.id) === -1) removed.push(item.id);
+            }
+            persistAll();
+            render();
+          },
+          function(newChecked) {
+            if(cat === 'Aggiunti da te') {
+              item.checked = newChecked;
+            } else {
+              checked[item.id] = newChecked;
+            }
+            persistAll();
+          }
+        );
+        listDiv.appendChild(row);
+      });
+
+      sectionCard.appendChild(listDiv);
+      container.appendChild(sectionCard);
+    });
+
+    if(!renderedAny) {
+      var emptyDiv = document.createElement('div');
+      emptyDiv.className = 'bg-surface rounded-xl p-space-xl text-center flex flex-col items-center justify-center space-y-space-sm shadow-sm';
+      emptyDiv.innerHTML = '<span class="material-symbols-outlined text-muted text-[44px]">done_all</span>' +
+        '<p class="font-headline-sm text-headline-sm text-on-surface font-semibold">Tutto preso o lista vuota!</p>' +
+        '<p class="font-body-sm text-body-sm text-muted">Tocca "Ripristina lista" in cima per ricominciare la settimana.</p>';
+      container.appendChild(emptyDiv);
+    }
+
+    updateProgress();
+  }
+
+  // Filter Buttons Handling
+  document.querySelectorAll('.cat-pill').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.cat-pill').forEach(function(b) {
+        b.className = 'cat-pill shrink-0 px-3.5 py-1.5 rounded-full font-label-md text-label-md transition-colors bg-surface text-muted hover:text-on-surface';
+      });
+      btn.className = 'cat-pill active-pill shrink-0 px-3.5 py-1.5 rounded-full font-label-md text-label-md transition-colors bg-primary text-on-primary';
+      activeCategory = btn.getAttribute('data-filter');
+      render();
+    });
+  });
+
+  // Add Item Form
   var form = document.getElementById('shop-add-form');
-  form.addEventListener('submit', function(e){
+  form.addEventListener('submit', function(e) {
     e.preventDefault();
     var input = document.getElementById('shop-add-input');
     var val = input.value.trim();
     if(!val) return;
-    custom.push({id:'custom-'+Date.now(), text: val, checked:false});
+    custom.unshift({
+      id: 'custom-' + Date.now(),
+      text: val,
+      cat: 'Aggiunti da te',
+      checked: false
+    });
     input.value = '';
     persistAll();
     render();
   });
 
-  document.getElementById('shop-reset').addEventListener('click', function(){
+  // Action Buttons
+  document.getElementById('shop-reset').addEventListener('click', function() {
     checked = {};
-    custom.forEach(function(c){ c.checked = false; });
+    custom.forEach(function(c) { c.checked = false; });
     persistAll();
     render();
   });
 
-  document.getElementById('shop-restore').addEventListener('click', function(){
+  document.getElementById('shop-restore').addEventListener('click', function() {
     removed = [];
     persistAll();
     render();
   });
+
+  // Initial Boot
+  render();
 })();
-</script>
+
+  </script>
+</body>
+</html>
