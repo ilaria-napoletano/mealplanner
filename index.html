@@ -8,6 +8,9 @@
     .cat-pill.active-pill { background-color: #254b3e !important; color: #ffffff !important; }
     .recipe-card.hidden { display: none !important; }
   </style>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 </head>
 <body class="bg-bg-canvas text-on-surface font-body-md text-body-md flex flex-col min-h-screen">
   <header class="fixed top-0 w-full z-50 pt-safe bg-bg-canvas/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(40,35,20,0.04)]">
@@ -992,7 +995,7 @@
 <div class="flex flex-col w-full px-margin-mobile pb-6 space-y-space-md">
   <div class="bg-surface rounded-xl p-space-sm border border-line/50 shadow-sm flex items-center justify-between gap-space-xs">
     <div class="flex items-center gap-2 min-w-0">
-      <div class="flex items-center gap-1.5 min-w-0"><span class="w-2 h-2 rounded-full bg-[#3d8a55] shrink-0 animate-pulse"></span><div class="flex flex-col min-w-0"><span class="font-label-sm text-label-sm font-semibold text-primary truncate leading-tight">Casa a Bari</span><span class="font-caption text-caption text-muted truncate">Sincronizzato 1 min fa</span></div></div>
+      <div class="flex items-center gap-1.5 min-w-0"><span class="w-2 h-2 rounded-full bg-[#3d8a55] shrink-0 animate-pulse"></span><div class="flex flex-col min-w-0"><span class="font-label-sm text-label-sm font-semibold text-primary truncate leading-tight">Casa a Bari</span><span class="font-caption text-caption text-muted truncate" id="sync-status">In sincro col cloud</span></div></div>
     </div>
   </div>
   <section class="bg-surface rounded-xl p-space-md shadow-sm space-y-space-md">
@@ -1150,7 +1153,7 @@
 </script>
 
 <script>
-// SPESA LOGIC
+// SPESA LOGIC CON FIREBASE REALTIME DB
 (function(){
   var DEFAULT_ITEMS = [
     {id:'v1', cat:'Frutta e verdura', label:'Pomodorini (2 vaschette)'},
@@ -1177,17 +1180,53 @@
   ];
   var CATEGORY_ICONS = {'Frutta e verdura':'nature','Pesce e Carne':'set_meal','Pronti e Surgelati':'kitchen','Latticini e uova':'egg','Dispensa':'shelves','Igiene Personale':'soap','Casa e pulizia':'cleaning_services','Altro':'category'};
   
-  function safeGet(k,f){try{var v=localStorage.getItem(k);return v?JSON.parse(v):f;}catch(e){return f;}}
-  function safeSet(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+  // Inizializza Firebase
+  var firebaseConfig = {
+    databaseURL: "https://casabari-2fb3f-default-rtdb.europe-west1.firebasedatabase.app/"
+  };
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+  }
+  var db = firebase.database();
+  var shopRef = db.ref('lista_spesa_v1');
   
-  var checked = safeGet('mp_shop_checked_v3', {});
-  var removed = safeGet('mp_shop_removed_v3', []);
-  var custom = safeGet('mp_shop_custom_v3', []);
+  var checked = {};
+  var removed = [];
+  var custom = [];
   var activeCategory = 'all';
   var lastRemovedItem = null;
   var toastTimeout = null;
+  var isSyncing = false; // Flag per evitare loop di scrittura quando si leggono dati dal server
 
-  function persistAll(){ safeSet('mp_shop_checked_v3',checked); safeSet('mp_shop_removed_v3',removed); safeSet('mp_shop_custom_v3',custom); updateProgress(); }
+  // Listener Real-time
+  shopRef.on('value', function(snapshot) {
+    var data = snapshot.val();
+    if (data) {
+      checked = data.checked || {};
+      removed = data.removed || [];
+      custom = data.custom || [];
+    } else {
+      checked = {};
+      removed = [];
+      custom = [];
+    }
+    isSyncing = true;
+    render();
+    isSyncing = false;
+  });
+
+  function persistAll() { 
+    if (isSyncing) return; // Non sovrascrivere se stiamo solo reagendo a un evento del server!
+    shopRef.set({
+      checked: checked,
+      removed: removed,
+      custom: custom
+    }).catch(function(error) {
+      console.error("Errore di sincronizzazione:", error);
+    });
+    updateProgress(); 
+  }
+  
   function getAllCurrentItems(){ return DEFAULT_ITEMS.filter(function(i){return removed.indexOf(i.id)===-1;}).concat(custom); }
   function isItemChecked(item){ return item.isCustom ? !!item.checked : !!checked[item.id]; }
   function setItemChecked(item, isC){ if(item.isCustom){item.checked=isC;}else{checked[item.id]=isC;} persistAll(); render(); }
@@ -1318,6 +1357,7 @@
     checked = {}; custom.forEach(function(c){c.checked=false;}); persistAll(); render();
   });
 
+  // Renderizzo inizialmente per vuoto, ma on('value') farà il rendering coi dati
   render();
 })();
 </script>
