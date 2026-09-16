@@ -1057,12 +1057,90 @@
   <button id="undo-action-btn" class="text-secondary-fixed font-label-md text-label-md uppercase font-bold shrink-0">Annulla</button>
 </div>
 </div>
+    <div id="tab-conti" class="tab-content hidden">
+<div class="flex flex-col w-full px-margin-mobile pb-6 space-y-space-md mt-4">
+  <div class="flex items-center justify-between">
+    <span class="font-label-sm text-label-sm uppercase tracking-wider text-muted font-bold">Bilancio Condiviso</span>
+    <span class="px-3 py-1 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>In corso</span>
+  </div>
+
+  <div class="bg-[#e8f3ee] rounded-xl p-space-md border border-[#c4e3d4] shadow-sm flex flex-col gap-2 relative overflow-hidden" id="conti-saldo-card">
+    <span class="font-body-sm text-muted text-center">Caricamento...</span>
+  </div>
+
+  <div class="grid grid-cols-2 gap-space-sm mt-2">
+    <div class="bg-surface rounded-xl p-space-sm shadow-sm border border-line/40 flex flex-col">
+      <div class="flex items-center gap-1.5 mb-2"><div class="w-5 h-5 rounded-full bg-[#2a5948] text-white flex items-center justify-center text-[10px] font-bold">I</div><span class="font-label-sm text-muted">Speso da Ivan</span></div>
+      <span class="font-headline-sm text-[#2a5948] font-bold" id="conti-speso-ivan">0,00 €</span>
+      <span class="font-caption text-muted mt-0.5" id="conti-count-ivan">0 spese</span>
+    </div>
+    <div class="bg-surface rounded-xl p-space-sm shadow-sm border border-line/40 flex flex-col">
+      <div class="flex items-center gap-1.5 mb-2"><div class="w-5 h-5 rounded-full bg-[#834673] text-white flex items-center justify-center text-[10px] font-bold">I</div><span class="font-label-sm text-muted">Speso da Ilaria</span></div>
+      <span class="font-headline-sm text-[#834673] font-bold" id="conti-speso-ilaria">0,00 €</span>
+      <span class="font-caption text-muted mt-0.5" id="conti-count-ilaria">0 spese</span>
+    </div>
+  </div>
+
+  <div class="flex items-center justify-between px-1 mt-2">
+    <span class="font-body-sm text-muted">Totale speso insieme nel mese:</span>
+    <span class="font-headline-sm font-bold text-on-surface" id="conti-totale-mese">0,00 €</span>
+  </div>
+
+  <button type="button" id="btn-pareggia" class="w-full py-3 bg-surface border border-line/60 hover:bg-surface-container-low rounded-xl font-label-md text-primary font-bold flex items-center justify-center gap-2 mt-1 shadow-sm transition-colors"><span class="material-symbols-outlined text-[20px]">payments</span>Pareggia conti / Salda debito</button>
+
+  <div class="bg-surface rounded-xl p-space-md shadow-sm border border-line/50 mt-4">
+    <div class="flex items-center gap-2 mb-4">
+      <span class="material-symbols-outlined text-primary text-[20px]">add_card</span>
+      <h3 class="font-headline-sm text-primary font-bold">Registra Nuova Spesa</h3>
+    </div>
+    
+    <form id="form-nuova-spesa" class="flex flex-col gap-4">
+      <div class="flex flex-col gap-1.5">
+        <span class="font-label-sm text-muted uppercase text-[10px] tracking-wider font-bold">Chi ha pagato?</span>
+        <div class="flex bg-surface-container p-1 rounded-lg gap-1">
+          <button type="button" id="btn-payer-ivan" class="flex-1 py-2 rounded-md bg-white shadow-sm border border-line/40 font-label-sm flex items-center justify-center gap-1.5 transition-all text-on-surface"><div class="w-4 h-4 rounded-full bg-[#2a5948] text-white flex items-center justify-center text-[9px] font-bold">I</div>Ivan (Tu)</button>
+          <button type="button" id="btn-payer-ilaria" class="flex-1 py-2 rounded-md bg-transparent border border-transparent text-muted hover:bg-white/50 font-label-sm flex items-center justify-center gap-1.5 transition-all"><div class="w-4 h-4 rounded-full bg-[#834673] text-white flex items-center justify-center text-[9px] font-bold">I</div>Ilaria</button>
+        </div>
+      </div>
+      
+      <div class="grid grid-cols-2 gap-3">
+        <div class="flex flex-col gap-1.5">
+          <span class="font-label-sm text-muted uppercase text-[10px] tracking-wider font-bold">Importo (€)</span>
+          <div class="relative">
+            <span class="absolute left-3 top-1/2 -translate-y-1/2 font-headline-sm text-muted">€</span>
+            <input type="number" id="input-spesa-importo" step="0.01" min="0" class="w-full h-11 pl-8 pr-3 rounded-lg bg-surface-container font-headline-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/20" required placeholder="0.00">
+          </div>
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <span class="font-label-sm text-muted uppercase text-[10px] tracking-wider font-bold">Data</span>
+          <input type="date" id="input-spesa-data" class="w-full h-11 px-3 rounded-lg bg-surface-container font-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/20" required>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-1.5">
+        <span class="font-label-sm text-muted uppercase text-[10px] tracking-wider font-bold">Descrizione o Negozio</span>
+        <div class="relative">
+          <span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-[18px] text-muted">storefront</span>
+          <input type="text" id="input-spesa-desc" class="w-full h-11 pl-10 pr-3 rounded-lg bg-surface-container font-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/20" required placeholder="Es. Spesa Conad">
+        </div>
+      </div>
+
+      <button type="submit" class="w-full h-11 bg-primary text-on-primary rounded-lg font-label-md font-bold mt-2 hover:bg-primary-container transition-colors shadow-sm">Aggiungi Spesa</button>
+    </form>
+  </div>
+  
+  <div class="mt-4 pb-4">
+    <span class="font-label-sm text-muted uppercase text-[10px] tracking-wider font-bold px-1 mb-2 block">Ultime Spese Registrate</span>
+    <div id="lista-spese-recenti" class="flex flex-col gap-2"></div>
+  </div>
+</div></div>
   </main>
   <nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-1px_10px_rgba(40,35,20,0.05)] border-t border-line/40">
     <div class="flex items-center justify-around h-16 px-margin-mobile">
       <button type="button" class="tab-trigger flex flex-col items-center justify-center w-20 h-12 text-primary font-semibold transition-colors" data-tab="tab-menu" data-title="Menu Settimanale"><span class="material-symbols-outlined text-[24px]">restaurant_menu</span><span class="font-label-md text-label-md mt-0.5">Menu</span></button>
       <button type="button" class="tab-trigger flex flex-col items-center justify-center w-20 h-12 text-muted hover:text-on-surface transition-colors" data-tab="tab-ricette" data-title="Ricettario"><span class="material-symbols-outlined text-[24px]">menu_book</span><span class="font-label-md text-label-md mt-0.5">Ricette</span></button>
       <button type="button" class="tab-trigger flex flex-col items-center justify-center w-20 h-12 text-muted hover:text-on-surface transition-colors" data-tab="tab-spesa" data-title="Lista Della Spesa"><span class="material-symbols-outlined text-[24px]">checklist</span><span class="font-label-md text-label-md mt-0.5">Spesa</span></button>
+      <button type="button" class="tab-trigger flex flex-col items-center justify-center w-20 h-12 text-muted hover:text-on-surface transition-colors" data-tab="tab-conti" data-title="Conti Condivisi"><span class="material-symbols-outlined text-[24px]">account_balance_wallet</span><span class="font-label-md text-label-md mt-0.5">Conti</span></button>
     </div>
   </nav>
 
@@ -1361,5 +1439,126 @@
   // Renderizzo inizialmente per vuoto, ma on('value') farà il rendering coi dati
   render();
 })();
+</script>
+
+  // CONTI LOGIC
+  var contiRef = firebase.database().ref('conti_v1');
+  var spese = [];
+  var currentPayer = 'Ivan';
+
+  var btnPayerIvan = document.getElementById('btn-payer-ivan');
+  var btnPayerIlaria = document.getElementById('btn-payer-ilaria');
+  var inputImporto = document.getElementById('input-spesa-importo');
+  var inputData = document.getElementById('input-spesa-data');
+  var inputDesc = document.getElementById('input-spesa-desc');
+  var formSpesa = document.getElementById('form-nuova-spesa');
+
+  var today = new Date().toISOString().split('T')[0];
+  if(inputData) inputData.value = today;
+
+  function switchPayer(payer) {
+    currentPayer = payer;
+    if (payer === 'Ivan') {
+      btnPayerIvan.className = 'flex-1 py-2 rounded-md bg-white shadow-sm border border-line/40 font-label-sm flex items-center justify-center gap-1.5 transition-all text-on-surface';
+      btnPayerIvan.innerHTML = '<div class="w-4 h-4 rounded-full bg-[#2a5948] text-white flex items-center justify-center text-[9px] font-bold">I</div>Ivan (Tu)';
+      btnPayerIlaria.className = 'flex-1 py-2 rounded-md bg-transparent border border-transparent text-muted hover:bg-white/50 font-label-sm flex items-center justify-center gap-1.5 transition-all';
+      btnPayerIlaria.innerHTML = '<div class="w-4 h-4 rounded-full bg-[#834673] text-white flex items-center justify-center text-[9px] font-bold">I</div>Ilaria';
+    } else {
+      btnPayerIlaria.className = 'flex-1 py-2 rounded-md bg-white shadow-sm border border-line/40 font-label-sm flex items-center justify-center gap-1.5 transition-all text-on-surface';
+      btnPayerIlaria.innerHTML = '<div class="w-4 h-4 rounded-full bg-[#834673] text-white flex items-center justify-center text-[9px] font-bold">I</div>Ilaria (Tu)';
+      btnPayerIvan.className = 'flex-1 py-2 rounded-md bg-transparent border border-transparent text-muted hover:bg-white/50 font-label-sm flex items-center justify-center gap-1.5 transition-all';
+      btnPayerIvan.innerHTML = '<div class="w-4 h-4 rounded-full bg-[#2a5948] text-white flex items-center justify-center text-[9px] font-bold">I</div>Ivan';
+    }
+  }
+
+  if (btnPayerIvan) btnPayerIvan.addEventListener('click', function() { switchPayer('Ivan'); });
+  if (btnPayerIlaria) btnPayerIlaria.addEventListener('click', function() { switchPayer('Ilaria'); });
+
+  if (formSpesa) formSpesa.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var importo = parseFloat(inputImporto.value);
+    if (isNaN(importo) || importo <= 0) return;
+    
+    var spesa = {
+      id: 's-' + Date.now(),
+      payer: currentPayer,
+      amount: importo,
+      date: inputData.value,
+      desc: inputDesc.value.trim()
+    };
+    
+    spese.push(spesa);
+    contiRef.set(spese);
+    
+    inputImporto.value = '';
+    inputDesc.value = '';
+  });
+
+  var btnPareggia = document.getElementById('btn-pareggia');
+  if (btnPareggia) {
+    btnPareggia.addEventListener('click', function() {
+      if(spese.length === 0) { alert('Nessuna spesa da pareggiare!'); return; }
+      if(confirm('Vuoi davvero pareggiare i conti? Questo azzererà il saldo per entrambi.')) {
+        spese = [];
+        contiRef.set(spese);
+      }
+    });
+  }
+
+  contiRef.on('value', function(snapshot) {
+    spese = snapshot.val() || [];
+    renderConti();
+  });
+
+  function formatMoney(num) {
+    return num.toLocaleString('it-IT', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+  }
+
+  function renderConti() {
+    var totIvan = 0;
+    var totIlaria = 0;
+    var countIvan = 0;
+    var countIlaria = 0;
+    var listaHtml = '';
+    var sortedSpese = spese.slice().reverse();
+
+    sortedSpese.forEach(function(s) {
+      if (s.payer === 'Ivan') { totIvan += s.amount; countIvan++; }
+      else { totIlaria += s.amount; countIlaria++; }
+      var icon = s.payer === 'Ivan' ? '<div class="w-8 h-8 shrink-0 rounded-full bg-[#2a5948] text-white flex items-center justify-center text-[12px] font-bold mt-1 shadow-sm border border-white/20">I</div>' : '<div class="w-8 h-8 shrink-0 rounded-full bg-[#834673] text-white flex items-center justify-center text-[12px] font-bold mt-1 shadow-sm border border-white/20">I</div>';
+      var dParts = s.date.split('-');
+      var fDate = dParts.length === 3 ? dParts[2] + '/' + dParts[1] : s.date;
+      listaHtml += '<div class="bg-surface rounded-xl p-3 shadow-sm border border-line/40 flex items-start gap-3"><div class="flex-1 min-w-0"><div class="flex items-center justify-between mb-0.5"><span class="font-body-sm font-bold truncate text-on-surface">' + s.desc + '</span><span class="font-label-md font-bold text-on-surface">' + formatMoney(s.amount) + '</span></div><div class="flex items-center gap-1.5"><span class="font-caption text-muted">' + fDate + ' • Pagato da ' + s.payer + '</span></div></div>' + icon + '</div>';
+    });
+
+    document.getElementById('conti-speso-ivan').textContent = formatMoney(totIvan);
+    document.getElementById('conti-count-ivan').textContent = countIvan + (countIvan === 1 ? ' spesa' : ' spese');
+    document.getElementById('conti-speso-ilaria').textContent = formatMoney(totIlaria);
+    document.getElementById('conti-count-ilaria').textContent = countIlaria + (countIlaria === 1 ? ' spesa' : ' spese');
+    document.getElementById('conti-totale-mese').textContent = formatMoney(totIvan + totIlaria);
+
+    var listaContainer = document.getElementById('lista-spese-recenti');
+    if(spese.length === 0) {
+      listaContainer.innerHTML = '<div class="text-center py-6 bg-surface rounded-xl border border-line/30"><span class="material-symbols-outlined text-[32px] text-muted/30">receipt_long</span><p class="font-body-sm text-muted mt-2">Nessuna spesa registrata</p></div>';
+    } else {
+      listaContainer.innerHTML = listaHtml;
+    }
+
+    var diff = totIvan - totIlaria;
+    var debit = Math.abs(diff) / 2;
+    var saldoContainer = document.getElementById('conti-saldo-card');
+
+    if (diff === 0) {
+      saldoContainer.className = 'bg-surface-container rounded-xl p-space-md shadow-sm flex flex-col gap-2 text-center items-center justify-center py-6 border border-line/40';
+      saldoContainer.innerHTML = '<span class="material-symbols-outlined text-[32px] text-primary">balance</span><span class="font-label-md text-on-surface font-bold mt-1">Siete in pari!</span><span class="font-caption text-muted">Nessuno deve niente a nessuno.</span>';
+    } else if (diff > 0) {
+      saldoContainer.className = 'bg-[#e8f3ee] rounded-xl p-space-md border border-[#c4e3d4] shadow-sm flex flex-col gap-2 relative overflow-hidden';
+      saldoContainer.innerHTML = '<div class="flex items-center gap-3 relative z-10"><div class="w-10 h-10 rounded-full bg-[#2a5948] text-white flex items-center justify-center font-headline-sm font-bold shadow-sm">I</div><div class="flex flex-col"><span class="font-label-sm text-[#2a5948] uppercase text-[10px] tracking-wider font-bold">Saldo</span><div class="flex items-baseline gap-1.5"><span class="font-headline-sm text-[#2a5948]">Ilaria deve a Ivan</span><span class="font-headline-md font-bold text-[#1a382d]">' + formatMoney(debit) + '</span></div></div></div><div class="flex items-center gap-2 mt-2 pt-2 border-t border-[#c4e3d4] relative z-10"><span class="material-symbols-outlined text-[#2a5948] text-[16px]">trending_up</span><span class="font-caption text-[#2a5948] font-bold">Ivan è in credito</span><span class="font-caption text-[#2a5948] ml-auto font-bold">50% quota</span></div>';
+    } else {
+      saldoContainer.className = 'bg-[#f3e8ee] rounded-xl p-space-md border border-[#e3c4d4] shadow-sm flex flex-col gap-2 relative overflow-hidden';
+      saldoContainer.innerHTML = '<div class="flex items-center gap-3 relative z-10"><div class="w-10 h-10 rounded-full bg-[#834673] text-white flex items-center justify-center font-headline-sm font-bold shadow-sm">I</div><div class="flex flex-col"><span class="font-label-sm text-[#834673] uppercase text-[10px] tracking-wider font-bold">Saldo</span><div class="flex items-baseline gap-1.5"><span class="font-headline-sm text-[#834673]">Ivan deve a Ilaria</span><span class="font-headline-md font-bold text-[#5c3050]">' + formatMoney(debit) + '</span></div></div></div><div class="flex items-center gap-2 mt-2 pt-2 border-t border-[#e3c4d4] relative z-10"><span class="material-symbols-outlined text-[#834673] text-[16px]">trending_up</span><span class="font-caption text-[#834673] font-bold">Ilaria è in credito</span><span class="font-caption text-[#834673] ml-auto font-bold">50% quota</span></div>';
+    }
+  }
+
 </script>
 </body></html>
