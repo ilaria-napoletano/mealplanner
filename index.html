@@ -1,0 +1,852 @@
+<title>Menu Fuori Sede</title>
+<style>
+  :root{
+    --bg:#FAF7F1;
+    --surface:#FFFFFF;
+    --surface-2:#F1EAD9;
+    --ink:#2A281F;
+    --muted:#736C58;
+    --line:#E5DCC6;
+    --pranzo:#3D6355;
+    --pranzo-soft:#E4EDE6;
+    --cena:#7A4665;
+    --cena-soft:#F1E4EC;
+    --occ:#B4791C;
+    --occ-soft:#F5E9D4;
+    --shadow: 0 1px 2px rgba(40,35,20,.06), 0 6px 16px rgba(40,35,20,.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#1C1A15;
+      --surface:#252219;
+      --surface-2:#2E2A1F;
+      --ink:#EFE8D6;
+      --muted:#A99E82;
+      --line:#3C3627;
+      --pranzo:#7FAD98;
+      --pranzo-soft:#26332C;
+      --cena:#D19BC0;
+      --cena-soft:#332430;
+      --occ:#E3AC55;
+      --occ-soft:#332A18;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 20px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#1C1A15;
+    --surface:#252219;
+    --surface-2:#2E2A1F;
+    --ink:#EFE8D6;
+    --muted:#A99E82;
+    --line:#3C3627;
+    --pranzo:#7FAD98;
+    --pranzo-soft:#26332C;
+    --cena:#D19BC0;
+    --cena-soft:#332430;
+    --occ:#E3AC55;
+    --occ-soft:#332A18;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 20px rgba(0,0,0,.35);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{background:var(--bg);}
+  body{
+    color:var(--ink);
+    font-family:'Work Sans', ui-sans-serif, system-ui, sans-serif;
+    display:flex;
+    justify-content:center;
+    min-height:100dvh;
+  }
+  .app{width:100%;max-width:920px;display:flex;flex-direction:column;min-height:100dvh;}
+
+  h1,h2,h3{font-family:'Fraunces', Georgia, serif; text-wrap:balance; margin:0;}
+
+  /* ---------- App chrome ---------- */
+  .topbar{
+    position:sticky;
+    top:env(safe-area-inset-top, 0px);
+    z-index:10;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+    padding:16px 20px;
+  }
+  .topbar h1{font-size:1.1rem;font-weight:600;}
+
+  .tabbar{
+    position:fixed;
+    left:0;right:0;bottom:0;
+    z-index:20;
+    display:flex;
+    gap:4px;
+    background:var(--surface);
+    border-top:1px solid var(--line);
+    padding:8px 12px calc(8px + env(safe-area-inset-bottom, 0px));
+  }
+  .tabbar button{
+    flex:1;
+    background:none;
+    border:none;
+    font-family:'IBM Plex Mono', ui-monospace, monospace;
+    font-size:.72rem;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--muted);
+    padding:10px 4px;
+    border-radius:10px;
+    cursor:pointer;
+  }
+  .tabbar button.active{color:var(--ink);background:var(--surface-2);}
+  .tabbar button:focus-visible{outline:2px solid var(--pranzo);outline-offset:2px;}
+
+  .tabpanel{
+    display:flex;
+    flex-direction:column;
+    gap:40px;
+    padding:24px 20px calc(96px + env(safe-area-inset-bottom, 0px));
+    width:100%;
+  }
+
+  /* ---------- Section headers ---------- */
+  .section-head{display:flex;flex-direction:column;gap:6px;}
+  .section-head h2{font-size:1.5rem;font-weight:600;}
+  .section-head.pranzo h2{color:var(--pranzo);}
+  .section-head.cena h2{color:var(--cena);}
+  .section-head p{margin:0;color:var(--muted);font-size:.92rem;max-width:60ch;}
+
+  /* ---------- Weekly grid ---------- */
+  .week-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+    gap:14px;
+  }
+  .day-card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:16px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    box-shadow:var(--shadow);
+  }
+  .day-card .day-name{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.05rem;
+  }
+  .meal-row{display:flex;flex-direction:column;gap:4px;}
+  .meal-row .kind{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.65rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+  }
+  .meal-row.pranzo .kind{color:var(--pranzo);}
+  .meal-row.cena .kind{color:var(--cena);}
+  .meal-row a,
+  .meal-row > span:not(.kind){
+    color:var(--ink);
+    text-decoration:none;
+    font-size:.92rem;
+    line-height:1.4;
+  }
+  .meal-row a{border-bottom:1px dotted var(--line); cursor:pointer;}
+  .meal-row a:hover{border-bottom-color:var(--ink);}
+  .day-card.weekend{background:var(--occ-soft);border-color:var(--occ);}
+
+  /* ---------- Recipe cards ---------- */
+  .recipes{display:flex;flex-direction:column;gap:16px;}
+  .recipe{
+    scroll-margin-top:76px;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:22px;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    box-shadow:var(--shadow);
+  }
+  .recipe-head{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:10px 16px;
+  }
+  .recipe-head h3{font-size:1.2rem;font-weight:600;}
+  .recipe-meta{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .time-badge{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.75rem;
+    font-variant-numeric:tabular-nums;
+    color:var(--ink);
+    background:var(--surface-2);
+    border-radius:5px;
+    padding:3px 8px;
+  }
+  .equip{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.63rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--muted);
+    border:1px solid var(--line);
+    border-radius:5px;
+    padding:3px 7px;
+  }
+  .recipe-body{
+    display:grid;
+    grid-template-columns:1fr 1.6fr;
+    gap:20px;
+  }
+  @media (max-width:640px){
+    .recipe-body{grid-template-columns:1fr;}
+  }
+  .recipe-body h4{
+    margin:0 0 8px 0;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.68rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+  .ingredients{margin:0;padding-left:1.1em;font-size:.9rem;line-height:1.55;}
+  .ingredients li{margin-bottom:2px;}
+  .steps{margin:0;padding-left:1.2em;font-size:.92rem;line-height:1.6;}
+  .steps li{margin-bottom:6px;}
+  .source{
+    font-size:.82rem;
+    color:var(--muted);
+  }
+  .source a{color:inherit;}
+
+  .occasional-badge{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.63rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--occ);
+    background:var(--occ-soft);
+    border-radius:5px;
+    padding:3px 8px;
+  }
+
+  /* ---------- Rotation note ---------- */
+  .rotation{
+    background:var(--surface-2);
+    border-radius:14px;
+    padding:22px 24px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .rotation h3{font-size:1.1rem;font-weight:600;}
+  .rotation ul{margin:0;padding-left:1.2em;font-size:.92rem;line-height:1.6;}
+  .rotation p{margin:0;font-size:.9rem;color:var(--muted);}
+
+  /* ---------- Shopping list ---------- */
+  .shop-actions{display:flex;gap:10px;flex-wrap:wrap;}
+  .shop-btn{
+    background:none;
+    border:1px solid var(--line);
+    color:var(--muted);
+    border-radius:8px;
+    padding:8px 14px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.68rem;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    cursor:pointer;
+  }
+  .shop-btn:hover{color:var(--ink);border-color:var(--ink);}
+  .shop-add{display:flex;gap:8px;}
+  .shop-add input{
+    flex:1;
+    padding:11px 12px;
+    border-radius:8px;
+    border:1px solid var(--line);
+    background:var(--surface);
+    color:var(--ink);
+    font-family:inherit;
+    font-size:.92rem;
+  }
+  .shop-add input:focus-visible{outline:2px solid var(--pranzo);outline-offset:1px;}
+  .shop-add button{
+    padding:0 18px;
+    border-radius:8px;
+    border:none;
+    background:var(--pranzo);
+    color:var(--bg);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.72rem;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    cursor:pointer;
+  }
+  .shop-category h4{
+    margin:0 0 8px 0;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.68rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+  .shop-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;}
+  .shop-item{display:flex;align-items:center;gap:10px;padding:10px 2px;border-bottom:1px solid var(--line);}
+  .shop-item label{flex:1;font-size:.92rem;line-height:1.4;cursor:pointer;}
+  .shop-item input[type=checkbox]{width:19px;height:19px;accent-color:var(--pranzo);flex-shrink:0;}
+  .shop-item.checked label{color:var(--muted);text-decoration:line-through;}
+  .shop-item .del{background:none;border:none;color:var(--muted);font-size:1.1rem;line-height:1;cursor:pointer;padding:4px 6px;}
+  .shop-item .del:hover{color:var(--cena);}
+  #shop-list{display:flex;flex-direction:column;gap:22px;}
+
+  footer{
+    text-align:center;
+    font-size:.8rem;
+    color:var(--muted);
+    padding-top:8px;
+    border-top:1px solid var(--line);
+  }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+
+<div class="app">
+
+  <div class="topbar"><h1>Menu fuori sede</h1></div>
+
+  <!-- ================= TAB: MENU ================= -->
+  <section id="tab-menu" class="tabpanel">
+    <div class="section-head">
+      <h2>La settimana a colpo d'occhio</h2>
+      <p>Tocca un piatto per aprire la ricetta.</p>
+    </div>
+    <div class="week-grid">
+
+      <div class="day-card">
+        <div class="day-name">Lunedì</div>
+        <div class="meal-row pranzo"><span class="kind">Pranzo</span><span>Spaghetti al preparato di mare</span></div>
+        <div class="meal-row cena"><span class="kind">Cena</span><span>Fettine di carne con falafel</span></div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-name">Martedì</div>
+        <div class="meal-row pranzo"><span class="kind">Pranzo</span><a href="#paccheri-zucchine">Mezzi paccheri, crema di zucchine, burrata e salmone</a></div>
+        <div class="meal-row cena"><span class="kind">Cena</span><span>Piadina farcita</span></div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-name">Mercoledì</div>
+        <div class="meal-row pranzo"><span class="kind">Pranzo</span><a href="#burro-tonno">Spaghetti burro e tonno</a></div>
+        <div class="meal-row cena"><span class="kind">Cena</span><span>Filetti di merluzzo / Filetto di salmone al forno <span class="occasional-badge">a settimane alterne</span></span></div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-name">Giovedì</div>
+        <div class="meal-row pranzo"><span class="kind">Pranzo</span><a href="#zucchine-gamberetti">Zucchine e gamberetti</a></div>
+        <div class="meal-row cena"><span class="kind">Cena</span><span>Hamburger vegetali Kioene</span></div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-name">Venerdì</div>
+        <div class="meal-row pranzo"><span class="kind">Pranzo</span><a href="#pomodorini-melanzane-burrata">Pomodorini arrosto, melanzane e burrata</a></div>
+        <div class="meal-row cena"><span class="kind">Cena</span><span>Petto di pollo in padella / Cotoletta e patatine <span class="occasional-badge">a settimane alterne</span></span></div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-name">Sabato</div>
+        <div class="meal-row pranzo"><span class="kind">Pranzo</span><a href="#pistacchio-mortadella">Pesto di pistacchio e mortadella</a></div>
+        <div class="meal-row cena"><span class="kind">Cena</span><a href="#pizza-patate">Gateau di patate</a></div>
+      </div>
+
+      <div class="day-card weekend">
+        <div class="day-name">Domenica</div>
+        <div class="meal-row pranzo"><span class="kind">Pranzo</span><a href="#lenticchie">Vellutata di lenticchie frullate</a></div>
+        <div class="meal-row cena"><span class="kind">Cena</span><span>Di nuovo carne / Toast / Frittata di verdure <span class="occasional-badge">a rotazione</span></span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= TAB: RICETTE ================= -->
+  <section id="tab-ricette" class="tabpanel" hidden>
+
+    <div>
+      <div class="section-head pranzo">
+        <h2>Ricette — Pranzo</h2>
+        <p>Tutti primi piatti veloci, pensati per essere pronti in 10–20 minuti tra una lezione e l'altra.</p>
+      </div>
+      <div class="recipes" style="margin-top:16px;">
+
+        <article class="recipe" id="paccheri-zucchine">
+          <div class="recipe-head">
+            <h3>Mezzi paccheri, crema di zucchine, burrata e salmone — martedì</h3>
+            <div class="recipe-meta"><span class="time-badge">20'</span><span class="equip">Fornelli</span><span class="equip">Minipimer</span></div>
+          </div>
+          <div class="recipe-body">
+            <div>
+              <h4>Ingredienti (1 persona)</h4>
+              <ul class="ingredients">
+                <li>90 g mezzi paccheri</li>
+                <li>1 zucchina media</li>
+                <li>50 g salmone affumicato</li>
+                <li>50 g burrata</li>
+                <li>Olio evo, sale, pepe</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Procedimento</h4>
+              <ol class="steps">
+                <li>Taglia la zucchina a rondelle sottili e falla saltare in padella con un filo d'olio per 8-10 minuti finché morbida.</li>
+                <li>Tieni da parte qualche rondella intera; frulla il resto con il minipimer (con un mestolo di acqua di cottura pasta) fino a ottenere una crema.</li>
+                <li>Cuoci la pasta, scolala e mantecala in padella con la crema e le rondelle tenute da parte.</li>
+                <li>Impiatta, aggiungi il salmone a listarelle e la burrata spezzettata a crudo.</li>
+              </ol>
+            </div>
+          </div>
+          <div class="source">Ricetta di riferimento: <a href="https://blog.giallozafferano.it/studentiaifornelli/pasta-zucchine-e-salmone/" target="_blank" rel="noopener">Pasta zucchine e salmone, GialloZafferano</a> (qui aggiungiamo la burrata)</div>
+        </article>
+
+        <article class="recipe" id="burro-tonno">
+          <div class="recipe-head">
+            <h3>Spaghetti burro e tonno — mercoledì</h3>
+            <div class="recipe-meta"><span class="time-badge">10'</span><span class="equip">Fornelli</span></div>
+          </div>
+          <div class="recipe-body">
+            <div>
+              <h4>Ingredienti (1 persona)</h4>
+              <ul class="ingredients">
+                <li>90 g spaghetti</li>
+                <li>1 scatoletta di tonno sott'olio (80 g sgocciolato)</li>
+                <li>20 g burro</li>
+                <li>Prezzemolo, pepe nero</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Procedimento</h4>
+              <ol class="steps">
+                <li>Cuoci gli spaghetti in acqua salata.</li>
+                <li>Sgocciola il tonno e sbriciolalo in una ciotola capiente insieme al burro a tocchetti.</li>
+                <li>Scola la pasta tenendo da parte un po' di acqua di cottura, versala nella ciotola e manteca velocemente, aggiungendo acqua se serve.</li>
+                <li>Completa con pepe macinato e prezzemolo tritato.</li>
+              </ol>
+            </div>
+          </div>
+          <div class="source">Ricetta di riferimento: <a href="https://blog.giallozafferano.it/loti64/spaghetti-al-burro-e-tonno/" target="_blank" rel="noopener">Spaghetti al burro e tonno, GialloZafferano</a></div>
+        </article>
+
+        <article class="recipe" id="zucchine-gamberetti">
+          <div class="recipe-head">
+            <h3>Zucchine e gamberetti — giovedì</h3>
+            <div class="recipe-meta"><span class="time-badge">15'</span><span class="equip">Fornelli</span></div>
+          </div>
+          <div class="recipe-body">
+            <div>
+              <h4>Ingredienti (1 persona)</h4>
+              <ul class="ingredients">
+                <li>90 g pasta corta</li>
+                <li>1 zucchina</li>
+                <li>120 g gamberetti (anche surgelati)</li>
+                <li>1/2 spicchio d'aglio</li>
+                <li>Olio evo, sale, pepe, prezzemolo</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Procedimento</h4>
+              <ol class="steps">
+                <li>Taglia la zucchina a rondelle sottili o a julienne e falla saltare in padella con olio e aglio per 5-6 minuti.</li>
+                <li>Aggiungi i gamberetti e cuoci altri 3-4 minuti finché sono rosati.</li>
+                <li>Cuoci la pasta, scolala al dente e saltala in padella col condimento, allungando con acqua di cottura.</li>
+                <li>Servi con prezzemolo fresco tritato.</li>
+              </ol>
+            </div>
+          </div>
+          <div class="source">Ricetta di riferimento: <a href="https://blog.giallozafferano.it/ricettepanedolci/pasta-zucchine-e-gamberetti-cremosa/" target="_blank" rel="noopener">Pasta zucchine e gamberetti, GialloZafferano</a></div>
+        </article>
+
+        <article class="recipe" id="pomodorini-melanzane-burrata">
+          <div class="recipe-head">
+            <h3>Pomodorini arrosto, melanzane e burrata — venerdì</h3>
+            <div class="recipe-meta"><span class="time-badge">20-25'</span><span class="equip">Air fryer</span><span class="equip">Minipimer</span></div>
+          </div>
+          <div class="recipe-body">
+            <div>
+              <h4>Ingredienti (1-2 persone)</h4>
+              <ul class="ingredients">
+                <li>200 g pasta</li>
+                <li>90 g pomodorini</li>
+                <li>1 melanzana</li>
+                <li>1 burrata</li>
+                <li>Stracciatella q.b.</li>
+                <li>Olio, sale, pepe, origano q.b.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Procedimento</h4>
+              <ol class="steps">
+                <li>Taglia la melanzana a dadini e i pomodorini a metà.</li>
+                <li>Trasferiscili su un vassoio di carta forno (o in teglia), condisci con sale, pepe, origano e un filo d'olio.</li>
+                <li>Cuoci in friggitrice ad aria a 190° per 15 minuti, mescolando a metà, oppure in forno a 200° per 25 minuti.</li>
+                <li>Frulla le verdure (tenendone da parte un po') insieme alla burrata e un filo d'olio.</li>
+                <li>Scola la pasta e condiscila con la crema ottenuta, allungando con acqua di cottura fino a una cremosità perfetta.</li>
+                <li>Decora con le verdure tenute da parte, la stracciatella, un filo d'olio e pepe.</li>
+              </ol>
+            </div>
+          </div>
+        </article>
+
+        <article class="recipe" id="pistacchio-mortadella">
+          <div class="recipe-head">
+            <h3>Pesto di pistacchio e mortadella — sabato</h3>
+            <div class="recipe-meta"><span class="time-badge">15'</span><span class="equip">Fornelli</span><span class="equip">Minipimer</span></div>
+          </div>
+          <div class="recipe-body">
+            <div>
+              <h4>Ingredienti (1 persona)</h4>
+              <ul class="ingredients">
+                <li>90 g pasta corta</li>
+                <li>40 g mortadella a cubetti</li>
+                <li>30 g pistacchi sgusciati</li>
+                <li>Pecorino grattugiato, olio evo</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Procedimento</h4>
+              <ol class="steps">
+                <li>Frulla metà dei pistacchi con un filo d'olio e un po' di pecorino (anche col minipimer) per un pesto grezzo.</li>
+                <li>Rosola la mortadella a cubetti in padella un paio di minuti.</li>
+                <li>Cuoci la pasta, scolala e mantecala col pesto di pistacchio e la mortadella, allungando con acqua di cottura.</li>
+                <li>Completa con i pistacchi rimasti, tritati grossolanamente.</li>
+              </ol>
+            </div>
+          </div>
+          <div class="source">Ricetta di riferimento: <a href="https://blog.giallozafferano.it/unamammachecucina1/ricetta-pasta-al-pesto-di-pistacchi-e-mortadella/" target="_blank" rel="noopener">Pasta al pesto di pistacchi e mortadella, GialloZafferano</a> (versione senza stracchino)</div>
+        </article>
+
+        <article class="recipe" id="lenticchie">
+          <div class="recipe-head">
+            <h3>Vellutata di lenticchie frullate — domenica</h3>
+            <div class="recipe-meta"><span class="time-badge">25'</span><span class="equip">Fornelli</span><span class="equip">Minipimer</span></div>
+          </div>
+          <div class="recipe-body">
+            <div>
+              <h4>Ingredienti (1 persona)</h4>
+              <ul class="ingredients">
+                <li>100 g lenticchie rosse decorticate (non serve ammollo)</li>
+                <li>1/2 cipolla, 1/2 carota, 1/2 costa di sedano (facoltativi)</li>
+                <li>Brodo vegetale o acqua</li>
+                <li>Olio evo, sale, pepe</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Procedimento</h4>
+              <ol class="steps">
+                <li>Soffriggi cipolla, carota e sedano tritati in un filo d'olio per qualche minuto (puoi anche saltare questo passaggio per fare prima).</li>
+                <li>Aggiungi le lenticchie rosse e copri con brodo o acqua; cuoci 15-18 minuti finché sono morbide e si sfaldano facilmente.</li>
+                <li>Frulla tutto con il minipimer fino a una crema liscia, aggiustando la densità con altro brodo se serve.</li>
+                <li>Servi con un filo d'olio a crudo, pepe e volendo crostini o pane tostato.</li>
+              </ol>
+            </div>
+          </div>
+          <div class="source">Ricetta di riferimento: <a href="https://blog.giallozafferano.it/chezbibia/vellutata-di-lenticchie-rosse/" target="_blank" rel="noopener">Vellutata di lenticchie rosse decorticate, GialloZafferano</a></div>
+        </article>
+
+      </div>
+    </div>
+
+    <div>
+      <div class="section-head cena">
+        <h2>Ricette — Cena</h2>
+        <p>La maggior parte delle cene sono piatti semplici (pesce o carne ai ferri, hamburger, cotolette) che non hanno bisogno di una vera ricetta: trovi tutto nella tabella del Menu. Qui sotto solo il piatto che richiede qualche passaggio in più.</p>
+      </div>
+      <div class="recipes" style="margin-top:16px;">
+
+        <article class="recipe" id="pizza-patate">
+          <div class="recipe-head">
+            <h3>Gateau di patate — sabato</h3>
+            <div class="recipe-meta"><span class="time-badge">15' prep + 40' forno</span><span class="equip">Forno</span></div>
+          </div>
+          <div class="recipe-body">
+            <div>
+              <h4>Ingredienti (per una teglia piccola, 2-3 porzioni)</h4>
+              <ul class="ingredients">
+                <li>500 g patate vecchie</li>
+                <li>85 g prosciutto cotto (una fetta spessa)</li>
+                <li>85 g mozzarella di bufala affumicata o provola</li>
+                <li>25 g Parmigiano Reggiano grattugiato</li>
+                <li>1 uovo</li>
+                <li>Sale, pepe</li>
+                <li>Pangrattato e burro per la teglia</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Procedimento</h4>
+              <ol class="steps">
+                <li>Lessa le patate intere con la buccia per 40-50 minuti, finché si infilzano facilmente con una forchetta.</li>
+                <li>Scolale, schiacciale ancora calde con uno schiacciapatate, eliminando la buccia.</li>
+                <li>Taglia a cubetti il prosciutto cotto e la mozzarella/provola affumicata.</li>
+                <li>Quando le patate sono intiepidite, unisci l'uovo, il parmigiano, i cubetti di prosciutto e formaggio, sale e pepe; impasta a mano fino ad amalgamare bene.</li>
+                <li>Imburra una teglia piccola, cospargila di pangrattato, versa il composto e livella la superficie.</li>
+                <li>Cospargi con altro pangrattato e fiocchetti di burro, poi inforna a 200° (statico) per 30-35 minuti, quindi 5 minuti di grill per dorare la superficie.</li>
+                <li>Lascia riposare 10 minuti prima di servire.</li>
+              </ol>
+            </div>
+          </div>
+          <div class="source">Si conserva 2-3 giorni in frigo: puoi farlo in blocco unico e scaldarne una fetta a sera. Ricetta di riferimento: <a href="https://ricette.giallozafferano.it/Gateau-di-patate.html" target="_blank" rel="noopener">Gateau di patate, ricetta originale, GialloZafferano</a></div>
+        </article>
+
+      </div>
+    </div>
+
+    <div class="rotation" id="jolly">
+      <h3>Piatti extra per variare ancora</h3>
+      <p>Da usare al posto di un piatto fisso quando hai voglia di cambiare:</p>
+      <ul>
+        <li><strong>Frittata di verdure</strong> — 2 uova sbattute con la frusta, verdure saltate in padella, cotta 5-6 minuti per lato coperta. Ricetta di riferimento: <a href="https://blog.giallozafferano.it/studentiaifornelli/frittata-di-verdure/" target="_blank" rel="noopener">GialloZafferano</a>.</li>
+        <li><strong>Amatriciana</strong> — guanciale rosolato senza olio, passata di pomodoro, pecorino. Niente aglio né cipolla nella ricetta originale. <a href="https://blog.giallozafferano.it/allacciateilgrembiule/pasta-amatriciana/" target="_blank" rel="noopener">Ricetta</a>.</li>
+        <li><strong>Carbonara</strong> — guanciale, tuorli, pecorino, pepe; niente panna né aglio. <a href="https://blog.giallozafferano.it/valeriaciccotti/pasta-alla-carbonara/" target="_blank" rel="noopener">Ricetta</a>.</li>
+        <li><strong>Toast</strong> — resta il jolly per le sere senza tempo o senza spesa fatta.</li>
+        <li><strong>Focaccia senza impasto (niente planetaria)</strong> — <a href="https://blog.giallozafferano.it/rossellainpadella/focaccia-senza-impasto-ricetta-facile/" target="_blank" rel="noopener">ricetta su GialloZafferano</a>.</li>
+      </ul>
+      <p>Suggerimento: il gateau di patate regge bene in frigo 2-3 giorni, comodo da preparare in blocco unico la domenica.</p>
+    </div>
+
+    <footer>Meal planner personale — pensato per fornelli, forno, friggitrice ad aria, minipimer e frusta.</footer>
+
+  </section>
+
+  <!-- ================= TAB: SPESA ================= -->
+  <section id="tab-spesa" class="tabpanel" hidden>
+    <div class="section-head">
+      <h2>Lista della spesa</h2>
+      <p>Spunta quello che hai già preso: resta salvato su questo telefono anche se chiudi la pagina.</p>
+    </div>
+    <div class="shop-actions">
+      <button type="button" class="shop-btn" id="shop-reset">Reset spunte</button>
+      <button type="button" class="shop-btn" id="shop-restore">Ripristina lista</button>
+    </div>
+    <form id="shop-add-form" class="shop-add">
+      <input id="shop-add-input" type="text" placeholder="Aggiungi un ingrediente..." autocomplete="off">
+      <button type="submit">Aggiungi</button>
+    </form>
+    <div id="shop-list"></div>
+  </section>
+
+  <nav class="tabbar">
+    <button type="button" data-tab="menu">Menu</button>
+    <button type="button" data-tab="ricette">Ricette</button>
+    <button type="button" data-tab="spesa">Spesa</button>
+  </nav>
+
+</div>
+
+<script>
+(function(){
+  var TABS = ['menu','ricette','spesa'];
+
+  function safeGet(key, fallback){
+    try{
+      var v = localStorage.getItem(key);
+      return v===null ? fallback : JSON.parse(v);
+    }catch(e){ return fallback; }
+  }
+  function safeSet(key, val){
+    try{ localStorage.setItem(key, JSON.stringify(val)); }catch(e){}
+  }
+
+  function showTab(name, scrollTarget){
+    TABS.forEach(function(t){
+      var panel = document.getElementById('tab-'+t);
+      if(panel) panel.hidden = (t!==name);
+      var btn = document.querySelector('.tabbar button[data-tab="'+t+'"]');
+      if(btn) btn.classList.toggle('active', t===name);
+    });
+    safeSet('mp_active_tab', name);
+    window.scrollTo({top:0});
+    if(scrollTarget){
+      requestAnimationFrame(function(){
+        requestAnimationFrame(function(){
+          var el = document.getElementById(scrollTarget);
+          if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+        });
+      });
+    }
+  }
+
+  document.querySelectorAll('.tabbar button').forEach(function(btn){
+    btn.addEventListener('click', function(){ showTab(btn.dataset.tab); });
+  });
+
+  document.querySelectorAll('#tab-menu a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      showTab('ricette', a.getAttribute('href').slice(1));
+    });
+  });
+
+  var startTab = safeGet('mp_active_tab', 'menu');
+  if(TABS.indexOf(startTab) === -1) startTab = 'menu';
+  showTab(startTab);
+
+  /* ---------- Shopping list ---------- */
+  var DEFAULT_ITEMS = [
+    {id:'v1',cat:'Frutta e verdura',label:'Zucchine (2)'},
+    {id:'v2',cat:'Frutta e verdura',label:'Pomodorini (2 vaschette)'},
+    {id:'v3',cat:'Frutta e verdura',label:'Melanzana (1)'},
+    {id:'v4',cat:'Frutta e verdura',label:'Cipolla, carota, sedano (per il soffritto)'},
+    {id:'v5',cat:'Frutta e verdura',label:'Prezzemolo'},
+    {id:'v6',cat:'Frutta e verdura',label:'Insalata mista'},
+    {id:'v7',cat:'Frutta e verdura',label:'Limone'},
+    {id:'v8',cat:'Frutta e verdura',label:'Patate (1 kg)'},
+    {id:'pc1',cat:'Pesce e carne',label:'Salmone affumicato (100 g)'},
+    {id:'pc2',cat:'Pesce e carne',label:'Gamberetti (120 g, anche surgelati)'},
+    {id:'pc3',cat:'Pesce e carne',label:'Filetti di merluzzo o salmone fresco'},
+    {id:'pc4',cat:'Pesce e carne',label:'Fettine di carne (100-150 g)'},
+    {id:'pc5',cat:'Pesce e carne',label:'Petto di pollo o fesa di pollo/tacchino'},
+    {id:'pc6',cat:'Pesce e carne',label:'Prosciutto cotto (una fetta spessa)'},
+    {id:'pc7',cat:'Pesce e carne',label:'Mortadella (40 g)'},
+    {id:'pr1',cat:'Pronti e surgelati',label:'Preparato di mare surgelato'},
+    {id:'pr2',cat:'Pronti e surgelati',label:'Falafel pronti (freschi o surgelati)'},
+    {id:'pr3',cat:'Pronti e surgelati',label:'Hamburger vegetali Kioene'},
+    {id:'pr4',cat:'Pronti e surgelati',label:'Tonno in scatola'},
+    {id:'pr5',cat:'Pronti e surgelati',label:'Piadine pronte (o farina per farle)'},
+    {id:'l1',cat:'Latticini e uova',label:'Burrata (2)'},
+    {id:'l2',cat:'Latticini e uova',label:'Stracciatella'},
+    {id:'l3',cat:'Latticini e uova',label:'Mozzarella di bufala affumicata o provola'},
+    {id:'l4',cat:'Latticini e uova',label:'Parmigiano Reggiano'},
+    {id:'l5',cat:'Latticini e uova',label:'Pecorino'},
+    {id:'l6',cat:'Latticini e uova',label:'Burro'},
+    {id:'l7',cat:'Latticini e uova',label:'Uova (6)'},
+    {id:'d1',cat:'Dispensa',label:'Pasta corta e lunga assortita (~700 g)'},
+    {id:'d2',cat:'Dispensa',label:'Lenticchie rosse decorticate (100 g)'},
+    {id:'d3',cat:'Dispensa',label:'Pistacchi sgusciati (30 g)'},
+    {id:'d4',cat:'Dispensa',label:'Pangrattato'},
+    {id:'d5',cat:'Dispensa',label:'Pane per toast'},
+    {id:'d6',cat:'Dispensa',label:'Olio evo, sale, pepe, origano (controlla le scorte)'}
+  ];
+
+  var checked = safeGet('mp_shop_checked', {});
+  var removed = safeGet('mp_shop_removed', []);
+  var custom = safeGet('mp_shop_custom', []);
+  var listEl = document.getElementById('shop-list');
+
+  function persistAll(){
+    safeSet('mp_shop_checked', checked);
+    safeSet('mp_shop_removed', removed);
+    safeSet('mp_shop_custom', custom);
+  }
+
+  function makeItemRow(id, label, isChecked, onDelete, onToggle){
+    var li = document.createElement('li');
+    li.className = 'shop-item' + (isChecked ? ' checked' : '');
+    var checkboxId = 'chk-'+id;
+    var cb = document.createElement('input');
+    cb.type = 'checkbox';
+    cb.id = checkboxId;
+    cb.checked = isChecked;
+    var lab = document.createElement('label');
+    lab.setAttribute('for', checkboxId);
+    lab.textContent = label;
+    var del = document.createElement('button');
+    del.type = 'button';
+    del.className = 'del';
+    del.setAttribute('aria-label','Rimuovi');
+    del.textContent = '×';
+    li.appendChild(cb);
+    li.appendChild(lab);
+    li.appendChild(del);
+    cb.addEventListener('change', function(){
+      li.classList.toggle('checked', cb.checked);
+      onToggle(cb.checked);
+    });
+    del.addEventListener('click', onDelete);
+    return li;
+  }
+
+  function render(){
+    listEl.innerHTML = '';
+    var categories = [];
+    DEFAULT_ITEMS.forEach(function(it){
+      if(removed.indexOf(it.id) !== -1) return;
+      if(categories.indexOf(it.cat) === -1) categories.push(it.cat);
+    });
+    categories.forEach(function(cat){
+      var block = document.createElement('div');
+      block.className = 'shop-category';
+      var h4 = document.createElement('h4');
+      h4.textContent = cat;
+      block.appendChild(h4);
+      var ul = document.createElement('ul');
+      ul.className = 'shop-list';
+      DEFAULT_ITEMS.filter(function(it){ return it.cat===cat && removed.indexOf(it.id)===-1; }).forEach(function(it){
+        ul.appendChild(makeItemRow(it.id, it.label, !!checked[it.id], function(){
+          if(removed.indexOf(it.id)===-1) removed.push(it.id);
+          persistAll();
+          render();
+        }, function(isChecked){
+          checked[it.id] = isChecked;
+          persistAll();
+        }));
+      });
+      block.appendChild(ul);
+      listEl.appendChild(block);
+    });
+    if(custom.length){
+      var block2 = document.createElement('div');
+      block2.className = 'shop-category';
+      var h42 = document.createElement('h4');
+      h42.textContent = 'Aggiunti da te';
+      block2.appendChild(h42);
+      var ul2 = document.createElement('ul');
+      ul2.className = 'shop-list';
+      custom.forEach(function(it){
+        ul2.appendChild(makeItemRow(it.id, it.text, !!it.checked, function(){
+          custom = custom.filter(function(c){ return c.id!==it.id; });
+          persistAll();
+          render();
+        }, function(isChecked){
+          it.checked = isChecked;
+          persistAll();
+        }));
+      });
+      block2.appendChild(ul2);
+      listEl.appendChild(block2);
+    }
+  }
+
+  render();
+
+  var form = document.getElementById('shop-add-form');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var input = document.getElementById('shop-add-input');
+    var val = input.value.trim();
+    if(!val) return;
+    custom.push({id:'custom-'+Date.now(), text: val, checked:false});
+    input.value = '';
+    persistAll();
+    render();
+  });
+
+  document.getElementById('shop-reset').addEventListener('click', function(){
+    checked = {};
+    custom.forEach(function(c){ c.checked = false; });
+    persistAll();
+    render();
+  });
+
+  document.getElementById('shop-restore').addEventListener('click', function(){
+    removed = [];
+    persistAll();
+    render();
+  });
+})();
+</script>

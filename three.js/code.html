@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+<!-- STITCH_THREEJS_START:ANIMATION_15 class="fixed inset-0 w-full h-full bg-transparent" -->
+<div class="fixed inset-0 w-full h-full bg-transparent" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_15" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_15');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  # Pacchetto Esportazione per Antigravity — App "Fuori Sede" (Casa a Bari)
+
+Questo documento contiene la guida tecnica, l'architettura dei file e il codice sorgente per integrare e avviare tutte le schermate dell'applicazione all'interno del tuo progetto **Antigravity** (o come PWA / applicazione mobile ibrida).
+
+---
+
+## 1. Mappa delle Schermate & Sezioni
+
+L'app è composta da 4 sezioni principali organizzate su una barra di navigazione inferiore a 3 tab:
+
+1. **Tab Menu (`#tab-menu`)**: Menu settimanale da Lunedì a Domenica con distinzione Pranzo/Cena, tempi di preparazione, note sui piatti a rotazione e card di riserva (Jolly: Frittata, Carbonara, Amatriciana, Toast).
+2. **Tab Ricette (`#tab-ricette`)**: Ricettario completo con filtri rapidi per categoria (*Tutte, Pranzi Rapidi, Dolci, Altro*), ingredienti calibrati per porzione, procedimenti passo-passo e collegamenti diretti cliccabili alle fonti originali (GialloZafferano).
+3. **Tab Spesa — Modalità "Lista Articoli" (`#tab-spesa-lista`)**: Checklist interattiva con raggruppamento per categorie merceologiche (*Frutta e verdura, Pesce e carne, Pronti e surgelati, Latticini e uova, Dispensa, Igiene personale, Detersivi e pulizia, Altro*), aggiunta con tag obbligatorio, contatore nel carrello e persistenza in `localStorage`.
+4. **Tab Spesa — Modalità "Conti & Saldi" (`#tab-spesa-conti`)**: Gestione delle spese condivise per i coinquilini (Ivan e Ilaria). Hero card automatica con saldo differenziale ("*Ilaria deve a Ivan 23,00 €*"), form di inserimento spesa con quota al 50%, e archivio storico con badge coinquilino.
+
+---
+
+## 2. Design System & Token Grafici ("Tavola Editoriale")
+
+I colori, font e stili globali dell'interfaccia:
+
+```css
+:root {
+  /* Palette Colori Primari */
+  --pranzo: #3D6355;        /* Verde Bosco / Brand principale */
+  --pranzo-soft: #E4EDE6;   /* Fondo verde delicato */
+  --cena: #7A4665;          /* Prugna / Accento secondario (Ilaria) */
+  --cena-soft: #F1E4EC;     /* Fondo prugna delicato */
+  --occ: #B4791C;           /* Ocra caldo / Badge ed evidenze */
+  --occ-soft: #F5E9D4;
+
+  /* Superfici e Testo */
+  --bg: #FAF7F1;            /* Sfondo caldo carta editoriale */
+  --surface: #FFFFFF;       /* Card e contenitori bianchi */
+  --surface-2: #F1EAD9;     /* Sfondo elementi secondari / hover */
+  --ink: #2A281F;           /* Testo principale scuro morbido */
+  --muted: #736C58;         /* Testo secondario e note */
+  --line: #E5DCC6;          /* Bordi e separatori sottili */
+  --shadow: 0 1px 2px rgba(40,35,20,.06), 0 6px 16px rgba(40,35,20,.05);
+}
+
+/* Tipografia */
+/* Titoli: 'Fraunces', Georgia, serif */
+/* Body: 'Work Sans', ui-sans-serif, system-ui, sans-serif */
+/* Dati, badge e orari: 'IBM Plex Mono', monospace */
+```
+
+---
+
+## 3. Struttura del Progetto Antigravity
+
+In Antigravity puoi organizzare i file nel seguente modo:
+
+```text
+/my-antigravity-app
+├── index.html        # Struttura Single Page Application con Shell & Tab
+├── /css
+│   └── styles.css    # Tutti gli stili, layout responsive e animazioni
+├── /js
+│   ├── app.js        # Gestione del router, tab switcher e navigazione
+│   ├── spesa.js      # Logica della spesa (filtri, spunte, carrello, storage)
+│   └── conti.js      # Calcolo saldi coinquilini (Ivan vs Ilaria)
+└── manifest.json     # Configurazione PWA per iPhone (Home screen standalone)
+```
+
+---
+
+## 4. Codice Applicativo Unificato (All-in-One SPA Pronto all'Uso)
+
+Per massimizzare la facilità di importazione diretta in Antigravity senza dipendenze o build tools, puoi copiare il seguente file unico:
+
+```html
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Menu Fuori Sede — Casa a Bari</title>
+  
+  <!-- Font Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #FAF7F1;
+      --surface: #FFFFFF;
+      --surface-2: #F1EAD9;
+      --ink: #2A281F;
+      --muted: #736C58;
+      --line: #E5DCC6;
+      --pranzo: #3D6355;
+      --pranzo-soft: #E4EDE6;
+      --cena: #7A4665;
+      --cena-soft: #F1E4EC;
+      --occ: #B4791C;
+      --occ-soft: #F5E9D4;
+      --shadow: 0 1px 3px rgba(40,35,20,.05), 0 8px 24px rgba(40,35,20,.06);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: var(--bg); color: var(--ink); font-family: 'Work Sans', sans-serif; -webkit-font-smoothing: antialiased; }
+    body { display: flex; justify-content: center; min-height: 100vh; min-height: 100dvh; }
+
+    .app-container {
+      width: 100%;
+      max-width: 480px; /* Dimensione mobile per viewport */
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      min-height: 100dvh;
+      background: var(--bg);
+      position: relative;
+    }
+
+    /* Topbar */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand-title {
+      font-family: 'Fraunces', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--pranzo);
+      letter-spacing: -0.01em;
+    }
+    .user-badge {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--pranzo);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.85rem;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    /* Tab Switcher & Sections */
+    .tabpanel {
+      display: none;
+      flex-direction: column;
+      gap: 20px;
+      padding: 18px 18px calc(88px + env(safe-area-inset-bottom, 0px));
+    }
+    .tabpanel.active { display: flex; }
+
+    /* Typography */
+    h1, h2, h3 { font-family: 'Fraunces', serif; color: var(--ink); }
+    .section-title { font-size: 1.4rem; font-weight: 600; line-height: 1.25; }
+    .section-sub { font-size: 0.88rem; color: var(--muted); margin-top: 4px; line-height: 1.4; }
+
+    /* Card styling */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    /* Day card */
+    .day-card { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
+    .day-header { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--line); padding-bottom: 8px; }
+    .day-name { font-weight: 700; font-size: 1.1rem; }
+    .day-badge { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--muted); background: var(--surface-2); padding: 2px 8px; border-radius: 20px; }
+    .meal-block { display: flex; flex-direction: column; gap: 2px; }
+    .meal-type { font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em; }
+    .meal-type.pranzo { color: var(--pranzo); }
+    .meal-type.cena { color: var(--cena); }
+    .meal-text { font-size: 0.95rem; font-weight: 500; }
+    .meal-link { color: var(--ink); text-decoration: underline dotted var(--pranzo); cursor: pointer; }
+
+    /* Ricette */
+    .recipe-card { display: flex; flex-direction: column; gap: 12px; margin-bottom: 14px; }
+    .recipe-tag { display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; padding: 3px 8px; border-radius: 6px; background: var(--surface-2); color: var(--ink); }
+    .recipe-source { font-size: 0.8rem; color: var(--muted); margin-top: 6px; }
+    .recipe-source a { color: var(--pranzo); font-weight: 600; text-decoration: none; }
+
+    /* Switcher Spesa: Articoli vs Conti */
+    .segmented-switch {
+      display: flex;
+      background: var(--surface-2);
+      border-radius: 10px;
+      padding: 3px;
+      margin-bottom: 16px;
+    }
+    .segmented-switch button {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 10px 8px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      border-radius: 8px;
+      cursor: pointer;
+      color: var(--muted);
+      font-family: 'Work Sans', sans-serif;
+    }
+    .segmented-switch button.active {
+      background: var(--surface);
+      color: var(--ink);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+
+    /* Conti Card */
+    .saldo-hero {
+      background: #EAF2ED;
+      border: 1px solid #C4DACB;
+      border-radius: var(--radius-md);
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .saldo-title { font-size: 0.8rem; text-transform: uppercase; font-family: 'IBM Plex Mono', monospace; color: var(--pranzo); font-weight: 600; }
+    .saldo-amount { font-family: 'Fraunces', serif; font-size: 1.45rem; font-weight: 700; color: #1E382F; margin: 4px 0 8px; }
+
+    /* Bottom Bar */
+    .tabbar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      max-width: 480px;
+      margin: 0 auto;
+      background: var(--surface);
+      border-top: 1px solid var(--line);
+      display: flex;
+      z-index: 40;
+      padding: 6px 12px calc(6px + env(safe-area-inset-bottom, 0px));
+    }
+    .tab-btn {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 8px 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      cursor: pointer;
+      color: var(--muted);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .tab-btn.active { color: var(--pranzo); font-weight: 600; }
+    .tab-btn svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; }
+  </style>
+</head>
+<body>
+
+<div class="app-container">
+  
+  <!-- Topbar -->
+  <header class="topbar">
+    <div>
+      <div style="font-size:0.7rem; font-family:'IBM Plex Mono', monospace; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em;">Fuori Sede</div>
+      <div class="brand-title">Casa a Bari</div>
+    </div>
+    <div class="user-badge" title="Profilo Ivan">I</div>
+  </header>
+
+  <!-- TAB 1: MENU SETTIMANALE -->
+  <main id="tab-menu" class="tabpanel active">
+    <div>
+      <h1 class="section-title">Menu della Settimana</h1>
+      <p class="section-sub">Pasti bilanciati tra lezioni e studio. Tocca i piatti evidenziati per visualizzare ingredienti e procedimento.</p>
+    </div>
+
+    <!-- Lunedi -->
+    <div class="card day-card">
+      <div class="day-header">
+        <span class="day-name">Lunedì</span>
+        <span class="day-badge">Sprint inizio settimana</span>
+      </div>
+      <div class="meal-block">
+        <span class="meal-type pranzo">Pranzo • 15 min</span>
+        <span class="meal-text">Spaghetti al preparato di mare</span>
+      </div>
+      <div class="meal-block">
+        <span class="meal-type cena">Cena • Proteine</span>
+        <span class="meal-text">Fettine di carne con falafel</span>
+      </div>
+    </div>
+
+    <!-- Martedi -->
+    <div class="card day-card">
+      <div class="day-header">
+        <span class="day-name">Martedì</span>
+        <span class="day-badge">Gourmet tra le lezioni</span>
+      </div>
+      <div class="meal-block">
+        <span class="meal-type pranzo">Pranzo • 20 min</span>
+        <span class="meal-text meal-link" onclick="openRecipe('paccheri')">Mezzi paccheri, crema di zucchine, burrata e salmone ↗</span>
+      </div>
+      <div class="meal-block">
+        <span class="meal-type cena">Cena • Rapida</span>
+        <span class="meal-text">Piadina farcita</span>
+      </div>
+    </div>
+
+    <!-- Mercoledi -->
+    <div class="card day-card">
+      <div class="day-header">
+        <span class="day-name">Mercoledì</span>
+        <span class="day-badge">Giro di boa</span>
+      </div>
+      <div class="meal-block">
+        <span class="meal-type pranzo">Pranzo • 10 min</span>
+        <span class="meal-text meal-link" onclick="openRecipe('tonno')">Spaghetti burro e tonno ↗</span>
+      </div>
+      <div class="meal-block">
+        <span class="meal-type cena">Cena • Settimane alterne</span>
+        <span class="meal-text">Filetti di merluzzo / Filetto di salmone al forno</span>
+      </div>
+    </div>
+
+    <!-- Giovedi -->
+    <div class="card day-card">
+      <div class="day-header">
+        <span class="day-name">Giovedì</span>
+        <span class="day-badge">Leggero & profumato</span>
+      </div>
+      <div class="meal-block">
+        <span class="meal-type pranzo">Pranzo • 15 min</span>
+        <span class="meal-text meal-link" onclick="openRecipe('gamberetti')">Zucchine e gamberetti ↗</span>
+      </div>
+      <div class="meal-block">
+        <span class="meal-type cena">Cena • Vegetale</span>
+        <span class="meal-text">Hamburger vegetali Kioene</span>
+      </div>
+    </div>
+
+    <!-- Venerdi -->
+    <div class="card day-card">
+      <div class="day-header">
+        <span class="day-name">Venerdì</span>
+        <span class="day-badge">Aria di weekend</span>
+      </div>
+      <div class="meal-block">
+        <span class="meal-type pranzo">Pranzo • 25 min</span>
+        <span class="meal-text meal-link" onclick="openRecipe('melanzane')">Pomodorini arrosto, melanzane e burrata ↗</span>
+      </div>
+      <div class="meal-block">
+        <span class="meal-type cena">Cena • Settimane alterne</span>
+        <span class="meal-text">Petto di pollo in padella / Cotoletta e patatine</span>
+      </div>
+    </div>
+
+    <!-- Sabato -->
+    <div class="card day-card">
+      <div class="day-header">
+        <span class="day-name">Sabato</span>
+        <span class="day-badge">Cucina con calma</span>
+      </div>
+      <div class="meal-block">
+        <span class="meal-type pranzo">Pranzo • Pistacchio</span>
+        <span class="meal-text meal-link" onclick="openRecipe('pistacchio')">Pesto di pistacchio e mortadella ↗</span>
+      </div>
+      <div class="meal-block">
+        <span class="meal-type cena">Cena Speciale • Forno</span>
+        <span class="meal-text meal-link" onclick="openRecipe('gateau')">Gateau di patate ↗</span>
+      </div>
+    </div>
+
+    <!-- Domenica -->
+    <div class="card day-card">
+      <div class="day-header">
+        <span class="day-name">Domenica</span>
+        <span class="day-badge">Comfort food</span>
+      </div>
+      <div class="meal-block">
+        <span class="meal-type pranzo">Pranzo • Vellutata</span>
+        <span class="meal-text meal-link" onclick="openRecipe('lenticchie')">Vellutata di lenticchie frullate ↗</span>
+      </div>
+      <div class="meal-block">
+        <span class="meal-type cena">Cena • Rotazione</span>
+        <span class="meal-text">Toast / Frittata di verdure</span>
+      </div>
+    </div>
+  </main>
+
+  <!-- TAB 2: RICETTARIO -->
+  <main id="tab-ricette" class="tabpanel">
+    <div>
+      <h1 class="section-title">Ricette Fuori Sede</h1>
+      <p class="section-sub">Primi rapidi e piatti collaudati con dosi calibrate e passaggi essenziali.</p>
+    </div>
+
+    <!-- Filtri ricette -->
+    <div style="display:flex; gap:8px; overflow-x:auto; padding-bottom:4px;">
+      <span class="recipe-tag" style="background:var(--pranzo); color:#fff;">Tutte</span>
+      <span class="recipe-tag">Primi Rapidi</span>
+      <span class="recipe-tag">Dolci</span>
+      <span class="recipe-tag">Weekend</span>
+    </div>
+
+    <!-- Paccheri zucchine e salmone -->
+    <article class="card recipe-card" id="recipe-paccheri">
+      <h3>Mezzi paccheri, crema di zucchine, burrata e salmone</h3>
+      <div style="display:flex; gap:6px; flex-wrap:wrap;">
+        <span class="recipe-tag">20 min</span>
+        <span class="recipe-tag">Fornelli + Minipimer</span>
+      </div>
+      <p style="font-size:0.9rem; line-height:1.5;"><strong>Ingredienti (1 persona):</strong> 90g paccheri, 1 zucchina, 50g salmone affumicato, 50g burrata, olio evo, sale e pepe.</p>
+      <div class="recipe-source">
+        Fonte ufficiale: <a href="https://blog.giallozafferano.it/studentiaifornelli/pasta-zucchine-e-salmone/" target="_blank" rel="noopener">GialloZafferano (Studenti ai Fornelli) ↗</a>
+      </div>
+    </article>
+
+    <!-- Carbonara -->
+    <article class="card recipe-card" id="recipe-carbonara">
+      <h3>Spaghetti alla Carbonara</h3>
+      <div style="display:flex; gap:6px; flex-wrap:wrap;">
+        <span class="recipe-tag">15 min</span>
+        <span class="recipe-tag">Tradizione</span>
+      </div>
+      <p style="font-size:0.9rem; line-height:1.5;"><strong>Ingredienti:</strong> Spaghetti, guanciale, tuorli d'uovo, pecorino romano DOP grattugiato, pepe nero in grani.</p>
+      <div class="recipe-source">
+        Fonte ufficiale: <a href="https://ricette.giallozafferano.it/Spaghetti-alla-Carbonara.html" target="_blank" rel="noopener">Ricetta Originale GialloZafferano ↗</a>
+      </div>
+    </article>
+
+    <!-- Gateau di patate -->
+    <article class="card recipe-card" id="recipe-gateau">
+      <h3>Gateau di Patate (Teglia Salva-Cena)</h3>
+      <div style="display:flex; gap:6px; flex-wrap:wrap;">
+        <span class="recipe-tag">50 min forno</span>
+        <span class="recipe-tag">Resiste 3 gg in frigo</span>
+      </div>
+      <p style="font-size:0.9rem; line-height:1.5;"><strong>Ingredienti:</strong> 500g patate, 85g prosciutto cotto a dadini, 85g provola affumicata, 1 uovo, parmigiano reggiano, pangrattato e burro.</p>
+      <div class="recipe-source">
+        Fonte ufficiale: <a href="https://ricette.giallozafferano.it/Gateau-di-patate.html" target="_blank" rel="noopener">Ricetta Gateau GialloZafferano ↗</a>
+      </div>
+    </article>
+
+    <!-- Sacher Torta -->
+    <article class="card recipe-card" id="recipe-sacher">
+      <h3>Sacher Torta Classica</h3>
+      <div style="display:flex; gap:6px; flex-wrap:wrap;">
+        <span class="recipe-tag">Dolce</span>
+        <span class="recipe-tag">Grande Classico</span>
+      </div>
+      <div class="recipe-source">
+        Fonte ufficiale: <a href="https://ricette.giallozafferano.it/Sacher-torta.html" target="_blank" rel="noopener">Ricetta Ufficiale Sacher GialloZafferano ↗</a>
+      </div>
+    </article>
+
+    <!-- Muffin al cioccolato -->
+    <article class="card recipe-card" id="recipe-muffin">
+      <h3>Muffin al Cioccolato Soffici</h3>
+      <div style="display:flex; gap:6px; flex-wrap:wrap;">
+        <span class="recipe-tag">Dolce</span>
+        <span class="recipe-tag">Colazione & Studio</span>
+      </div>
+      <div class="recipe-source">
+        Fonte ufficiale: <a href="https://ricette.giallozafferano.it/Muffin-al-cioccolato.html" target="_blank" rel="noopener">Ricetta Ufficiale Muffin GialloZafferano ↗</a>
+      </div>
+    </article>
+  </main>
+
+  <!-- TAB 3: SPESA & CONTI -->
+  <main id="tab-spesa" class="tabpanel">
+    
+    <!-- Switcher sezioni Spesa -->
+    <div class="segmented-switch">
+      <button type="button" id="btn-sub-lista" class="active" onclick="switchSpesaView('lista')">Lista Articoli</button>
+      <button type="button" id="btn-sub-conti" onclick="switchSpesaView('conti')">Conti & Saldi (+23€)</button>
+    </div>
+
+    <!-- SEZIONE A: LISTA SPESA -->
+    <div id="subview-lista">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <h2 style="font-size:1.25rem;">Spesa Settimanale</h2>
+        <button type="button" onclick="resetSpunte()" style="background:none; border:1px solid var(--line); padding:6px 12px; border-radius:6px; font-family:'IBM Plex Mono', monospace; font-size:0.75rem; cursor:pointer;">Reset Spunte</button>
+      </div>
+
+      <!-- Aggiunta elemento con tag obbligatorio -->
+      <div class="card" style="margin-bottom:16px;">
+        <div style="display:flex; gap:8px;">
+          <input type="text" id="nuovo-articolo-input" placeholder="Aggiungi ingrediente o articolo..." style="flex:1; border:1px solid var(--line); border-radius:6px; padding:8px 10px; font-family:inherit;">
+          <button type="button" onclick="aggiungiArticolo()" style="background:var(--pranzo); color:#fff; border:none; border-radius:6px; padding:8px 14px; font-weight:600; cursor:pointer;">Aggiungi</button>
+        </div>
+        <div style="margin-top:10px; font-size:0.78rem; color:var(--muted);">
+          Categoria tag:
+          <select id="nuovo-articolo-cat" style="margin-left:6px; padding:4px 6px; border:1px solid var(--line); border-radius:6px; font-family:inherit; background:var(--surface);">
+            <option value="Frutta e verdura">Frutta e verdura</option>
+            <option value="Pesce e carne">Pesce e carne</option>
+            <option value="Pronti e surgelati">Pronti e surgelati</option>
+            <option value="Latticini e uova">Latticini e uova</option>
+            <option value="Dispensa">Dispensa</option>
+            <option value="Igiene personale">Igiene personale</option>
+            <option value="Detersivi e pulizia">Detersivi e pulizia</option>
+            <option value="Altro">Altro</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Lista elementi raggruppati -->
+      <div id="container-categorie">
+        <!-- Render dinamico da JS -->
+      </div>
+    </div>
+
+    <!-- SEZIONE B: CONTI & SALDI COINQUILINI -->
+    <div id="subview-conti" style="display:none;">
+      
+      <!-- Card Riepilogo Saldo -->
+      <div class="saldo-hero">
+        <div class="saldo-title">Bilancio Condiviso • Ottobre 2023</div>
+        <div class="saldo-amount">Ilaria deve a Ivan 23,00 €</div>
+        <div style="font-size:0.85rem; color:var(--pranzo); font-weight:500;">Ivan è in credito • Divisione paritaria a metà (50%)</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:14px;">
+          <div style="background:#fff; border-radius:8px; padding:10px; border:1px solid #d0e2d6;">
+            <div style="font-size:0.72rem; color:var(--muted); font-family:'IBM Plex Mono', monospace;">Speso da Ivan</div>
+            <div style="font-size:1.1rem; font-weight:700; color:var(--pranzo);">96,00 €</div>
+          </div>
+          <div style="background:#fff; border-radius:8px; padding:10px; border:1px solid #d0e2d6;">
+            <div style="font-size:0.72rem; color:var(--muted); font-family:'IBM Plex Mono', monospace;">Speso da Ilaria</div>
+            <div style="font-size:1.1rem; font-weight:700; color:var(--cena);">50,00 €</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Registra Nuova Spesa -->
+      <div class="card" style="margin-bottom:16px;">
+        <h3 style="font-size:1.1rem; margin-bottom:10px;">Registra Nuova Spesa</h3>
+        <form id="form-nuova-spesa" onsubmit="event.preventDefault(); registraSpesa();">
+          <div style="display:flex; gap:8px; margin-bottom:10px;">
+            <button type="button" id="btn-pay-ivan" onclick="setChiPaga('Ivan')" style="flex:1; padding:8px; border:1px solid var(--pranzo); background:var(--pranzo-soft); color:var(--pranzo); border-radius:6px; font-weight:600;">Ivan (Tu) ✓</button>
+            <button type="button" id="btn-pay-ilaria" onclick="setChiPaga('Ilaria')" style="flex:1; padding:8px; border:1px solid var(--line); background:var(--surface); color:var(--muted); border-radius:6px;">Ilaria</button>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:10px;">
+            <input type="number" step="0.01" id="spesa-importo" placeholder="Importo (€)" required style="padding:8px 10px; border:1px solid var(--line); border-radius:6px; font-family:inherit;">
+            <input type="text" id="spesa-data" value="Oggi, 24 Ott" style="padding:8px 10px; border:1px solid var(--line); border-radius:6px; font-family:inherit;">
+          </div>
+          <input type="text" id="spesa-desc" placeholder="Descrizione o negozio (es. Conad, Pam...)" required style="width:100%; padding:8px 10px; border:1px solid var(--line); border-radius:6px; font-family:inherit; margin-bottom:10px;">
+          <button type="submit" style="width:100%; background:var(--pranzo); color:#fff; border:none; padding:10px; border-radius:8px; font-weight:600; cursor:pointer;">Registra Spesa</button>
+        </form>
+      </div>
+
+      <!-- Archivio Spese -->
+      <div>
+        <h3 style="font-size:1.1rem; margin-bottom:10px;">Archivio Recente</h3>
+        <div id="spese-archivio-lista" style="display:flex; flex-direction:column; gap:8px;">
+          <!-- Card Spesa 1 -->
+          <div class="card" style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div style="font-weight:600; font-size:0.95rem;">Spesa Pam & Frutta</div>
+              <div style="font-size:0.75rem; color:var(--muted);">Oggi, 11:30 • Quota: 23,00 € a testa</div>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-weight:700;">46,00 €</div>
+              <span style="font-size:0.7rem; background:var(--cena-soft); color:var(--cena); padding:2px 6px; border-radius:4px; font-family:'IBM Plex Mono', monospace;">Ilaria</span>
+            </div>
+          </div>
+          <!-- Card Spesa 2 -->
+          <div class="card" style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div style="font-weight:600; font-size:0.95rem;">Supermercato Conad</div>
+              <div style="font-size:0.75rem; color:var(--muted);">22 Ottobre • Quota: 31,00 € a testa</div>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-weight:700;">62,00 €</div>
+              <span style="font-size:0.7rem; background:var(--pranzo-soft); color:var(--pranzo); padding:2px 6px; border-radius:4px; font-family:'IBM Plex Mono', monospace;">Ivan</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Navigation Tab Bar in Basso -->
+  <nav class="tabbar">
+    <button type="button" class="tab-btn active" id="nav-btn-menu" onclick="showTab('menu')">
+      <svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/></svg>
+      Menu
+    </button>
+    <button type="button" class="tab-btn" id="nav-btn-ricette" onclick="showTab('ricette')">
+      <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15z"/></svg>
+      Ricette
+    </button>
+    <button type="button" class="tab-btn" id="nav-btn-spesa" onclick="showTab('spesa')">
+      <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      Spesa
+    </button>
+  </nav>
+
+</div>
+
+<script>
+  // Logica Router Tab Principale
+  function showTab(tabName) {
+    document.querySelectorAll('.tabpanel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    
+    document.getElementById('tab-' + tabName).classList.add('active');
+    document.getElementById('nav-btn-' + tabName).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function openRecipe(recipeKey) {
+    showTab('ricette');
+    const target = document.getElementById('recipe-' + recipeKey);
+    if(target) {
+      setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
+    }
+  }
+
+  // Switcher Spesa: Articoli vs Conti
+  function switchSpesaView(view) {
+    const isLista = (view === 'lista');
+    document.getElementById('subview-lista').style.display = isLista ? 'block' : 'none';
+    document.getElementById('subview-conti').style.display = isLista ? 'none' : 'block';
+    document.getElementById('btn-sub-lista').className = isLista ? 'active' : '';
+    document.getElementById('btn-sub-conti').className = isLista ? '' : 'active';
+  }
+
+  // Database locale iniziale Spesa
+  const DEFAULT_ITEMS = [
+    { id: '1', cat: 'Frutta e verdura', label: 'Pomodorini (2 vaschette)', checked: false },
+    { id: '2', cat: 'Frutta e verdura', label: 'Melanzana (1)', checked: false },
+    { id: '3', cat: 'Frutta e verdura', label: 'Cipolla, carota, sedano', checked: false },
+    { id: '4', cat: 'Pesce e carne', label: 'Salmone affumicato (100g)', checked: false },
+    { id: '5', cat: 'Pesce e carne', label: 'Gamberetti (120g)', checked: false },
+    { id: '6', cat: 'Latticini e uova', label: 'Burrata (2)', checked: false },
+    { id: '7', cat: 'Dispensa', label: 'Pasta corta e lunga (~700g)', checked: false }
+  ];
+
+  let spesaItems = JSON.parse(localStorage.getItem('fuorisede_spesa') || JSON.stringify(DEFAULT_ITEMS));
+
+  function salvaSpesa() {
+    localStorage.setItem('fuorisede_spesa', JSON.stringify(spesaItems));
+    renderSpesa();
+  }
+
+  function renderSpesa() {
+    const container = document.getElementById('container-categorie');
+    container.innerHTML = '';
+    
+    const categorie = [...new Set(spesaItems.map(i => i.cat))];
+    
+    categorie.forEach(cat => {
+      const itemsCat = spesaItems.filter(i => i.cat === cat);
+      if(!itemsCat.length) return;
+
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.style.marginBottom = '12px';
+
+      const h4 = document.createElement('h4');
+      h4.style.fontSize = '0.95rem';
+      h4.style.marginBottom = '8px';
+      h4.style.color = 'var(--pranzo)';
+      h4.textContent = cat;
+      card.appendChild(h4);
+
+      itemsCat.forEach(item => {
+        const row = document.createElement('div');
+        row.style.display = 'flex';
+        row.style.alignItems = 'center';
+        row.style.gap = '10px';
+        row.style.padding = '6px 0';
+        row.style.borderBottom = '1px solid var(--line)';
+
+        const cb = document.createElement('input');
+        cb.type = 'checkbox';
+        cb.checked = item.checked;
+        cb.style.width = '18px';
+        cb.style.height = '18px';
+        cb.onchange = () => {
+          item.checked = cb.checked;
+          salvaSpesa();
+        };
+
+        const lbl = document.createElement('span');
+        lbl.textContent = item.label;
+        lbl.style.fontSize = '0.9rem';
+        if(item.checked) {
+          lbl.style.textDecoration = 'line-through';
+          lbl.style.color = 'var(--muted)';
+        }
+
+        row.appendChild(cb);
+        row.appendChild(lbl);
+        card.appendChild(row);
+      });
+
+      container.appendChild(card);
+    });
+  }
+
+  function aggiungiArticolo() {
+    const input = document.getElementById('nuovo-articolo-input');
+    const catSelect = document.getElementById('nuovo-articolo-cat');
+    const label = input.value.trim();
+    if(!label) return;
+
+    spesaItems.push({
+      id: Date.now().toString(),
+      cat: catSelect.value,
+      label: label,
+      checked: false
+    });
+
+    input.value = '';
+    salvaSpesa();
+  }
+
+  function resetSpunte() {
+    spesaItems.forEach(i => i.checked = false);
+    salvaSpesa();
+  }
+
+  // Gestione Chi Paga nei Conti
+  let chiPagaAttivo = 'Ivan';
+  function setChiPaga(chi) {
+    chiPagaAttivo = chi;
+    document.getElementById('btn-pay-ivan').style.background = chi === 'Ivan' ? 'var(--pranzo-soft)' : 'var(--surface)';
+    document.getElementById('btn-pay-ivan').style.color = chi === 'Ivan' ? 'var(--pranzo)' : 'var(--muted)';
+    document.getElementById('btn-pay-ivan').style.borderColor = chi === 'Ivan' ? 'var(--pranzo)' : 'var(--line)';
+
+    document.getElementById('btn-pay-ilaria').style.background = chi === 'Ilaria' ? 'var(--cena-soft)' : 'var(--surface)';
+    document.getElementById('btn-pay-ilaria').style.color = chi === 'Ilaria' ? 'var(--cena)' : 'var(--muted)';
+    document.getElementById('btn-pay-ilaria').style.borderColor = chi === 'Ilaria' ? 'var(--cena)' : 'var(--line)';
+  }
+
+  function registraSpesa() {
+    const importo = parseFloat(document.getElementById('spesa-importo').value);
+    const desc = document.getElementById('spesa-desc').value;
+    const data = document.getElementById('spesa-data').value;
+    if(!importo || !desc) return;
+
+    const lista = document.getElementById('spese-archivio-lista');
+    const row = document.createElement('div');
+    row.className = 'card';
+    row.style.display = 'flex';
+    row.style.justifyContent = 'space-between';
+    row.style.alignItems = 'center';
+
+    const isIvan = chiPagaAttivo === 'Ivan';
+    row.innerHTML = `
+      <div>
+        <div style="font-weight:600; font-size:0.95rem;">${desc}</div>
+        <div style="font-size:0.75rem; color:var(--muted);">${data} • Quota: ${(importo / 2).toFixed(2)} € a testa</div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-weight:700;">${importo.toFixed(2)} €</div>
+        <span style="font-size:0.7rem; background:${isIvan ? 'var(--pranzo-soft)' : 'var(--cena-soft)'}; color:${isIvan ? 'var(--pranzo)' : 'var(--cena)'}; padding:2px 6px; border-radius:4px; font-family:'IBM Plex Mono', monospace;">${chiPagaAttivo}</span>
+      </div>
+    `;
+    lista.prepend(row);
+    document.getElementById('spesa-importo').value = '';
+    document.getElementById('spesa-desc').value = '';
+    alert('Spesa registrata con successo!');
+  }
+
+  // Init
+  renderSpesa();
+</script>
+
+
+```
+
+---
+
+## 5. Come Caricare il Progetto in Antigravity
+
+1. **Creazione Progetto / Workspace:** All'interno di Antigravity, crea una nuova cartella di progetto (es. `fuori-sede-bari`).
+2. **Creazione del file principale:** Crea un file denominato `index.html` e incolla il codice presente al punto 4.
+3. **Anteprima live:** Avvia il server locale o il visualizzatore live integrato di Antigravity per testare le interazioni tra i tab (Menu, Ricettario con link esterni, Checklist Spesa e Conti con divisione 50%).
+4. **Deploy o PWA:** Se vuoi installarla come web app sul tuo iPhone con icona dedicata, carica la cartella su un hosting web (Netlify, Vercel o GitHub Pages) e seleziona **"Aggiungi alla schermata Home"** da Safari.
+
+})();
+
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_15 -->
+</body>
+</html>

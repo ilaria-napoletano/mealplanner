@@ -1,0 +1,484 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&amp;family=Work+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "primary-fixed": "#c2ecda", "tertiary-container": "#805200", "primary-fixed-dim": "#a6cfbe", "on-error-container": "#93000a", "surface-container-low": "#f9f3e5", "outline-variant": "#c1c8c3", "on-secondary": "#ffffff", "on-surface": "#1d1c13", "dark-surface-tint": "#2E2A1F", "muted": "#736C58", "dark-dinner": "#D19BC0", "secondary-container": "#febbe0", "on-primary": "#ffffff", "on-tertiary": "#ffffff", "background": "#fff9eb", "on-secondary-container": "#7b4766", "line": "#E5DCC6", "surface-container-high": "#ede8da", "secondary-fixed-dim": "#f5b3d7", "inverse-surface": "#333027", "on-secondary-fixed-variant": "#683654", "primary": "#254b3e", "error": "#ba1a1a", "tertiary-fixed-dim": "#ffb959", "dark-weekend": "#E3AC55", "surface-container": "#f3eddf", "on-secondary-fixed": "#350a27", "surface-variant": "#e8e2d4", "lunch-soft": "#E4EDE6", "dark-muted": "#A99E82", "on-tertiary-fixed-variant": "#643f00", "weekend-soft": "#F5E9D4", "surface": "#FFFFFF", "dark-weekend-soft": "#332A18", "surface-dim": "dfdacc", "dinner-soft": "#F1E4EC", "dark-dinner-soft": "#332430", "dark-bg-canvas": "#1C1A15", "on-primary-fixed-variant": "#284e41", "inverse-on-surface": "#f6f0e2", "on-tertiary-container": "#ffcc8a", "secondary-fixed": "#ffd8eb", "on-error": "#ffffff", "dark-lunch": "#7FAD98", "on-surface-variant": "#414845", "dark-lunch-soft": "#26332C", "on-tertiary-fixed": "#2a1800", "surface-bright": "#fff9eb", "inverse-primary": "#a6cfbe", "on-primary-container": "#b4ddcc", "secondary": "#834d6d", "surface-container-lowest": "#ffffff", "surface-tint": "#406658", "dark-ink": "#EFE8D6", "outline": "#717974", "bg-canvas": "#FAF7F1", "dark-surface": "#252219", "on-primary-fixed": "#002117", "primary-container": "#3d6355", "on-background": "#1d1c13", "surface-container-highest": "#e8e2d4", "tertiary-fixed": "#ffddb5", "error-container": "#ffdad6", "dark-line": "#3C3627", "tertiary": "#603d00" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "margin": "1.25rem", "space-md": "0.75rem", "space-xs": "0.25rem", "gutter-mobile": "0.75rem", "space-sm": "0.5rem", "space-lg": "1rem", "space-xl": "1.5rem", "gutter": "0.875rem", "margin-mobile": "1rem" }, fontFamily: { "headline-lg": ["Fraunces"], "body-sm": ["Work Sans"], "headline-md": ["Fraunces"], "label-sm": ["Work Sans"], "caption": ["Work Sans"], "headline-sm": ["Fraunces"], "body-md": ["Work Sans"], "display": ["Fraunces"], "label-md": ["Work Sans"], "body-lg": ["Work Sans"], "title-md": ["Work Sans"], "headline-lg-mobile": ["Fraunces"] }, fontSize: { "headline-lg": ["24px", { "lineHeight": "30px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-md": ["19px", { "lineHeight": "25px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "600" }], "caption": ["10px", { "lineHeight": "13px", "letterSpacing": "0.06em", "fontWeight": "500" }], "headline-sm": ["17px", { "lineHeight": "22px", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "21px", "fontWeight": "400" }], "display": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "600" }], "body-lg": ["15px", { "lineHeight": "23px", "fontWeight": "400" }], "title-md": ["15px", { "lineHeight": "20px", "fontWeight": "600" }], "headline-lg-mobile": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,16px);}.pt-safe{padding-top:env(safe-area-inset-top,20px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style></head><body class="bg-bg-canvas text-on-surface font-body-md text-body-md flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-bg-canvas/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(40,35,20,0.04)]"><div class="h-16 px-margin-mobile flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="Menu Fuori Sede Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UpvE29fOZaG_c2OJyflvuYph3f-MG6q3om1PsEvK6J3-Kxik0_7j1HSvSlCDgF_4DPXCTU7KT6dot6b3X_eCWvCxLLZqoxWU_2WAsDmvi3Vbmh883pli39q1fxORw_6Mpd1krOciCWAgcrX_waDedkwwpRdnhjera6z1lW2RkdsN9DJE6lZ0gebV3HVvreia1ReEV_kKA66aT0okml6CUsT_kOapZCEfLffR1hEb9xYzHvrOvxNBYv9iU"><div class="flex flex-col"><span class="font-label-sm text-label-sm uppercase text-muted tracking-widest">Fuori Sede</span><h1 class="font-headline-sm text-headline-sm text-primary tracking-tight leading-none">Menu Settimanale</h1></div></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-28 bg-bg-canvas"><div class="flex flex-col w-full px-margin-mobile pb-6 space-y-space-lg">
+<!-- Header Accogliente & Selettore Vista -->
+<section class="flex flex-col pt-space-md space-y-space-md">
+<div class="flex items-start justify-between">
+<div class="flex flex-col space-y-space-xs">
+
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Menu della Settimana</h2>
+<p class="font-body-sm text-body-sm text-muted">
+          Pasti bilanciati tra studio e fornelli. Tocca le ricette per ingredienti e passaggi rapidi.
+        </p>
+</div>
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-surface shadow-sm text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[22px]">skillet</span>
+</div>
+</div>
+<!-- Toggle Segmentato: Vista a Scorrimento / Vista Completa -->
+
+<!-- Pill Bar Giorni Rapidi -->
+<div class="flex gap-2 overflow-x-auto pb-1 -mx-margin-mobile px-margin-mobile scroll-smooth no-scrollbar hidden" id="dayPillBar">
+<button class="day-chip flex flex-col items-center justify-center min-w-[52px] py-2 px-2 rounded-xl bg-surface text-on-surface shadow-sm transition-all focus:outline-none ring-2 ring-primary/20" data-target="card-lun" type="button">
+<span class="font-caption text-caption text-muted uppercase">Lun</span>
+<span class="font-title-md text-title-md">1</span>
+</button>
+<button class="day-chip flex flex-col items-center justify-center min-w-[52px] py-2 px-2 rounded-xl bg-surface-container-low text-muted transition-all" data-target="card-mar" type="button">
+<span class="font-caption text-caption uppercase">Mar</span>
+<span class="font-title-md text-title-md text-on-surface">2</span>
+</button>
+<button class="day-chip flex flex-col items-center justify-center min-w-[52px] py-2 px-2 rounded-xl bg-surface-container-low text-muted transition-all" data-target="card-mer" type="button">
+<span class="font-caption text-caption uppercase">Mer</span>
+<span class="font-title-md text-title-md text-on-surface">3</span>
+</button>
+<button class="day-chip flex flex-col items-center justify-center min-w-[52px] py-2 px-2 rounded-xl bg-surface-container-low text-muted transition-all" data-target="card-gio" type="button">
+<span class="font-caption text-caption uppercase">Gio</span>
+<span class="font-title-md text-title-md text-on-surface">4</span>
+</button>
+<button class="day-chip flex flex-col items-center justify-center min-w-[52px] py-2 px-2 rounded-xl bg-surface-container-low text-muted transition-all" data-target="card-ven" type="button">
+<span class="font-caption text-caption uppercase">Ven</span>
+<span class="font-title-md text-title-md text-on-surface">5</span>
+</button>
+<button class="day-chip flex flex-col items-center justify-center min-w-[52px] py-2 px-2 rounded-xl bg-weekend-soft/60 text-tertiary transition-all" data-target="card-sab" type="button">
+<span class="font-caption text-caption uppercase">Sab</span>
+<span class="font-title-md text-title-md text-tertiary">6</span>
+</button>
+<button class="day-chip flex flex-col items-center justify-center min-w-[52px] py-2 px-2 rounded-xl bg-weekend-soft/60 text-tertiary transition-all" data-target="card-dom" type="button">
+<span class="font-caption text-caption uppercase">Dom</span>
+<span class="font-title-md text-title-md text-tertiary">7</span>
+</button>
+</div>
+</section>
+<!-- Griglia / Flusso dei Giorni -->
+<section class="flex flex-col space-y-space-md" id="cardsContainer">
+<!-- LUNEDÌ -->
+<article class="day-item flex flex-col bg-surface rounded-2xl shadow-sm p-space-md space-y-space-md" id="card-lun">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-lunch-soft flex items-center justify-center text-primary">
+<span class="font-headline-sm text-headline-sm">L</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight">Lunedì</h3>
+<span class="font-caption text-caption text-muted">Inizio settimana sprint</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm px-space-sm py-0.5 rounded-full bg-surface-container text-muted">Giorno 1</span>
+</div>
+<div class="flex flex-col space-y-space-sm">
+<!-- Pranzo Lunedì -->
+<div class="flex flex-col bg-surface-container-low rounded-xl p-space-sm space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">sunny</span> Pranzo
+            </span>
+<span class="font-caption text-caption text-muted">15 min</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium">Spaghetti al preparato di mare</p>
+</div>
+<!-- Cena Lunedì -->
+<div class="flex flex-col bg-surface-container-low rounded-xl p-space-sm space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">bedtime</span> Cena
+            </span>
+<span class="font-caption text-caption text-muted">Proteine veloci</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">Fettine di carne con falafel</p>
+</div>
+</div>
+</article>
+<!-- MARTEDÌ (con ricetta pranzo) -->
+<article class="day-item flex flex-col bg-surface rounded-2xl shadow-sm p-space-md space-y-space-md" id="card-mar">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-lunch-soft flex items-center justify-center text-primary">
+<span class="font-headline-sm text-headline-sm">M</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight">Martedì</h3>
+<span class="font-caption text-caption text-muted">Gourmet tra le lezioni</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm px-space-sm py-0.5 rounded-full bg-surface-container text-muted">Giorno 2</span>
+</div>
+<div class="flex flex-col space-y-space-sm">
+<!-- Pranzo Martedì -->
+<div class="flex flex-col bg-lunch-soft/60 rounded-xl p-space-sm space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">sunny</span> Pranzo
+            </span>
+<span class="font-caption text-caption text-primary">20' • Minipimer</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium">Mezzi paccheri, crema di zucchine, burrata e salmone</p>
+<div class="flex justify-end pt-1">
+<a class="inline-flex items-center gap-1 px-space-sm py-1 rounded-lg bg-surface text-primary shadow-sm font-label-sm text-label-sm hover:bg-primary hover:text-on-primary transition-colors" href="#paccheri-zucchine">
+<span class="">Vedi ricetta</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Cena Martedì -->
+<div class="flex flex-col bg-surface-container-low rounded-xl p-space-sm space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">bedtime</span> Cena
+            </span>
+<span class="font-caption text-caption text-muted">Rapida</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">Piadina farcita</p>
+</div>
+</div>
+</article>
+<!-- MERCOLEDÌ (con ricetta pranzo + badge alternanza cena) -->
+<article class="day-item flex flex-col bg-surface rounded-2xl shadow-sm p-space-md space-y-space-md" id="card-mer">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-lunch-soft flex items-center justify-center text-primary">
+<span class="font-headline-sm text-headline-sm">M</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight">Mercoledì</h3>
+<span class="font-caption text-caption text-muted">Giro di boa settimanale</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm px-space-sm py-0.5 rounded-full bg-surface-container text-muted">Giorno 3</span>
+</div>
+<div class="flex flex-col space-y-space-sm">
+<!-- Pranzo Mercoledì -->
+<div class="flex flex-col bg-lunch-soft/60 rounded-xl p-space-sm space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">sunny</span> Pranzo
+            </span>
+<span class="font-caption text-caption text-primary">10' • Fornelli</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium">Spaghetti burro e tonno</p>
+<div class="flex justify-end pt-1">
+<a class="inline-flex items-center gap-1 px-space-sm py-1 rounded-lg bg-surface text-primary shadow-sm font-label-sm text-label-sm hover:bg-primary hover:text-on-primary transition-colors" href="#burro-tonno">
+<span class="">Vedi ricetta</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Cena Mercoledì -->
+<div class="flex flex-col bg-surface-container-low rounded-xl p-space-sm space-y-1.5">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">bedtime</span> Cena
+            </span>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed-variant">
+              a settimane alterne
+            </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">Filetti di merluzzo / Filetto di salmone al forno</p>
+</div>
+</div>
+</article>
+<!-- GIOVEDÌ (con ricetta pranzo) -->
+<article class="day-item flex flex-col bg-surface rounded-2xl shadow-sm p-space-md space-y-space-md" id="card-gio">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-lunch-soft flex items-center justify-center text-primary">
+<span class="font-headline-sm text-headline-sm">G</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight">Giovedì</h3>
+<span class="font-caption text-caption text-muted">Leggero &amp; profumato</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm px-space-sm py-0.5 rounded-full bg-surface-container text-muted">Giorno 4</span>
+</div>
+<div class="flex flex-col space-y-space-sm">
+<!-- Pranzo Giovedì -->
+<div class="flex flex-col bg-lunch-soft/60 rounded-xl p-space-sm space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">sunny</span> Pranzo
+            </span>
+<span class="font-caption text-caption text-primary">15' • Padella</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium">Zucchine e gamberetti</p>
+<div class="flex justify-end pt-1">
+<a class="inline-flex items-center gap-1 px-space-sm py-1 rounded-lg bg-surface text-primary shadow-sm font-label-sm text-label-sm hover:bg-primary hover:text-on-primary transition-colors" href="#zucchine-gamberetti">
+<span class="">Vedi ricetta</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Cena Giovedì -->
+<div class="flex flex-col bg-surface-container-low rounded-xl p-space-sm space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">bedtime</span> Cena
+            </span>
+<span class="font-caption text-caption text-muted">Vegetale</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">Hamburger vegetali Kioene</p>
+</div>
+</div>
+</article>
+<!-- VENERDÌ (con ricetta pranzo + badge alternanza cena) -->
+<article class="day-item flex flex-col bg-surface rounded-2xl shadow-sm p-space-md space-y-space-md" id="card-ven">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-lunch-soft flex items-center justify-center text-primary">
+<span class="font-headline-sm text-headline-sm">V</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight">Venerdì</h3>
+<span class="font-caption text-caption text-muted">Aria di weekend</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm px-space-sm py-0.5 rounded-full bg-surface-container text-muted">Giorno 5</span>
+</div>
+<div class="flex flex-col space-y-space-sm">
+<!-- Pranzo Venerdì -->
+<div class="flex flex-col bg-lunch-soft/60 rounded-xl p-space-sm space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">sunny</span> Pranzo
+            </span>
+<span class="font-caption text-caption text-primary">25' • Air fryer</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium">Pomodorini arrosto, melanzane e burrata</p>
+<div class="flex justify-end pt-1">
+<a class="inline-flex items-center gap-1 px-space-sm py-1 rounded-lg bg-surface text-primary shadow-sm font-label-sm text-label-sm hover:bg-primary hover:text-on-primary transition-colors" href="#pomodorini-melanzane-burrata">
+<span class="">Vedi ricetta</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Cena Venerdì -->
+<div class="flex flex-col bg-surface-container-low rounded-xl p-space-sm space-y-1.5">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">bedtime</span> Cena
+            </span>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed-variant">
+              a settimane alterne
+            </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">Petto di pollo in padella / Cotoletta e patatine</p>
+</div>
+</div>
+</article>
+<!-- SABATO (Weekend - Ocra Caldo, Doppia ricetta) -->
+<article class="day-item flex flex-col bg-surface rounded-2xl shadow-md p-space-md space-y-space-md relative overflow-hidden" id="card-sab">
+<!-- Accento Ocra del Weekend -->
+<div class="absolute top-0 left-0 right-0 h-1.5 bg-tertiary-container"></div>
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-weekend-soft flex items-center justify-center text-tertiary">
+<span class="font-headline-sm text-headline-sm">S</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight">Sabato</h3>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-weekend-soft text-tertiary font-semibold">Weekend</span>
+</div>
+<span class="font-caption text-caption text-muted">Cucina con calma</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm px-space-sm py-0.5 rounded-full bg-surface-container text-muted">Giorno 6</span>
+</div>
+<div class="flex flex-col space-y-space-sm">
+<!-- Pranzo Sabato -->
+<div class="flex flex-col bg-lunch-soft/60 rounded-xl p-space-sm space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">sunny</span> Pranzo
+            </span>
+<span class="font-caption text-caption text-primary">15' • Pistacchio &amp; mortadella</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium">Pesto di pistacchio e mortadella</p>
+<div class="flex justify-end pt-1">
+<a class="inline-flex items-center gap-1 px-space-sm py-1 rounded-lg bg-surface text-primary shadow-sm font-label-sm text-label-sm hover:bg-primary hover:text-on-primary transition-colors" href="#pistacchio-mortadella">
+<span class="">Vedi ricetta</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Cena Sabato (con ricetta Gateau) -->
+<div class="flex flex-col bg-dinner-soft/60 rounded-xl p-space-sm space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">local_pizza</span> Cena Speciale
+            </span>
+<span class="font-caption text-caption text-secondary">Al forno</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium">Gateau di patate</p>
+<div class="flex justify-end pt-1">
+<a class="inline-flex items-center gap-1 px-space-sm py-1 rounded-lg bg-surface text-secondary shadow-sm font-label-sm text-label-sm hover:bg-secondary hover:text-on-secondary transition-colors" href="#pizza-patate">
+<span class="">Vedi ricetta</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</article>
+<!-- DOMENICA (Weekend - Ocra Caldo, Ricetta pranzo + rotazione cena) -->
+<article class="day-item flex flex-col bg-surface rounded-2xl shadow-md p-space-md space-y-space-md relative overflow-hidden" id="card-dom">
+<!-- Accento Ocra del Weekend -->
+<div class="absolute top-0 left-0 right-0 h-1.5 bg-tertiary-container"></div>
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-weekend-soft flex items-center justify-center text-tertiary">
+<span class="font-headline-sm text-headline-sm">D</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight">Domenica</h3>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-weekend-soft text-tertiary font-semibold">Weekend</span>
+</div>
+<span class="font-caption text-caption text-muted">Comfort food e ricarica</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm px-space-sm py-0.5 rounded-full bg-surface-container text-muted">Giorno 7</span>
+</div>
+<div class="flex flex-col space-y-space-sm">
+<!-- Pranzo Domenica -->
+<div class="flex flex-col bg-lunch-soft/60 rounded-xl p-space-sm space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">soup_kitchen</span> Pranzo
+            </span>
+<span class="font-caption text-caption text-primary">25' • Senza ammollo</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium">Vellutata di lenticchie frullate</p>
+<div class="flex justify-end pt-1">
+<a class="inline-flex items-center gap-1 px-space-sm py-1 rounded-lg bg-surface text-primary shadow-sm font-label-sm text-label-sm hover:bg-primary hover:text-on-primary transition-colors" href="#lenticchie">
+<span class="">Vedi ricetta</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Cena Domenica -->
+<div class="flex flex-col bg-surface-container-low rounded-xl p-space-sm space-y-1.5">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">bedtime</span> Cena
+            </span>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed-variant">
+              a rotazione
+            </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">Di nuovo carne / Toast / Frittata di verdure</p>
+</div>
+</div>
+</article>
+</section>
+<!-- Card Riassuntiva: Piatti Jolly & Rotazione Veloce -->
+<section class="flex flex-col bg-surface-container rounded-2xl p-space-md space-y-space-md shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[18px]">shuffle</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Piatti Jolly &amp; Rotazione</h3>
+<span class="font-caption text-caption text-muted">Per quando i piani saltano</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface text-muted">Salvavita</span>
+</div>
+<p class="font-body-sm text-body-sm text-muted">
+      Soluzioni rapide da scambiare a piacere se manca un ingrediente o sei di fretta tra lezioni ed esami:
+    </p>
+<div class="grid grid-cols-2 gap-2">
+<!-- Jolly 1 -->
+<div class="flex items-center gap-2 p-2 rounded-xl bg-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">egg</span>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md truncate text-on-surface">Frittata</span>
+<span class="font-caption text-caption text-muted">Con verdure</span>
+</div>
+</div>
+<!-- Jolly 2 -->
+<div class="flex items-center gap-2 p-2 rounded-xl bg-surface">
+<span class="material-symbols-outlined text-secondary text-[18px]">ramen_dining</span>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md truncate text-on-surface">Amatriciana</span>
+<span class="font-caption text-caption text-muted">Guanciale &amp; pomodoro</span>
+</div>
+</div>
+<!-- Jolly 3 -->
+<div class="flex items-center gap-2 p-2 rounded-xl bg-surface">
+<span class="material-symbols-outlined text-tertiary text-[18px]">dinner_dining</span>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md truncate text-on-surface">Carbonara</span>
+<span class="font-caption text-caption text-muted">Classica senza panna</span>
+</div>
+</div>
+<!-- Jolly 4 -->
+<div class="flex items-center gap-2 p-2 rounded-xl bg-surface">
+<span class="material-symbols-outlined text-muted text-[18px]">lunch_dining</span>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md truncate text-on-surface">Toast Salva-Sera</span>
+<span class="font-caption text-caption text-muted">Prosciutto &amp; formaggio</span>
+</div>
+</div>
+</div>
+<!-- Suggerimento Delizioso -->
+<div class="flex items-start gap-2.5 p-space-sm rounded-xl bg-lunch-soft/50 text-primary">
+<span class="material-symbols-outlined text-[18px] flex-shrink-0 mt-0.5">tips_and_updates</span>
+<p class="font-body-sm text-body-sm text-primary">
+<strong>Tip Fuori Sede:</strong> Il gateau di patate del sabato regge benissimo in frigo per 2–3 giorni; preparalo in teglia per riscaldarne una fetta anche la domenica!
+      </p>
+</div>
+</section>
+</div>
+<script>
+  // Micro-interazioni per lo scorrimento veloce ai giorni
+  document.querySelectorAll('.day-chip').forEach(function(chip) {
+    chip.addEventListener('click', function() {
+      // Aggiorna aspetto chip attivo
+      document.querySelectorAll('.day-chip').forEach(function(c) {
+        c.classList.remove('ring-2', 'ring-primary/20', 'bg-surface');
+        if (!c.dataset.target.includes('sab') && !c.dataset.target.includes('dom')) {
+          c.classList.add('bg-surface-container-low');
+        }
+      });
+      chip.classList.add('ring-2', 'ring-primary/20', 'bg-surface');
+      chip.classList.remove('bg-surface-container-low');
+
+      // Scroll fluido verso la card selezionata
+      var targetId = chip.getAttribute('data-target');
+      var targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // Piccolo feedback visivo
+        targetEl.classList.add('ring-2', 'ring-primary/40');
+        setTimeout(function() {
+          targetEl.classList.remove('ring-2', 'ring-primary/40');
+        }, 900);
+      }
+    });
+  });
+
+  // Switch tra vista a colpo d'occhio o compatta
+  var btnDays = document.getElementById('btnViewDays');
+  var btnAll = document.getElementById('btnViewAll');
+  var pillBar = document.getElementById('dayPillBar');
+
+  if (btnDays && btnAll) {
+    btnDays.addEventListener('click', function() {
+      btnDays.classList.add('bg-surface', 'text-on-surface', 'shadow-sm');
+      btnDays.classList.remove('text-muted');
+      btnAll.classList.remove('bg-surface', 'text-on-surface', 'shadow-sm');
+      btnAll.classList.add('text-muted');
+      if (pillBar) pillBar.classList.remove('hidden');
+    });
+
+    btnAll.addEventListener('click', function() {
+      btnAll.classList.add('bg-surface', 'text-on-surface', 'shadow-sm');
+      btnAll.classList.remove('text-muted');
+      btnDays.classList.remove('bg-surface', 'text-on-surface', 'shadow-sm');
+      btnDays.classList.add('text-muted');
+      if (pillBar) pillBar.classList.add('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-1px_10px_rgba(40,35,20,0.05)]" data-active-classes="text-primary font-semibold"><div class="flex items-center justify-around h-16 px-margin-mobile"><a class="flex flex-col items-center justify-center w-20 h-12 text-muted hover:text-on-surface transition-colors" data-path="menu" href="#"><span class="material-symbols-outlined text-[24px]">restaurant_menu</span><span class="font-label-md text-label-md mt-0.5">Menu</span></a><a class="flex flex-col items-center justify-center w-20 h-12 text-muted hover:text-on-surface transition-colors" data-path="ricette" href="#"><span class="material-symbols-outlined text-[24px]">menu_book</span><span class="font-label-md text-label-md mt-0.5">Ricette</span></a><a class="flex flex-col items-center justify-center w-20 h-12 text-muted hover:text-on-surface transition-colors" data-path="spesa" href="#"><span class="material-symbols-outlined text-[24px]">checklist</span><span class="font-label-md text-label-md mt-0.5">Spesa</span></a></div></nav>
+
+</body></html>

@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+
+<html lang="it"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&amp;family=Work+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "primary-fixed": "#c2ecda", "tertiary-container": "#805200", "primary-fixed-dim": "#a6cfbe", "on-error-container": "#93000a", "surface-container-low": "#f9f3e5", "outline-variant": "#c1c8c3", "on-secondary": "#ffffff", "on-surface": "#1d1c13", "dark-surface-tint": "#2E2A1F", "muted": "#736C58", "dark-dinner": "#D19BC0", "secondary-container": "#febbe0", "on-primary": "#ffffff", "on-tertiary": "#ffffff", "background": "#fff9eb", "on-secondary-container": "#7b4766", "line": "#E5DCC6", "surface-container-high": "#ede8da", "secondary-fixed-dim": "#f5b3d7", "inverse-surface": "#333027", "on-secondary-fixed-variant": "#683654", "primary": "#254b3e", "error": "#ba1a1a", "tertiary-fixed-dim": "#ffb959", "dark-weekend": "#E3AC55", "surface-container": "#f3eddf", "on-secondary-fixed": "#350a27", "surface-variant": "#e8e2d4", "lunch-soft": "#E4EDE6", "dark-muted": "#A99E82", "on-tertiary-fixed-variant": "#643f00", "weekend-soft": "#F5E9D4", "surface": "#FFFFFF", "dark-weekend-soft": "#332A18", "surface-dim": "dfdacc", "dinner-soft": "#F1E4EC", "dark-dinner-soft": "#332430", "dark-bg-canvas": "#1C1A15", "on-primary-fixed-variant": "#284e41", "inverse-on-surface": "#f6f0e2", "on-tertiary-container": "#ffcc8a", "secondary-fixed": "#ffd8eb", "on-error": "#ffffff", "dark-lunch": "#7FAD98", "on-surface-variant": "#414845", "dark-lunch-soft": "#26332C", "on-tertiary-fixed": "#2a1800", "surface-bright": "#fff9eb", "inverse-primary": "#a6cfbe", "on-primary-container": "#b4ddcc", "secondary": "#834d6d", "surface-container-lowest": "#ffffff", "surface-tint": "#406658", "dark-ink": "#EFE8D6", "outline": "#717974", "bg-canvas": "#FAF7F1", "dark-surface": "#252219", "on-primary-fixed": "#002117", "primary-container": "#3d6355", "on-background": "#1d1c13", "surface-container-highest": "#e8e2d4", "tertiary-fixed": "#ffddb5", "error-container": "#ffdad6", "dark-line": "#3C3627", "tertiary": "#603d00" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "margin": "1.25rem", "space-md": "0.75rem", "space-xs": "0.25rem", "gutter-mobile": "0.75rem", "space-sm": "0.5rem", "space-lg": "1rem", "space-xl": "1.5rem", "gutter": "0.875rem", "margin-mobile": "1rem" }, fontFamily: { "headline-lg": ["Fraunces"], "body-sm": ["Work Sans"], "headline-md": ["Fraunces"], "label-sm": ["Work Sans"], "caption": ["Work Sans"], "headline-sm": ["Fraunces"], "body-md": ["Work Sans"], "display": ["Fraunces"], "label-md": ["Work Sans"], "body-lg": ["Work Sans"], "title-md": ["Work Sans"], "headline-lg-mobile": ["Fraunces"] }, fontSize: { "headline-lg": ["24px", { "lineHeight": "30px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-md": ["19px", { "lineHeight": "25px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "600" }], "caption": ["10px", { "lineHeight": "13px", "letterSpacing": "0.06em", "fontWeight": "500" }], "headline-sm": ["17px", { "lineHeight": "22px", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "21px", "fontWeight": "400" }], "display": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "600" }], "body-lg": ["15px", { "lineHeight": "23px", "fontWeight": "400" }], "title-md": ["15px", { "lineHeight": "20px", "fontWeight": "600" }], "headline-lg-mobile": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,16px);}.pt-safe{padding-top:env(safe-area-inset-top,20px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head><body class="bg-bg-canvas text-on-surface font-body-md text-body-md flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-bg-canvas/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(40,35,20,0.04)]"><div class="h-16 px-margin-mobile flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="Menu Fuori Sede Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UpvE29fOZaG_c2OJyflvuYph3f-MG6q3om1PsEvK6J3-Kxik0_7j1HSvSlCDgF_4DPXCTU7KT6dot6b3X_eCWvCxLLZqoxWU_2WAsDmvi3Vbmh883pli39q1fxORw_6Mpd1krOciCWAgcrX_waDedkwwpRdnhjera6z1lW2RkdsN9DJE6lZ0gebV3HVvreia1ReEV_kKA66aT0okml6CUsT_kOapZCEfLffR1hEb9xYzHvrOvxNBYv9iU"/><div class="flex flex-col"><span class="font-label-sm text-label-sm uppercase text-muted tracking-widest">Fuori Sede</span><h1 class="font-headline-sm text-headline-sm text-primary tracking-tight leading-none">Lista Della Spesa</h1></div></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-32 bg-bg-canvas"><div class="flex flex-col w-full px-margin-mobile pb-6 space-y-space-md">
+<!-- Header Card: Visual Progress & Supermarket Mode -->
+<section class="bg-surface rounded-xl p-space-md shadow-sm space-y-space-md">
+<div class="flex items-center justify-between gap-space-sm">
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-muted">Spesa Settimanale</span>
+<div class="flex items-baseline gap-space-xs mt-0.5">
+<span class="font-headline-md text-headline-md text-primary font-semibold" id="counter-summary">4 / 32</span>
+<span class="font-body-sm text-body-sm text-muted">nel carrello</span>
+</div>
+</div>
+<div class="w-11 h-11 rounded-full bg-lunch-soft text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[24px]">shopping_bag</span>
+</div>
+</div>
+<!-- Thin iOS native style progress bar -->
+<div class="w-full bg-surface-container rounded-full h-2 overflow-hidden">
+<div class="bg-primary h-full transition-all duration-300 ease-out rounded-full" id="progress-bar-fill" style="width: 12%;"></div>
+</div>
+<!-- Secondary Quick Actions -->
+<div class="flex items-center gap-space-sm pt-space-xs">
+<button class="flex-1 py-2 px-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high active:scale-95 transition-all text-on-surface font-label-md text-label-md flex items-center justify-center gap-1.5 text-center" id="shop-reset" type="button">
+<span class="material-symbols-outlined text-[16px] text-muted">restart_alt</span>
+<span>Reset spunte</span>
+</button>
+<button class="flex-1 py-2 px-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high active:scale-95 transition-all text-on-surface font-label-md text-label-md flex items-center justify-center gap-1.5 text-center" id="shop-restore" type="button">
+<span class="material-symbols-outlined text-[16px] text-muted">settings_backup_restore</span>
+<span>Ripristina lista</span>
+</button>
+</div>
+</section>
+<!-- iOS Swipe Hint Banner -->
+<div class="flex items-center gap-2 px-3 py-2 rounded-lg bg-surface-container/70 border border-line/40 text-muted">
+<span class="material-symbols-outlined text-[18px] text-primary shrink-0 animate-pulse">swipe_left</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex-1">Suggerimento: scorri verso sinistra su una riga per eliminare</span>
+</div>
+<!-- Quick Add Ingredient Bar (Thumb friendly for one-handed entry) -->
+<section class="bg-surface rounded-xl p-space-sm shadow-sm">
+<form class="flex items-center gap-space-xs" id="shop-add-form">
+<div class="flex items-center flex-1 bg-surface-container rounded-lg px-space-sm h-11">
+<span class="material-symbols-outlined text-muted text-[20px] mr-1.5 shrink-0">add_shopping_cart</span>
+<input autocomplete="off" class="w-full bg-transparent text-on-surface placeholder:text-muted font-body-md text-body-md focus:outline-none" id="shop-add-input" placeholder="Aggiungi ingrediente extra..." type="text"/>
+</div>
+<button class="h-11 px-space-md bg-primary hover:bg-primary-container active:scale-95 text-on-primary rounded-lg font-label-sm text-label-sm uppercase tracking-wider flex items-center justify-center shrink-0 transition-transform" type="submit">
+<span>Aggiungi</span>
+</button>
+</form>
+</section>
+<!-- Category Filter Pills (Horizontal Scrollable) -->
+<div class="overflow-x-auto no-scrollbar -mx-margin-mobile px-margin-mobile flex items-center gap-space-xs py-1">
+<button class="cat-pill active-pill shrink-0 px-3.5 py-1.5 rounded-full font-label-md text-label-md transition-colors bg-primary text-on-primary" data-filter="all" type="button">
+      Tutte (<span id="count-all">32</span>)
+    </button>
+<button class="cat-pill shrink-0 px-3.5 py-1.5 rounded-full font-label-md text-label-md transition-colors bg-surface text-muted hover:text-on-surface" data-filter="Frutta e verdura" type="button">
+      Frutta &amp; Verdura
+    </button>
+<button class="cat-pill shrink-0 px-3.5 py-1.5 rounded-full font-label-md text-label-md transition-colors bg-surface text-muted hover:text-on-surface" data-filter="Pesce e carne" type="button">
+      Pesce &amp; Carne
+    </button>
+<button class="cat-pill shrink-0 px-3.5 py-1.5 rounded-full font-label-md text-label-md transition-colors bg-surface text-muted hover:text-on-surface" data-filter="Pronti e surgelati" type="button">
+      Pronti &amp; Surgelati
+    </button>
+<button class="cat-pill shrink-0 px-3.5 py-1.5 rounded-full font-label-md text-label-md transition-colors bg-surface text-muted hover:text-on-surface" data-filter="Latticini e uova" type="button">
+      Latticini &amp; Uova
+    </button>
+<button class="cat-pill shrink-0 px-3.5 py-1.5 rounded-full font-label-md text-label-md transition-colors bg-surface text-muted hover:text-on-surface" data-filter="Dispensa" type="button">
+      Dispensa
+    </button>
+</div>
+<!-- Main Checklist Container (Da Comprare) -->
+<div class="space-y-space-md" id="shop-categories-container">
+<!-- Populated via script with active categories and items -->
+</div>
+<!-- Collapsible Completed Items: 'Nel Carrello / Già Presi' -->
+<section class="bg-surface rounded-xl overflow-hidden shadow-sm border border-line/50 transition-all" id="cart-completed-section">
+<button class="w-full p-space-md flex items-center justify-between text-left hover:bg-surface-container-low transition-colors select-none" id="cart-accordion-toggle" type="button">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px] text-primary">shopping_basket</span>
+<h2 class="font-headline-sm text-headline-sm text-primary font-semibold">Nel carrello</h2>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-lunch-soft text-primary font-semibold" id="cart-count-badge">4</span>
+</div>
+<div class="flex items-center gap-1.5 text-muted">
+<span class="font-caption text-caption uppercase tracking-wider hidden sm:inline" id="cart-status-text">Tocca per mostrare</span>
+<span class="material-symbols-outlined text-[22px] transition-transform duration-300 transform" id="cart-chevron">expand_more</span>
+</div>
+</button>
+<div class="px-space-md pb-space-md border-t border-line/40 space-y-0.5 divide-y divide-line/30" id="cart-items-wrapper">
+<!-- Populated via script with checked items -->
+</div>
+</section>
+<!-- Warm Editorial Supermarket Note -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex items-start gap-space-sm text-muted">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">tips_and_updates</span>
+<p class="font-body-sm text-body-sm leading-relaxed text-on-surface-variant">
+<strong>Consiglio fuori sede:</strong> Le spunte rimangono salvate in automatico sul telefono. Se un ingrediente manca al banco, trascina a sinistra per rimuoverlo o aggiungi subito un'alternativa.
+    </p>
+</div>
+</div>
+<!-- Toast / Undo Banner (Floating Above Nav Bar) -->
+<div class="fixed bottom-20 left-4 right-4 z-50 max-w-md mx-auto bg-inverse-surface text-inverse-on-surface rounded-xl px-4 py-3 shadow-xl flex items-center justify-between gap-3 transform translate-y-28 opacity-0 pointer-events-none transition-all duration-300 ease-out" id="undo-toast">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-[20px] text-primary-fixed shrink-0">delete</span>
+<span class="font-body-sm text-body-sm truncate" id="undo-toast-text">Elemento rimosso</span>
+</div>
+<button class="shrink-0 px-3 py-1 rounded-lg bg-primary-fixed text-on-primary-fixed font-label-md text-label-md font-semibold active:scale-95 transition-transform" id="undo-action-btn" type="button">
+    Annulla
+  </button>
+</div>
+<script>
+(function() {
+  var DEFAULT_ITEMS = [
+    {id:'v1', cat:'Frutta e verdura', label:'Zucchine (2)', icon:'eco'},
+    {id:'v2', cat:'Frutta e verdura', label:'Pomodorini (2 vaschette)', icon:'nutrition'},
+    {id:'v3', cat:'Frutta e verdura', label:'Melanzana (1)', icon:'eco'},
+    {id:'v4', cat:'Frutta e verdura', label:'Cipolla, carota, sedano (per soffritto)', icon:'soup_kitchen'},
+    {id:'v5', cat:'Frutta e verdura', label:'Prezzemolo', icon:'spa'},
+    {id:'v6', cat:'Frutta e verdura', label:'Insalata mista', icon:'local_florist'},
+    {id:'v7', cat:'Frutta e verdura', label:'Limone', icon:'wb_sunny'},
+    {id:'v8', cat:'Frutta e verdura', label:'Patate (1 kg)', icon:'grain'},
+
+    {id:'pc1', cat:'Pesce e carne', label:'Salmone affumicato (100 g)', icon:'set_meal'},
+    {id:'pc2', cat:'Pesce e carne', label:'Gamberetti (120 g)', icon:'phishing'},
+    {id:'pc3', cat:'Pesce e carne', label:'Filetti di merluzzo o salmone fresco', icon:'dinner_dining'},
+    {id:'pc4', cat:'Pesce e carne', label:'Fettine di carne (100-150 g)', icon:'kebab_dining'},
+    {id:'pc5', cat:'Pesce e carne', label:'Petto di pollo', icon:'restaurant'},
+    {id:'pc6', cat:'Pesce e carne', label:'Prosciutto cotto', icon:'bakery_dining'},
+    {id:'pc7', cat:'Pesce e carne', label:'Mortadella (40 g)', icon:'lunch_dining'},
+
+    {id:'pr1', cat:'Pronti e surgelati', label:'Preparato di mare surgelato', icon:'ac_unit'},
+    {id:'pr2', cat:'Pronti e surgelati', label:'Falafel pronti', icon:'egg_alt'},
+    {id:'pr3', cat:'Pronti e surgelati', label:'Hamburger vegetali Kioene', icon:'potted_plant'},
+    {id:'pr4', cat:'Pronti e surgelati', label:'Tonno in scatola', icon:'inventory_2'},
+    {id:'pr5', cat:'Pronti e surgelati', label:'Piadine pronte', icon:'layers'},
+
+    {id:'l1', cat:'Latticini e uova', label:'Burrata (2)', icon:'water_drop'},
+    {id:'l2', cat:'Latticini e uova', label:'Stracciatella', icon:'cookie'},
+    {id:'l3', cat:'Latticini e uova', label:'Mozzarella di bufala affumicata o provola', icon:'local_pizza'},
+    {id:'l4', cat:'Latticini e uova', label:'Parmigiano Reggiano', icon:'room_service'},
+    {id:'l5', cat:'Latticini e uova', label:'Pecorino', icon:'circle'},
+    {id:'l6', cat:'Latticini e uova', label:'Burro', icon:'square'},
+    {id:'l7', cat:'Latticini e uova', label:'Uova (6)', icon:'egg'},
+
+    {id:'d1', cat:'Dispensa', label:'Pasta corta e lunga (~700 g)', icon:'grain'},
+    {id:'d2', cat:'Dispensa', label:'Lenticchie rosse decorticate', icon:'scatter_plot'},
+    {id:'d3', cat:'Dispensa', label:'Pistacchi sgusciati', icon:'spa'},
+    {id:'d4', cat:'Dispensa', label:'Pangrattato', icon:'grain'},
+    {id:'d5', cat:'Dispensa', label:'Pane per toast', icon:'breakfast_dining'},
+    {id:'d6', cat:'Dispensa', label:'Olio evo/sale/pepe/origano', icon:'sanitizer'}
+  ];
+
+  var CATEGORY_ICONS = {
+    'Frutta e verdura': 'nature',
+    'Pesce e carne': 'set_meal',
+    'Pronti e surgelati': 'kitchen',
+    'Latticini e uova': 'egg',
+    'Dispensa': 'shelves',
+    'Aggiunti da te': 'playlist_add_check'
+  };
+
+  function safeGet(key, fallback){
+    try {
+      var v = localStorage.getItem(key);
+      return v === null ? fallback : JSON.parse(v);
+    } catch(e) { return fallback; }
+  }
+
+  function safeSet(key, val){
+    try { localStorage.setItem(key, JSON.stringify(val)); } catch(e){}
+  }
+
+  // Pre-seed 4 items checked for demonstration if not previously customized
+  var initialCheckedFallback = { 'v1': true, 'v8': true, 'l7': true, 'd6': true };
+  var checked = safeGet('mp_shop_checked_v2', initialCheckedFallback);
+  var removed = safeGet('mp_shop_removed_v2', []);
+  var custom = safeGet('mp_shop_custom_v2', []);
+  var activeCategory = 'all';
+  var isCartExpanded = true;
+  var lastRemovedItem = null;
+  var toastTimeout = null;
+
+  function persistAll(){
+    safeSet('mp_shop_checked_v2', checked);
+    safeSet('mp_shop_removed_v2', removed);
+    safeSet('mp_shop_custom_v2', custom);
+    updateProgress();
+  }
+
+  function getAllCurrentItems() {
+    var defActive = DEFAULT_ITEMS.filter(function(i){ return removed.indexOf(i.id) === -1; });
+    return defActive.concat(custom);
+  }
+
+  function isItemChecked(item) {
+    if(item.cat === 'Aggiunti da te') return !!item.checked;
+    return !!checked[item.id];
+  }
+
+  function setItemChecked(item, isChecked) {
+    if(item.cat === 'Aggiunti da te') {
+      item.checked = isChecked;
+    } else {
+      checked[item.id] = isChecked;
+    }
+    persistAll();
+    render();
+  }
+
+  function showUndoToast(item, isCustom) {
+    var toast = document.getElementById('undo-toast');
+    var textEl = document.getElementById('undo-toast-text');
+    var label = item.label || item.text;
+    textEl.textContent = '«' + label + '» rimosso';
+    lastRemovedItem = { item: item, isCustom: isCustom };
+
+    toast.classList.remove('translate-y-28', 'opacity-0', 'pointer-events-none');
+    toast.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
+
+    if(toastTimeout) clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(function() {
+      hideUndoToast();
+    }, 4500);
+  }
+
+  function hideUndoToast() {
+    var toast = document.getElementById('undo-toast');
+    toast.classList.add('translate-y-28', 'opacity-0', 'pointer-events-none');
+    toast.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
+  }
+
+  document.getElementById('undo-action-btn').addEventListener('click', function(e) {
+    e.stopPropagation();
+    if(lastRemovedItem) {
+      if(lastRemovedItem.isCustom) {
+        custom.unshift(lastRemovedItem.item);
+      } else {
+        var idx = removed.indexOf(lastRemovedItem.item.id);
+        if(idx !== -1) removed.splice(idx, 1);
+      }
+      lastRemovedItem = null;
+      persistAll();
+      render();
+    }
+    hideUndoToast();
+  });
+
+  function updateProgress() {
+    var all = getAllCurrentItems();
+    var total = all.length;
+    var done = 0;
+    all.forEach(function(item){
+      if(isItemChecked(item)) done++;
+    });
+
+    var summaryEl = document.getElementById('counter-summary');
+    var progressEl = document.getElementById('progress-bar-fill');
+    var countAllEl = document.getElementById('count-all');
+    var cartCountBadge = document.getElementById('cart-count-badge');
+
+    if(summaryEl) summaryEl.textContent = done + ' / ' + total;
+    if(countAllEl) countAllEl.textContent = total;
+    if(cartCountBadge) cartCountBadge.textContent = done;
+
+    if(progressEl) {
+      var pct = total === 0 ? 0 : Math.round((done / total) * 100);
+      progressEl.style.width = pct + '%';
+    }
+  }
+
+  // Create iOS swipe-to-delete item row
+  function createSwipeableRow(item, isCompletedSection) {
+    var itemId = item.id;
+    var itemLabel = item.label || item.text;
+    var checkedState = isItemChecked(item);
+
+    var container = document.createElement('div');
+    container.className = 'relative overflow-hidden rounded-lg select-none group my-0.5';
+
+    // Red delete action revealed on swipe
+    var deleteAction = document.createElement('div');
+    deleteAction.className = 'absolute inset-y-0 right-0 w-24 bg-error text-on-error flex items-center justify-center gap-1 font-label-md text-label-md font-semibold cursor-pointer z-0 transition-opacity active:opacity-90';
+    deleteAction.innerHTML = '<span class="material-symbols-outlined text-[20px]">delete</span><span>Elimina</span>';
+
+    // Foreground swipeable card
+    var front = document.createElement('div');
+    front.className = 'relative z-10 flex items-center justify-between py-2.5 px-space-sm bg-surface transition-transform duration-200 ease-out cursor-pointer active:bg-surface-container-low';
+
+    // Left checkbox + label
+    var left = document.createElement('div');
+    left.className = 'flex items-center gap-space-sm min-w-0 flex-1 pr-2';
+
+    var cbCircle = document.createElement('div');
+    cbCircle.className = 'w-6 h-6 rounded-full flex items-center justify-center shrink-0 transition-all duration-200 ' + 
+      (checkedState ? 'bg-primary text-on-primary' : 'bg-surface-container text-transparent border border-line/60');
+    cbCircle.innerHTML = '<span class="material-symbols-outlined text-[16px] font-bold">check</span>';
+
+    var textSpan = document.createElement('span');
+    textSpan.className = 'font-body-md text-body-md transition-all ' + 
+      (checkedState ? 'line-through text-muted' : 'text-on-surface');
+    textSpan.textContent = itemLabel;
+
+    left.appendChild(cbCircle);
+    left.appendChild(textSpan);
+    front.appendChild(left);
+
+    // Subtle drag indicator affordance (iOS style dot pills)
+    var dragPill = document.createElement('div');
+    dragPill.className = 'text-muted/40 flex items-center gap-0.5 shrink-0 px-1';
+    dragPill.innerHTML = '<span class="w-1 h-3 rounded-full bg-line block"></span>';
+    front.appendChild(dragPill);
+
+    container.appendChild(deleteAction);
+    container.appendChild(front);
+
+    // Swipe handling (Touch + Mouse)
+    var startX = 0;
+    var currentTranslate = 0;
+    var isDragging = false;
+    var isOpen = false;
+    var maxSwipe = -96; // 24rem/96px reveal
+
+    function setTranslate(x, animate) {
+      if(animate) {
+        front.style.transition = 'transform 0.25s ease-out';
+      } else {
+        front.style.transition = 'none';
+      }
+      front.style.transform = 'translateX(' + x + 'px)';
+      currentTranslate = x;
+    }
+
+    function closeSwipe() {
+      setTranslate(0, true);
+      isOpen = false;
+    }
+
+    function openSwipe() {
+      setTranslate(maxSwipe, true);
+      isOpen = true;
+    }
+
+    function triggerDelete() {
+      closeSwipe();
+      var isCustom = (item.cat === 'Aggiunti da te');
+      if(isCustom) {
+        custom = custom.filter(function(c){ return c.id !== itemId; });
+      } else {
+        if(removed.indexOf(itemId) === -1) removed.push(itemId);
+      }
+      persistAll();
+      render();
+      showUndoToast(item, isCustom);
+    }
+
+    deleteAction.addEventListener('click', function(e) {
+      e.stopPropagation();
+      triggerDelete();
+    });
+
+    // Touch events
+    front.addEventListener('touchstart', function(e) {
+      startX = e.touches[0].clientX;
+      isDragging = true;
+    }, {passive: true});
+
+    front.addEventListener('touchmove', function(e) {
+      if(!isDragging) return;
+      var diffX = e.touches[0].clientX - startX;
+      var base = isOpen ? maxSwipe : 0;
+      var targetX = base + diffX;
+      if(targetX > 10) targetX = 0; // limit right drag
+      if(targetX < -110) targetX = -110;
+      setTranslate(targetX, false);
+    }, {passive: true});
+
+    front.addEventListener('touchend', function(e) {
+      if(!isDragging) return;
+      isDragging = false;
+      if(currentTranslate < -45) {
+        openSwipe();
+      } else {
+        closeSwipe();
+      }
+    });
+
+    // Mouse drag support for desktop preview
+    var mStartX = 0;
+    var isMouseDown = false;
+    front.addEventListener('mousedown', function(e) {
+      mStartX = e.clientX;
+      isMouseDown = true;
+    });
+
+    window.addEventListener('mousemove', function(e) {
+      if(!isMouseDown) return;
+      var diff = e.clientX - mStartX;
+      var base = isOpen ? maxSwipe : 0;
+      var targetX = base + diff;
+      if(targetX > 0) targetX = 0;
+      if(targetX < -110) targetX = -110;
+      setTranslate(targetX, false);
+    });
+
+    window.addEventListener('mouseup', function(e) {
+      if(!isMouseDown) return;
+      isMouseDown = false;
+      if(currentTranslate < -45) {
+        openSwipe();
+      } else {
+        closeSwipe();
+      }
+    });
+
+    // Click on row to toggle checked state (only if not swiped open)
+    front.addEventListener('click', function(e) {
+      if(isOpen) {
+        closeSwipe();
+        return;
+      }
+      if(Math.abs(currentTranslate) > 5) return;
+      setItemChecked(item, !checkedState);
+    });
+
+    return container;
+  }
+
+  function render() {
+    var container = document.getElementById('shop-categories-container');
+    var cartWrapper = document.getElementById('cart-items-wrapper');
+    var cartSection = document.getElementById('cart-completed-section');
+    var cartChevron = document.getElementById('cart-chevron');
+
+    if(!container || !cartWrapper) return;
+
+    container.innerHTML = '';
+    cartWrapper.innerHTML = '';
+
+    var categories = ['Frutta e verdura', 'Pesce e carne', 'Pronti e surgelati', 'Latticini e uova', 'Dispensa'];
+    if(custom.length) {
+      categories.push('Aggiunti da te');
+    }
+
+    var renderedAnyToBuy = false;
+    var completedItems = [];
+
+    // 1. Render active to-buy categories
+    categories.forEach(function(cat) {
+      var allItemsInCat = [];
+      if(cat === 'Aggiunti da te') {
+        allItemsInCat = custom;
+      } else {
+        allItemsInCat = DEFAULT_ITEMS.filter(function(i){
+          return i.cat === cat && removed.indexOf(i.id) === -1;
+        });
+      }
+
+      // Collect completed items across categories
+      allItemsInCat.forEach(function(i) {
+        if(isItemChecked(i)) {
+          completedItems.push(i);
+        }
+      });
+
+      // Filter for uncompleted items (to buy)
+      if(activeCategory !== 'all' && activeCategory !== cat) return;
+
+      var toBuyInCat = allItemsInCat.filter(function(i){
+        return !isItemChecked(i);
+      });
+
+      if(toBuyInCat.length === 0) return;
+      renderedAnyToBuy = true;
+
+      var sectionCard = document.createElement('section');
+      sectionCard.className = 'bg-surface rounded-xl p-space-md shadow-sm space-y-space-xs';
+
+      // Section Header
+      var headerDiv = document.createElement('div');
+      headerDiv.className = 'flex items-center justify-between pb-space-xs mb-1';
+
+      var leftHead = document.createElement('div');
+      leftHead.className = 'flex items-center gap-space-xs';
+      
+      var iconSpan = document.createElement('span');
+      iconSpan.className = 'material-symbols-outlined text-[18px] text-primary';
+      iconSpan.textContent = CATEGORY_ICONS[cat] || 'label';
+
+      var catTitle = document.createElement('h2');
+      catTitle.className = 'font-headline-sm text-headline-sm text-primary font-semibold';
+      catTitle.textContent = cat;
+
+      leftHead.appendChild(iconSpan);
+      leftHead.appendChild(catTitle);
+
+      var badge = document.createElement('span');
+      badge.className = 'font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container text-muted font-medium';
+      badge.textContent = toBuyInCat.length;
+
+      headerDiv.appendChild(leftHead);
+      headerDiv.appendChild(badge);
+      sectionCard.appendChild(headerDiv);
+
+      // List of swipeable items to buy
+      var listDiv = document.createElement('div');
+      listDiv.className = 'flex flex-col space-y-0.5';
+
+      toBuyInCat.forEach(function(item) {
+        var row = createSwipeableRow(item, false);
+        listDiv.appendChild(row);
+      });
+
+      sectionCard.appendChild(listDiv);
+      container.appendChild(sectionCard);
+    });
+
+    // 2. Render completed section ('Nel Carrello')
+    if(completedItems.length > 0) {
+      cartSection.classList.remove('hidden');
+      if(isCartExpanded) {
+        cartWrapper.classList.remove('hidden');
+        cartChevron.style.transform = 'rotate(180deg)';
+      } else {
+        cartWrapper.classList.add('hidden');
+        cartChevron.style.transform = 'rotate(0deg)';
+      }
+
+      completedItems.forEach(function(item) {
+        var row = createSwipeableRow(item, true);
+        cartWrapper.appendChild(row);
+      });
+    } else {
+      cartSection.classList.add('hidden');
+    }
+
+    if(!renderedAnyToBuy && completedItems.length === 0) {
+      var emptyDiv = document.createElement('div');
+      emptyDiv.className = 'bg-surface rounded-xl p-space-xl text-center flex flex-col items-center justify-center space-y-space-sm shadow-sm';
+      emptyDiv.innerHTML = '<span class="material-symbols-outlined text-muted text-[44px]">done_all</span>' +
+        '<p class="font-headline-sm text-headline-sm text-on-surface font-semibold">Tutto preso o lista vuota!</p>' +
+        '<p class="font-body-sm text-body-sm text-muted">Tocca "Ripristina lista" in cima per ricominciare la settimana.</p>';
+      container.appendChild(emptyDiv);
+    }
+
+    updateProgress();
+  }
+
+  // Accordion Toggle for 'Nel Carrello'
+  var accordionBtn = document.getElementById('cart-accordion-toggle');
+  if(accordionBtn) {
+    accordionBtn.addEventListener('click', function() {
+      isCartExpanded = !isCartExpanded;
+      var wrapper = document.getElementById('cart-items-wrapper');
+      var chevron = document.getElementById('cart-chevron');
+      if(isCartExpanded) {
+        wrapper.classList.remove('hidden');
+        chevron.style.transform = 'rotate(180deg)';
+      } else {
+        wrapper.classList.add('hidden');
+        chevron.style.transform = 'rotate(0deg)';
+      }
+    });
+  }
+
+  // Filter Buttons Handling
+  document.querySelectorAll('.cat-pill').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.cat-pill').forEach(function(b) {
+        b.className = 'cat-pill shrink-0 px-3.5 py-1.5 rounded-full font-label-md text-label-md transition-colors bg-surface text-muted hover:text-on-surface';
+      });
+      btn.className = 'cat-pill active-pill shrink-0 px-3.5 py-1.5 rounded-full font-label-md text-label-md transition-colors bg-primary text-on-primary';
+      activeCategory = btn.getAttribute('data-filter');
+      render();
+    });
+  });
+
+  // Add Item Form
+  var form = document.getElementById('shop-add-form');
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var input = document.getElementById('shop-add-input');
+    var val = input.value.trim();
+    if(!val) return;
+    custom.unshift({
+      id: 'custom-' + Date.now(),
+      text: val,
+      cat: 'Aggiunti da te',
+      checked: false
+    });
+    input.value = '';
+    persistAll();
+    render();
+  });
+
+  // Action Buttons
+  document.getElementById('shop-reset').addEventListener('click', function() {
+    checked = {};
+    custom.forEach(function(c) { c.checked = false; });
+    persistAll();
+    render();
+  });
+
+  document.getElementById('shop-restore').addEventListener('click', function() {
+    removed = [];
+    persistAll();
+    render();
+  });
+
+  // Initial Boot
+  render();
+})();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl border-t border-line/40 shadow-[0_-1px_10px_rgba(40,35,20,0.05)]" data-active-classes="text-primary font-semibold"><div class="flex items-center justify-around h-16 px-margin-mobile"><a class="flex flex-col items-center justify-center w-20 h-12 text-muted hover:text-on-surface transition-colors" data-path="menu" href="#"><span class="material-symbols-outlined text-[24px]">restaurant_menu</span><span class="font-label-md text-label-md mt-0.5">Menu</span></a><a class="flex flex-col items-center justify-center w-20 h-12 text-muted hover:text-on-surface transition-colors" data-path="ricette" href="#"><span class="material-symbols-outlined text-[24px]">menu_book</span><span class="font-label-md text-label-md mt-0.5">Ricette</span></a><a class="flex flex-col items-center justify-center w-20 h-12 text-primary font-semibold transition-colors" data-path="spesa" href="#"><span class="material-symbols-outlined text-[24px]">checklist</span><span class="font-label-md text-label-md mt-0.5">Spesa</span></a></div></nav></body></html>
