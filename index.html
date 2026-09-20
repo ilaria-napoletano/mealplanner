@@ -91,7 +91,7 @@
 </div>
 <div class="flex flex-col">
 <h3 class="font-headline-md text-headline-md text-on-surface leading-tight">Lunedì</h3>
-
+<span class="font-caption text-caption text-muted">Inizio settimana sprint</span>
 </div>
 </div>
 <span class="font-label-sm text-label-sm px-space-sm py-0.5 rounded-full bg-surface-container text-muted">Giorno 1</span>
@@ -128,7 +128,7 @@
 </div>
 <div class="flex flex-col">
 <h3 class="font-headline-md text-headline-md text-on-surface leading-tight">Martedì</h3>
-
+<span class="font-caption text-caption text-muted">Gourmet tra le lezioni</span>
 </div>
 </div>
 <span class="font-label-sm text-label-sm px-space-sm py-0.5 rounded-full bg-surface-container text-muted">Giorno 2</span>
@@ -171,7 +171,7 @@
 </div>
 <div class="flex flex-col">
 <h3 class="font-headline-md text-headline-md text-on-surface leading-tight">Mercoledì</h3>
-
+<span class="font-caption text-caption text-muted">Giro di boa settimanale</span>
 </div>
 </div>
 <span class="font-label-sm text-label-sm px-space-sm py-0.5 rounded-full bg-surface-container text-muted">Giorno 3</span>
@@ -216,7 +216,7 @@
 </div>
 <div class="flex flex-col">
 <h3 class="font-headline-md text-headline-md text-on-surface leading-tight">Giovedì</h3>
-
+<span class="font-caption text-caption text-muted">Leggero &amp; profumato</span>
 </div>
 </div>
 <span class="font-label-sm text-label-sm px-space-sm py-0.5 rounded-full bg-surface-container text-muted">Giorno 4</span>
@@ -259,7 +259,7 @@
 </div>
 <div class="flex flex-col">
 <h3 class="font-headline-md text-headline-md text-on-surface leading-tight">Venerdì</h3>
-
+<span class="font-caption text-caption text-muted">Aria di weekend</span>
 </div>
 </div>
 <span class="font-label-sm text-label-sm px-space-sm py-0.5 rounded-full bg-surface-container text-muted">Giorno 5</span>
@@ -409,7 +409,7 @@
 </div>
 <div class="flex flex-col">
 <h3 class="font-headline-sm text-headline-sm text-on-surface">Piatti Jolly &amp; Rotazione</h3>
-
+<span class="font-caption text-caption text-muted">Per quando i piani saltano</span>
 </div>
 </div>
 <span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface text-muted">Salvavita</span>
@@ -1104,6 +1104,24 @@
             </div>
             <p class="font-body-sm text-on-surface leading-relaxed mt-1">Vivere insieme fa scivolare facilmente la relazione in una comoda routine domestica. Istituite momenti che siano veri appuntamenti fuori casa (una cena fuori, un cinema, una gita nel weekend).</p>
           </div>
+
+          <!-- Rule 5 -->
+          <div class="bg-surface rounded-xl p-space-md shadow-sm border border-line/40 flex flex-col gap-1.5">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[#7b4766] text-[20px]">bed</span>
+              <h3 class="font-title-md text-[#7b4766] font-bold leading-tight">Il patto del "Letto Separato senza Drammi"</h3>
+            </div>
+            <p class="font-body-sm text-on-surface leading-relaxed mt-1">Se la casa dispone di due letti o di una seconda stanza/divano letto, stabilite a monte la totale libertà di dormire separati quando serve. Se uno ha la sveglia alle 6:30 per un esame o ha il sonno leggero, dormire separati non è una punizione né un segnale di crisi: è igiene del sonno.</p>
+          </div>
+
+          <!-- Rule 6 -->
+          <div class="bg-surface rounded-xl p-space-md shadow-sm border border-line/40 flex flex-col gap-1.5">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[#284e41] text-[20px]">diversity_4</span>
+              <h3 class="font-title-md text-[#284e41] font-bold leading-tight">La formula "Insieme ma Ognuno per Sé" (Parallel Play)</h3>
+            </div>
+            <p class="font-body-sm text-on-surface leading-relaxed mt-1">Stare insieme la sera non deve per forza significare fare sempre la stessa identica cosa. È utilissimo abituarsi a condividere la stanza dove uno legge un libro e l'altro guarda un video con le cuffie, senza l'obbligo di interagire continuamente. Questo preserva l'individualità pur godendo della reciproca presenza.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1210,7 +1228,7 @@
   };
   triggers.forEach(btn => btn.addEventListener('click', () => switchTab(btn.dataset.tab)));
   document.addEventListener('click', e => {
-    const link = e.target.closest('a[href^="#"]');
+    const link = e.target.closest('a[hrefÈ="#"]');
     if(link && !link.classList.contains('tab-trigger')) {
       const hash = link.getAttribute('href');
       if(hash && hash !== '#' && document.querySelector(hash)) {
